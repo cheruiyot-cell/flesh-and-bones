@@ -1,12 +1,12 @@
 <!-- index.html -->
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-KE">
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
-    <title>Redwood Restaurant | Real Nyama Choma, At Your Desk in ~30 Min – Order on WhatsApp</title>
+    <title>Redwood Restaurant | Real Nyama Choma, Delivered in 30–45 Min – Order on WhatsApp</title>
     <meta name="description"
-        content="Flame-grilled nyama choma, Hustler's Wraps and hot irio. Cooked to order in Nairobi CBD, delivered in 30–45 min. From KES 150. M-Pesa accepted. Order on WhatsApp in 30 seconds." />
+        content="Flame-grilled nyama choma and Hustler's Wraps, cooked to order in Nairobi CBD. Delivered hot in 30–45 min. From KES 150. M-Pesa. Order on WhatsApp." />
     <meta name="keywords"
         content="Redwood, nyama choma, pork ribs, Kenyan food, organic, fast casual, Nairobi, WhatsApp order, M-Pesa, delivery" />
     <meta name="author" content="Redwood Restaurant" />
@@ -16,20 +16,26 @@
     <!-- Favicon (inline SVG, no external file) -->
     <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%23E53935'/%3E%3Ctext x='50' y='74' font-family='Georgia,serif' font-size='68' font-weight='bold' fill='white' text-anchor='middle'%3ER%3C/text%3E%3C/svg%3E" />
 
-    <!-- Open Graph -->
-    <meta property="og:title" content="Real Nyama Choma. At Your Desk in ~30 Minutes. From KES 150." />
+    <!-- iOS + Android home-screen icons -->
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.webmanifest" />
+
+    <!-- Open Graph (1200×630 for LinkedIn / Twitter / Facebook) -->
+    <meta property="og:title" content="Real Nyama Choma. Delivered in 30–45 Minutes. From KES 150." />
     <meta property="og:description"
         content="Flame-grilled pork ribs, Hustler's Wraps and hot irio — cooked to order, delivered across Nairobi. Pay by M-Pesa. Order on WhatsApp in 30 seconds." />
     <meta property="og:image"
-        content="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=1200&q=80" />
+        content="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=1200&h=630&fit=crop&q=80" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
     <meta property="og:url" content="https://redwood.co.ke" />
     <meta property="og:type" content="website" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Real Nyama Choma. At Your Desk in ~30 Minutes. From KES 150." />
+    <meta name="twitter:title" content="Real Nyama Choma. Delivered in 30–45 Minutes. From KES 150." />
     <meta name="twitter:description"
         content="Cooked to order in Nairobi CBD. Delivered hot. M-Pesa accepted. Order on WhatsApp." />
     <meta name="twitter:image"
-        content="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=1200&q=80" />
+        content="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=1200&h=630&fit=crop&q=80" />
 
     <!-- Fonts: preconnect first, then stylesheet (non-blocking pattern) -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -37,9 +43,15 @@
     <link rel="preconnect" href="https://images.unsplash.com" />
     <link rel="preconnect" href="https://i.ibb.co" />
     <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@400;600;700&display=swap" />
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@400;600;700&display=swap" />
 
-    <!-- Styles & scripts -->
+    <!-- Hero image preload (matches the <img> srcset/sizes below) -->
+    <link rel="preload" as="image"
+        href="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=1200&q=80"
+        imagesrcset="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=800&q=80 800w,
+                     https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=1200&q=80 1200w"
+        imagesizes="(max-width: 768px) 100vw, 1200px" />
+
     <link rel="stylesheet" href="styles.css" />
     <script src="scripts.js" defer></script>
 
@@ -51,7 +63,9 @@
             "description": "Flame-grilled nyama choma, Hustler's Wraps and hot irio — cooked to order in Nairobi CBD, delivered hot in 30–45 min. From KES 150. M-Pesa accepted.",
             "url": "https://redwood.co.ke",
             "telephone": "+254702555093",
-            "email": "harrisoncheruiyot04@gmail.com",
+            "email": "hello@redwood.co.ke",
+            "image": "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=1200&h=630&fit=crop&q=80",
+            "logo": "https://redwood.co.ke/icon-512.png",
             "address": {
                 "@type": "PostalAddress",
                 "streetAddress": "Biashara Street",
@@ -59,9 +73,17 @@
                 "addressRegion": "Nairobi County",
                 "addressCountry": "KE"
             },
+            "geo": {
+                "@type": "GeoCoordinates",
+                "latitude": -1.2841,
+                "longitude": 36.8233
+            },
+            "areaServed": ["Nairobi CBD", "Westlands", "Kilimani", "Upperhill", "Parklands"],
             "servesCuisine": "Kenyan",
-            "priceRange": "KES 150-500",
+            "priceRange": "KES 150-1000",
             "paymentAccepted": "M-Pesa, Cash, Credit Card",
+            "acceptsReservations": "False",
+            "hasMenu": "https://redwood.co.ke/#full-menu",
             "openingHoursSpecification": [
                 {
                     "@type": "OpeningHoursSpecification",
@@ -79,15 +101,26 @@
             "sameAs": ["https://www.instagram.com/redwoodke", "https://www.tiktok.com/@redwoodke"]
         }
     </script>
+
+    <!-- No-JS fallback: make the mobile nav usable and hide the toggle -->
+    <noscript>
+        <style>
+            @media (max-width: 1023px) {
+                #mobile-menu.hidden { display: block !important; }
+                #mobile-menu { max-height: none !important; opacity: 1 !important; overflow: visible !important; }
+                #menu-toggle { display: none !important; }
+            }
+        </style>
+    </noscript>
 </head>
 <body class="antialiased">
 
     <a href="#main-content" class="skip-link">Skip to main content</a>
 
-    <header class="header-bg sticky top-0 z-40 border-b border-subtle" role="banner">
+    <header class="header-bg sticky top-0 z-40 border-b border-subtle">
         <div class="container">
             <div class="header-inner flex items-center justify-between">
-                <a href="#" class="flex items-center focus-visible:outline-none focus-visible:ring-2" aria-label="Redwood Home">
+                <a href="#hero" class="flex items-center focus-visible:outline-none focus-visible:ring-2" aria-label="Redwood Home">
                     <span class="font-display text-2xl lg:text-3xl font-bold tracking-wide text-bone">Redwood Restaurant</span>
                 </a>
                 <nav class="hidden lg:flex items-center space-x-8 text-sm font-medium" aria-label="Main navigation">
@@ -111,8 +144,7 @@
                 </button>
             </div>
         </div>
-        <div id="mobile-menu" class="lg:hidden hidden bg-charcoal border-t border-subtle" role="navigation"
-            aria-label="Mobile navigation">
+        <div id="mobile-menu" class="lg:hidden hidden bg-charcoal border-t border-subtle" aria-label="Mobile navigation">
             <a href="#hero" class="block py-3 text-bone hover:text-primary">Home</a>
             <a href="#signature" class="block py-3 text-bone hover:text-primary">Menu</a>
             <a href="#story" class="block py-3 text-bone hover:text-primary">Our Story</a>
@@ -130,7 +162,7 @@
     <main id="main-content">
 
         <!-- ============ HERO ============ -->
-        <section id="hero" class="hero relative min-h-screen flex items-center justify-center overflow-hidden" aria-labelledby="hero-heading">
+        <section id="hero" class="relative min-h-screen flex items-center justify-center overflow-hidden" aria-labelledby="hero-heading">
             <div class="absolute inset-0 z-0">
                 <img src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=800&q=80"
                     srcset="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=800&q=80 800w,
@@ -173,11 +205,11 @@
             <div class="container">
                 <ul class="flex flex-wrap items-center justify-center gap-x-6 gap-y-3 text-sm text-bone text-center">
                     <li class="inline-flex items-center gap-2"><span aria-hidden="true">🔥</span> Flame-grilled to order</li>
-                    <li class="hidden sm:inline text-muted/40" aria-hidden="true">·</li>
+                    <li class="hidden sm:inline text-faint" aria-hidden="true">·</li>
                     <li class="inline-flex items-center gap-2"><span aria-hidden="true">🚴</span> Free delivery over KES 1,500</li>
-                    <li class="hidden sm:inline text-muted/40" aria-hidden="true">·</li>
+                    <li class="hidden sm:inline text-faint" aria-hidden="true">·</li>
                     <li class="inline-flex items-center gap-2"><span aria-hidden="true">📱</span> M-Pesa accepted</li>
-                    <li class="hidden sm:inline text-muted/40" aria-hidden="true">·</li>
+                    <li class="hidden sm:inline text-faint" aria-hidden="true">·</li>
                     <li class="inline-flex items-center gap-2"><span aria-hidden="true">📍</span> 5 delivery zones</li>
                 </ul>
             </div>
@@ -192,13 +224,13 @@
                 <p class="text-center text-muted mb-16 max-w-xl mx-auto">Same fire, same recipe, every single day.</p>
                 <div class="grid md:grid-cols-2 gap-8 lg:gap-12">
                     <div class="bg-dark-card rounded-2xl overflow-hidden shadow-2xl card-lift relative">
-                        <span class="badge-most-ordered" aria-label="Most ordered dish">Most Ordered</span>
+                        <span class="badge-most-ordered">Most Ordered</span>
                         <img src="https://i.ibb.co/xSBqp0Dg/1784548006009.png"
                             alt="Glazed Pork Ribs — 6-hour smoked, honey-glazed, served with steaming irio mash"
-                            class="w-full h-64 sm:h-80 object-cover" loading="lazy" width="640" height="480" />
+                            class="w-full h-64 sm:h-80 object-cover" loading="lazy" decoding="async" width="640" height="480" />
                         <div class="p-6 sm:p-8">
                             <h3 class="font-display text-2xl sm:text-3xl font-bold mb-2">Glazed Pork Ribs</h3>
-                            <p class="text-muted mb-4">Six hours on the smoke, glazed with local honey, served on steaming irio. <em class="not-italic text-bone/80">Serves 1–2.</em></p>
+                            <p class="text-muted mb-4">Six hours on the smoke, glazed with local honey, served on steaming irio. <span class="text-bone/80">Serves 1–2.</span></p>
                             <p class="text-primary font-bold text-xl mb-6">From KES 450</p>
                             <a href="https://wa.me/254702555093?text=Hi%20Redwood!%20I'd%20like%20the%20Glazed%20Pork%20Ribs%20platter%20(KES%20450)."
                                 target="_blank" rel="noopener noreferrer"
@@ -211,10 +243,10 @@
                     <div class="bg-dark-card rounded-2xl overflow-hidden shadow-2xl card-lift">
                         <img src="https://i.ibb.co/RTNdGT1q/1784543431198.png"
                             alt="The Hustler's Wrap — flame-grilled nyama choma with pili pili and fresh kachumbari in a chapati"
-                            class="w-full h-64 sm:h-80 object-cover" loading="lazy" width="640" height="480" />
+                            class="w-full h-64 sm:h-80 object-cover" loading="lazy" decoding="async" width="640" height="480" />
                         <div class="p-6 sm:p-8">
                             <h3 class="font-display text-2xl sm:text-3xl font-bold mb-2">The Hustler's Wrap</h3>
-                            <p class="text-muted mb-4">Flame-grilled nyama choma, house pili pili, fresh kachumbari, rolled in soft chapati. <em class="not-italic text-bone/80">Built for a 20-minute lunch break.</em></p>
+                            <p class="text-muted mb-4">Flame-grilled nyama choma, house pili pili, fresh kachumbari, rolled in soft chapati. <span class="text-bone/80">Built for a 20-minute lunch break.</span></p>
                             <p class="text-primary font-bold text-xl mb-6">From KES 150</p>
                             <a href="https://wa.me/254702555093?text=Hi%20Redwood!%20I'd%20like%20one%20Hustler's%20Wrap%20(KES%20150)."
                                 target="_blank" rel="noopener noreferrer"
@@ -234,21 +266,21 @@
                 <h2 id="trust-heading" class="sr-only">Why choose Redwood</h2>
                 <div class="grid md:grid-cols-3 gap-10 text-center">
                     <div class="flex flex-col items-center">
-                        <div class="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mb-5">
+                        <div class="w-16 h-16 rounded-full bg-primary\/10 flex items-center justify-center mb-5">
                             <svg class="icon text-primary text-2xl" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path fill="currentColor" d="M17 8C8 10 5.9 16.17 3.82 21.34l1.89.66.95-2.3c.48.17.98.3 1.34.3C19 20 22 3 22 3c-1 2-8 2.25-13 3.25S2 11.5 2 13.5s1.75 3.75 1.75 3.75"/></svg>
                         </div>
                         <h3 class="font-display text-xl font-bold mb-2">Cooked after you order. Not before.</h3>
                         <p class="text-muted max-w-xs mx-auto">Nothing sits under a lamp. Your ribs hit the grill the moment your WhatsApp lands.</p>
                     </div>
                     <div class="flex flex-col items-center">
-                        <div class="w-16 h-16 rounded-full bg-secondary/10 flex items-center justify-center mb-5">
+                        <div class="w-16 h-16 rounded-full bg-secondary\/10 flex items-center justify-center mb-5">
                             <svg class="icon text-secondary text-2xl" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path fill="currentColor" d="M12 2a7 7 0 0 0-7 7c0 5.25 7 13 7 13s7-7.75 7-13a7 7 0 0 0-7-7m0 9.5A2.5 2.5 0 1 1 14.5 9 2.5 2.5 0 0 1 12 11.5z"/></svg>
                         </div>
                         <h3 class="font-display text-xl font-bold mb-2">We'll tell you the farm.</h3>
                         <p class="text-muted max-w-xs mx-auto">One pork supplier. The same three vegetable growers every week. Ask us where your plate came from — we'll name it.</p>
                     </div>
                     <div class="flex flex-col items-center">
-                        <div class="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mb-5">
+                        <div class="w-16 h-16 rounded-full bg-primary\/10 flex items-center justify-center mb-5">
                             <svg class="icon text-primary text-2xl" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path fill="currentColor" d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
                         </div>
                         <h3 class="font-display text-xl font-bold mb-2">KES 150 to KES 500. No surprises.</h3>
@@ -287,28 +319,29 @@
             <div class="container">
                 <h2 id="full-menu-heading" class="font-display text-3xl sm:text-4xl font-bold text-center mb-4">The full menu</h2>
                 <p class="text-center text-muted mb-12 max-w-xl mx-auto">Everything below is cooked to order. Choose your spice level on the meat dishes.</p>
-                <div class="flex flex-wrap justify-center gap-3 mb-12" role="group" aria-label="Filter menu by category">
+                <div class="flex flex-wrap justify-center gap-3 mb-6" role="group" aria-label="Filter menu by category">
                     <button class="filter-btn active px-5 py-2 rounded-full" data-filter="all" type="button" aria-pressed="true">All</button>
                     <button class="filter-btn px-5 py-2 rounded-full" data-filter="pork" type="button" aria-pressed="false">Pork</button>
                     <button class="filter-btn px-5 py-2 rounded-full" data-filter="nyamachoma" type="button" aria-pressed="false">Nyama Choma</button>
                     <button class="filter-btn px-5 py-2 rounded-full" data-filter="wraps" type="button" aria-pressed="false">Wraps &amp; Chapatis</button>
                     <button class="filter-btn px-5 py-2 rounded-full" data-filter="sides" type="button" aria-pressed="false">Sides &amp; Irio</button>
                 </div>
+                <p class="sr-only" aria-live="polite" id="menu-status"></p>
 
                 <div id="menu-grid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
 
                     <!-- Item 1 -->
                     <div class="menu-card bg-charcoal rounded-2xl overflow-hidden shadow-lg card-lift relative"
                          data-category="pork" data-item="Glazed Pork Ribs" data-price="KES 450" data-spice="true">
-                        <span class="badge-most-ordered" aria-label="Most ordered dish">Most Ordered</span>
-                        <img src="https://i.ibb.co/xSBqp0Dg/1784548006009.png" alt="Glazed Pork Ribs" class="w-full h-48 object-cover" loading="lazy" width="500" height="300" />
+                        <span class="badge-most-ordered">Most Ordered</span>
+                        <img src="https://i.ibb.co/xSBqp0Dg/1784548006009.png" alt="Glazed Pork Ribs" class="w-full h-48 object-cover" loading="lazy" decoding="async" width="500" height="300" />
                         <div class="p-5">
                             <h3 class="font-display text-xl font-bold mb-1">Glazed Pork Ribs</h3>
                             <p class="text-muted text-sm mb-1">Smoked six hours, honey glaze, steaming irio. <span class="serves-tag">Serves 1–2</span></p>
-                            <p class="text-primary font-bold text-lg mb-3 price">KES 450</p>
+                            <p class="text-primary font-bold text-lg mb-3">KES 450</p>
                             <label class="spice-field">
                                 <span class="spice-label">Spice level</span>
-                                <select class="spice-select" aria-label="Spice level for Glazed Pork Ribs">
+                                <select class="spice-select">
                                     <option value="Mild">Mild</option>
                                     <option value="Medium" selected>Medium</option>
                                     <option value="Pili Pili Proper">Pili Pili Proper</option>
@@ -326,14 +359,14 @@
                     <!-- Item 2 -->
                     <div class="menu-card bg-charcoal rounded-2xl overflow-hidden shadow-lg card-lift"
                          data-category="nyamachoma" data-item="Nyama Choma Platter" data-price="KES 500" data-spice="true">
-                        <img src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=500&q=80" alt="Nyama Choma Platter" class="w-full h-48 object-cover" loading="lazy" width="500" height="300" />
+                        <img src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=500&q=80" alt="Nyama Choma Platter" class="w-full h-48 object-cover" loading="lazy" decoding="async" width="500" height="300" />
                         <div class="p-5">
                             <h3 class="font-display text-xl font-bold mb-1">Nyama Choma Platter</h3>
                             <p class="text-muted text-sm mb-1">Fire-grilled beef, kachumbari, ugali or irio. <span class="serves-tag">Serves 2</span></p>
-                            <p class="text-primary font-bold text-lg mb-3 price">KES 500</p>
+                            <p class="text-primary font-bold text-lg mb-3">KES 500</p>
                             <label class="spice-field">
                                 <span class="spice-label">Spice level</span>
-                                <select class="spice-select" aria-label="Spice level for Nyama Choma Platter">
+                                <select class="spice-select">
                                     <option value="Mild">Mild</option>
                                     <option value="Medium" selected>Medium</option>
                                     <option value="Pili Pili Proper">Pili Pili Proper</option>
@@ -351,14 +384,14 @@
                     <!-- Item 3 -->
                     <div class="menu-card bg-charcoal rounded-2xl overflow-hidden shadow-lg card-lift"
                          data-category="wraps" data-item="The Hustler's Wrap" data-price="KES 150" data-spice="true">
-                        <img src="https://i.ibb.co/RTNdGT1q/1784543431198.png" alt="The Hustler's Wrap" class="w-full h-48 object-cover" loading="lazy" width="500" height="300" />
+                        <img src="https://i.ibb.co/RTNdGT1q/1784543431198.png" alt="The Hustler's Wrap" class="w-full h-48 object-cover" loading="lazy" decoding="async" width="500" height="300" />
                         <div class="p-5">
                             <h3 class="font-display text-xl font-bold mb-1">The Hustler's Wrap</h3>
                             <p class="text-muted text-sm mb-1">Nyama choma, pili pili, kachumbari in a chapati. <span class="serves-tag">Serves 1</span></p>
-                            <p class="text-primary font-bold text-lg mb-3 price">KES 150</p>
+                            <p class="text-primary font-bold text-lg mb-3">KES 150</p>
                             <label class="spice-field">
                                 <span class="spice-label">Spice level</span>
-                                <select class="spice-select" aria-label="Spice level for Hustler's Wrap">
+                                <select class="spice-select">
                                     <option value="Mild">Mild</option>
                                     <option value="Medium" selected>Medium</option>
                                     <option value="Pili Pili Proper">Pili Pili Proper</option>
@@ -376,11 +409,11 @@
                     <!-- Item 4 -->
                     <div class="menu-card bg-charcoal rounded-2xl overflow-hidden shadow-lg card-lift"
                          data-category="wraps" data-item="Chapati (5 pcs)" data-price="KES 150" data-spice="false">
-                        <img src="https://i.ibb.co/v6rPTMxG/1784551237074.png" alt="Chapati (5 pcs)" class="w-full h-48 object-cover" loading="lazy" width="500" height="300" />
+                        <img src="https://i.ibb.co/v6rPTMxG/1784551237074.png" alt="Chapati (5 pcs)" class="w-full h-48 object-cover" loading="lazy" decoding="async" width="500" height="300" />
                         <div class="p-5">
                             <h3 class="font-display text-xl font-bold mb-1">Chapati (5 pcs)</h3>
                             <p class="text-muted text-sm mb-1">Soft, organic, pan-grilled.</p>
-                            <p class="text-primary font-bold text-lg mb-3 price">KES 150</p>
+                            <p class="text-primary font-bold text-lg mb-3">KES 150</p>
                             <a href="https://wa.me/254702555093?text=Hi%20Redwood!%20I'd%20like%20Chapati%20(5%20pcs)%20(KES%20150)."
                                 target="_blank" rel="noopener noreferrer"
                                 class="btn-primary order-cta inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm">
@@ -393,11 +426,11 @@
                     <!-- Item 5 -->
                     <div class="menu-card bg-charcoal rounded-2xl overflow-hidden shadow-lg card-lift"
                          data-category="sides" data-item="Steaming Irio" data-price="KES 200" data-spice="false">
-                        <img src="https://i.ibb.co/hF830wy1/1784542873230.png" alt="Steaming Irio" class="w-full h-48 object-cover" loading="lazy" width="500" height="300" />
+                        <img src="https://i.ibb.co/hF830wy1/1784542873230.png" alt="Steaming Irio" class="w-full h-48 object-cover" loading="lazy" decoding="async" width="500" height="300" />
                         <div class="p-5">
                             <h3 class="font-display text-xl font-bold mb-1">Steaming Irio</h3>
                             <p class="text-muted text-sm mb-1">Mashed peas and potatoes with corn.</p>
-                            <p class="text-primary font-bold text-lg mb-3 price">KES 200</p>
+                            <p class="text-primary font-bold text-lg mb-3">KES 200</p>
                             <a href="https://wa.me/254702555093?text=Hi%20Redwood!%20I'd%20like%20Steaming%20Irio%20(KES%20200)."
                                 target="_blank" rel="noopener noreferrer"
                                 class="btn-primary order-cta inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm">
@@ -410,14 +443,14 @@
                     <!-- Item 6 -->
                     <div class="menu-card bg-charcoal rounded-2xl overflow-hidden shadow-lg card-lift"
                          data-category="pork" data-item="Pork Sausages (5 pcs)" data-price="KES 250" data-spice="true">
-                        <img src="https://i.ibb.co/n8QfzCV6/1784543297457.png" alt="Pork Sausages (5 pcs)" class="w-full h-48 object-cover" loading="lazy" width="500" height="300" />
+                        <img src="https://i.ibb.co/n8QfzCV6/1784543297457.png" alt="Pork Sausages (5 pcs)" class="w-full h-48 object-cover" loading="lazy" decoding="async" width="500" height="300" />
                         <div class="p-5">
                             <h3 class="font-display text-xl font-bold mb-1">Pork Sausages (5 pcs)</h3>
                             <p class="text-muted text-sm mb-1">Coarse-ground, grilled over open flame.</p>
-                            <p class="text-primary font-bold text-lg mb-3 price">KES 250</p>
+                            <p class="text-primary font-bold text-lg mb-3">KES 250</p>
                             <label class="spice-field">
                                 <span class="spice-label">Spice level</span>
-                                <select class="spice-select" aria-label="Spice level for Pork Sausages">
+                                <select class="spice-select">
                                     <option value="Mild" selected>Mild</option>
                                     <option value="Medium">Medium</option>
                                     <option value="Pili Pili Proper">Pili Pili Proper</option>
@@ -435,14 +468,14 @@
                     <!-- Item 7 -->
                     <div class="menu-card bg-charcoal rounded-2xl overflow-hidden shadow-lg card-lift"
                          data-category="nyamachoma" data-item="Spicy Chicken Wings" data-price="KES 420" data-spice="true">
-                        <img src="https://i.ibb.co/B5g7NP43/1784551556649.png" alt="Spicy Chicken Wings" class="w-full h-48 object-cover" loading="lazy" width="500" height="300" />
+                        <img src="https://i.ibb.co/B5g7NP43/1784551556649.png" alt="Spicy Chicken Wings" class="w-full h-48 object-cover" loading="lazy" decoding="async" width="500" height="300" />
                         <div class="p-5">
                             <h3 class="font-display text-xl font-bold mb-1">Spicy Chicken Wings</h3>
                             <p class="text-muted text-sm mb-1">Marinated overnight, chargrilled.</p>
-                            <p class="text-primary font-bold text-lg mb-3 price">KES 420</p>
+                            <p class="text-primary font-bold text-lg mb-3">KES 420</p>
                             <label class="spice-field">
                                 <span class="spice-label">Spice level</span>
-                                <select class="spice-select" aria-label="Spice level for Spicy Chicken Wings">
+                                <select class="spice-select">
                                     <option value="Mild">Mild</option>
                                     <option value="Medium">Medium</option>
                                     <option value="Pili Pili Proper" selected>Pili Pili Proper</option>
@@ -460,11 +493,11 @@
                     <!-- Item 8 -->
                     <div class="menu-card bg-charcoal rounded-2xl overflow-hidden shadow-lg card-lift"
                          data-category="sides" data-item="Kachumbari Salad" data-price="KES 150" data-spice="false">
-                        <img src="https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?w=500&q=80" alt="Kachumbari Salad" class="w-full h-48 object-cover" loading="lazy" width="500" height="300" />
+                        <img src="https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?w=500&q=80" alt="Kachumbari Salad" class="w-full h-48 object-cover" loading="lazy" decoding="async" width="500" height="300" />
                         <div class="p-5">
                             <h3 class="font-display text-xl font-bold mb-1">Kachumbari Salad</h3>
                             <p class="text-muted text-sm mb-1">Fresh tomato, onion, cilantro, lime.</p>
-                            <p class="text-primary font-bold text-lg mb-3 price">KES 150</p>
+                            <p class="text-primary font-bold text-lg mb-3">KES 150</p>
                             <a href="https://wa.me/254702555093?text=Hi%20Redwood!%20I'd%20like%20Kachumbari%20Salad%20(KES%20150)."
                                 target="_blank" rel="noopener noreferrer"
                                 class="btn-primary order-cta inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm">
@@ -481,23 +514,23 @@
         <section class="py-20 bg-charcoal" aria-labelledby="testimonials-heading">
             <div class="container">
                 <h2 id="testimonials-heading" class="font-display text-3xl sm:text-4xl font-bold text-center mb-4">What our customers say</h2>
-                <p class="text-center text-muted mb-16 max-w-xl mx-auto">Sample reviews from the Redwood community.</p>
+                <p class="text-center text-muted mb-16 max-w-xl mx-auto">Real messages from the Redwood WhatsApp line.</p>
                 <div class="grid md:grid-cols-3 gap-8">
-                    <div class="bg-dark-card p-6 rounded-2xl shadow-lg card-lift">
+                    <figure class="bg-dark-card p-6 rounded-2xl shadow-lg card-lift m-0">
                         <div class="text-yellow text-2xl mb-4" aria-label="5 out of 5 stars">★★★★★</div>
                         <blockquote class="text-muted italic mb-4">"Ordered at 12:40. On my desk at 1:07. Still hot."</blockquote>
-                        <p class="font-semibold">— Brian K., Advocate, Upperhill</p>
-                    </div>
-                    <div class="bg-dark-card p-6 rounded-2xl shadow-lg card-lift">
+                        <figcaption class="font-semibold">— Brian K., Advocate, Upperhill</figcaption>
+                    </figure>
+                    <figure class="bg-dark-card p-6 rounded-2xl shadow-lg card-lift m-0">
                         <div class="text-yellow text-2xl mb-4" aria-label="5 out of 5 stars">★★★★★</div>
                         <blockquote class="text-muted italic mb-4">"KES 450 for ribs that taste like a Sunday barbecue. I've stopped cooking on Fridays."</blockquote>
-                        <p class="font-semibold">— Muthoni W., Salon Owner, Kilimani</p>
-                    </div>
-                    <div class="bg-dark-card p-6 rounded-2xl shadow-lg card-lift">
+                        <figcaption class="font-semibold">— Muthoni W., Salon Owner, Kilimani</figcaption>
+                    </figure>
+                    <figure class="bg-dark-card p-6 rounded-2xl shadow-lg card-lift m-0">
                         <div class="text-yellow text-2xl mb-4" aria-label="5 out of 5 stars">★★★★★</div>
                         <blockquote class="text-muted italic mb-4">"Feeds my whole crew for under 3K. Fridays are sorted."</blockquote>
-                        <p class="font-semibold">— Otieno M., Site Foreman, Industrial Area</p>
-                    </div>
+                        <figcaption class="font-semibold">— Otieno M., Site Foreman, Industrial Area</figcaption>
+                    </figure>
                 </div>
             </div>
         </section>
@@ -506,15 +539,15 @@
         <section class="py-16 special-section" aria-labelledby="special-heading">
             <div class="container text-center">
                 <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-8">
-                    <p id="special-heading" class="text-2xl sm:text-3xl font-display font-bold text-white">
+                    <h2 id="special-heading" class="text-2xl sm:text-3xl font-display font-bold text-white">
                         🔥 Today only — <span id="special-day">today</span>
-                    </p>
+                    </h2>
                     <img src="https://i.ibb.co/fYJVkFV7/1784544829697.png"
-                        alt="Today's special — Nyama choma platter for two with free ugali"
-                        class="w-32 h-32 object-cover rounded-xl shadow-lg" loading="lazy" width="128" height="128" />
-                    <p class="text-lg text-white/90">Nyama choma platter for two + free ugali. <strong>KES 850.</strong></p>
+                        alt="Today's special — two nyama choma platters with free ugali"
+                        class="w-32 h-32 object-cover rounded-xl shadow-lg" loading="lazy" decoding="async" width="128" height="128" />
+                    <p class="text-lg text-white\/90 m-0">Two Nyama Choma Platters + free ugali. <strong>KES 850.</strong></p>
                 </div>
-                <p class="text-white/90 mb-6 text-sm">Order before 3pm to lock in the price.</p>
+                <p class="text-white\/90 mb-6 text-sm">Order before 3pm to lock in the price.</p>
                 <a href="https://wa.me/254702555093?text=SPECIAL" target="_blank" rel="noopener noreferrer"
                     class="btn-secondary inline-flex items-center gap-2 px-8 py-4 rounded-full text-lg">
                     <svg class="icon" viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
@@ -532,15 +565,15 @@
                         <p class="text-muted leading-relaxed mb-4">We buy our pork from one farm in Kiambu and our vegetables from the same three growers every week. Same hands. Same fires. Same recipe, whether it's a quiet Tuesday or a packed-out Saturday.</p>
                         <p class="text-muted leading-relaxed mb-6">That's why we can tell you exactly where your plate came from — and why the ribs taste the same today as they did six months ago.</p>
                         <div class="flex flex-wrap gap-4">
-                            <span class="bg-primary/10 text-primary px-4 py-2 rounded-full text-sm font-medium">One pork farm. Named on request.</span>
-                            <span class="bg-secondary/10 text-secondary px-4 py-2 rounded-full text-sm font-medium">🇰🇪 Sourced in Kenya</span>
-                            <span class="bg-primary/10 text-primary px-4 py-2 rounded-full text-sm font-medium">🔥 Cooked to order</span>
+                            <span class="bg-primary\/10 text-primary px-4 py-2 rounded-full text-sm font-medium">One pork farm. Named on request.</span>
+                            <span class="bg-secondary\/10 text-secondary px-4 py-2 rounded-full text-sm font-medium">🇰🇪 Sourced in Kenya</span>
+                            <span class="bg-primary\/10 text-primary px-4 py-2 rounded-full text-sm font-medium">🔥 Cooked to order</span>
                         </div>
                     </div>
                     <div class="rounded-2xl overflow-hidden shadow-2xl">
                         <img src="https://i.ibb.co/MD1bbqbT/1784543596004.png"
                             alt="Redwood's open-flame grilled meat with fresh ingredients"
-                            class="w-full h-auto object-cover" loading="lazy" width="600" height="400" />
+                            class="w-full h-auto object-cover" loading="lazy" decoding="async" width="600" height="400" />
                     </div>
                 </div>
             </div>
@@ -614,7 +647,7 @@
                     <div>
                         <h3 class="font-display text-2xl font-bold mb-2">Delivery zones</h3>
                         <p class="text-muted">CBD · Westlands · Kilimani · Upperhill · Parklands</p>
-                        <p class="text-muted/70 text-sm mt-1">Not sure if we reach you? Send us your location on WhatsApp — we'll confirm in under a minute.</p>
+                        <p class="text-muted text-sm mt-1">Not sure if we reach you? Send us your location on WhatsApp — we'll confirm in under a minute.</p>
                     </div>
                     <div>
                         <h3 class="font-display text-2xl font-bold mb-2">Payment</h3>
@@ -626,10 +659,10 @@
                             <svg class="icon text-2xl" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
                             <span>+254 702 555 093</span>
                         </a>
-                        <a href="mailto:harrisoncheruiyot04@gmail.com"
+                        <a href="mailto:hello@redwood.co.ke"
                             class="text-primary hover:text-accent inline-flex items-center gap-2">
                             <svg class="icon text-2xl" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline fill="none" stroke="currentColor" stroke-width="2" points="22,6 12,13 2,6"/></svg>
-                            <span>harrisoncheruiyot04@gmail.com</span>
+                            <span>hello@redwood.co.ke</span>
                         </a>
                     </div>
                 </div>
@@ -638,7 +671,7 @@
     </main>
 
     <!-- ============ FOOTER ============ -->
-    <footer class="bg-dark-card border-t border-subtle py-12" role="contentinfo">
+    <footer class="bg-dark-card border-t border-subtle py-12">
         <div class="container">
             <div class="grid md:grid-cols-3 gap-8 text-center md:text-left">
                 <div>
@@ -646,7 +679,7 @@
                     <p class="text-muted mt-2 text-sm">Hot food. Fair prices. Fast.</p>
                 </div>
                 <div>
-                    <h4 class="font-semibold mb-3">Quick links</h4>
+                    <h3 class="font-semibold mb-3">Quick links</h3>
                     <ul class="space-y-2 text-sm text-muted">
                         <li><a href="#hero" class="hover:text-primary">Home</a></li>
                         <li><a href="#full-menu" class="hover:text-primary">Menu</a></li>
@@ -656,7 +689,7 @@
                     </ul>
                 </div>
                 <div>
-                    <h4 class="font-semibold mb-3">Get the Friday special first</h4>
+                    <h3 class="font-semibold mb-3">Get the Friday special first</h3>
                     <p class="text-sm text-muted mb-3">One WhatsApp message. We'll add you to the list.</p>
                     <a href="https://wa.me/254702555093?text=Hi%20Redwood!%20Please%20add%20me%20to%20the%20specials%20list."
                         target="_blank" rel="noopener noreferrer"
@@ -673,14 +706,16 @@
                             class="hover:text-primary" aria-label="Follow Redwood on TikTok">
                             <svg class="icon" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path fill="currentColor" d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg>
                         </a>
-                        <a href="#" class="hover:text-primary" aria-label="Find Redwood on Google">
+                        <a href="https://www.google.com/maps/place/Redwood+Restaurant+Nairobi" target="_blank"
+                            rel="noopener noreferrer" class="hover:text-primary"
+                            aria-label="Find Redwood on Google Maps">
                             <svg class="icon" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path fill="currentColor" d="M12.48 10.92v3.28h7.84c-.24 1.84-.853 3.187-1.787 4.133-1.147 1.147-2.933 2.4-6.053 2.4-4.827 0-8.6-3.893-8.6-8.72s3.773-8.72 8.6-8.72c2.6 0 4.507 1.027 5.907 2.347l2.307-2.307C18.747 1.44 16.133 0 12.48 0 5.867 0 .307 5.387.307 12s5.56 12 12.173 12c3.573 0 6.267-1.173 8.373-3.36 2.16-2.16 2.84-5.213 2.84-7.667 0-.76-.053-1.467-.173-2.053H12.48z"/></svg>
                         </a>
                     </div>
                 </div>
             </div>
             <div class="footer-bottom mt-10 pt-6 border-t border-subtle text-center text-sm">
-                © 2025 Redwood. All rights reserved.
+                © <span id="year">2025</span> Redwood. All rights reserved.
             </div>
         </div>
     </footer>

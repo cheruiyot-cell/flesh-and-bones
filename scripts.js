@@ -23,6 +23,8 @@
     initScrollReveal();
     initSmoothScroll();
     initSpecialDay();
+    initExternalLinkHints();
+    initYear();
   }
 
   /* -----------------------------------------------------------
@@ -31,17 +33,14 @@
         - Click outside closes
         - Focus is trapped while open
         - Body scroll is locked (with scrollbar-width compensation)
-        - No transitionend listener accumulation
+        - Close animation completes via transitionend, not a magic timer
      ----------------------------------------------------------- */
   function initMobileMenu() {
     const toggle = document.getElementById('menu-toggle');
     const menu = document.getElementById('mobile-menu');
     if (!toggle || !menu) return;
 
-    // Ensure stable attributes regardless of HTML authoring
-    if (!toggle.hasAttribute('aria-controls')) {
-      toggle.setAttribute('aria-controls', 'mobile-menu');
-    }
+    toggle.setAttribute('aria-controls', 'mobile-menu');
     toggle.setAttribute('aria-expanded', 'false');
     toggle.setAttribute('aria-label', 'Open menu');
     menu.classList.add('hidden');
@@ -74,7 +73,6 @@
       toggle.setAttribute('aria-label', 'Close menu');
       lockScroll();
 
-      // Move focus into the menu for keyboard users
       const firstFocusable = menu.querySelector('a, button, [tabindex]:not([tabindex="-1"])');
       if (firstFocusable) firstFocusable.focus();
     };
@@ -87,10 +85,21 @@
       toggle.setAttribute('aria-label', 'Open menu');
       unlockScroll();
 
-      clearTimeout(closeTimer);
-      closeTimer = setTimeout(() => {
+      // Use transitionend, with a fallback timeout if the transition
+      // doesn't fire (e.g. reduced-motion short-circuit).
+      let finished = false;
+      const finish = () => {
+        if (finished) return;
+        finished = true;
         if (!isOpen) menu.classList.add('hidden');
-      }, 400); // keep in sync with max-height transition
+        menu.removeEventListener('transitionend', onEnd);
+        clearTimeout(closeTimer);
+      };
+      const onEnd = (e) => {
+        if (e.target === menu && e.propertyName === 'max-height') finish();
+      };
+      menu.addEventListener('transitionend', onEnd);
+      closeTimer = setTimeout(finish, 500);
 
       if (returnFocus) toggle.focus();
     };
@@ -99,12 +108,10 @@
       isOpen ? closeMenu() : openMenu();
     });
 
-    // Escape to close
     document.addEventListener('keydown', (e) => {
       if (e.key === 'Escape' && isOpen) closeMenu();
     });
 
-    // Click outside to close
     document.addEventListener('click', (e) => {
       if (!isOpen) return;
       if (menu.contains(e.target) || toggle.contains(e.target)) return;
@@ -142,21 +149,18 @@
   }
 
   /* -----------------------------------------------------------
-     2. Menu filtering — smooth fade out / fade in
-        - Cancels in-flight timers so rapid clicks never flicker
-        - Uses forced reflow + rAF so newly-shown cards animate in
+     2. Menu filtering
+        - Toggles .hidden (display:none). The CSS animation on
+          .menu-card restarts automatically on display change.
+        - Announced via the #menu-status live region.
+        - No inline opacity/transform → no conflict with the
+          scroll-reveal system (which owns those properties).
      ----------------------------------------------------------- */
   function initMenuFilter() {
     const buttons = document.querySelectorAll('.filter-btn');
     const cards = document.querySelectorAll('.menu-card');
+    const status = document.getElementById('menu-status');
     if (!buttons.length || !cards.length) return;
-
-    // Baseline: all visible
-    cards.forEach(card => {
-      card.classList.remove('hidden');
-      card.style.opacity = '1';
-      card.style.transform = 'translateY(0)';
-    });
 
     const setActive = (activeBtn) => {
       buttons.forEach(btn => {
@@ -167,43 +171,17 @@
       activeBtn.setAttribute('aria-pressed', 'true');
     };
 
-    let filterTimer = null;
-
     const filter = (value) => {
-      clearTimeout(filterTimer);
-
-      // Step 1: fade everything out
+      let visible = 0;
       cards.forEach(card => {
-        card.classList.remove('reveal-hidden');
-        card.style.transition = 'opacity 0.25s ease, transform 0.25s ease';
-        card.style.opacity = '0';
-        card.style.transform = 'translateY(8px)';
+        const cat = card.getAttribute('data-category');
+        const show = value === 'all' || cat === value;
+        card.classList.toggle('hidden', !show);
+        if (show) visible++;
       });
-
-      filterTimer = setTimeout(() => {
-        const toShow = [];
-        cards.forEach(card => {
-          const cat = card.getAttribute('data-category');
-          const show = value === 'all' || cat === value;
-          if (show) {
-            card.classList.remove('hidden');
-            toShow.push(card);
-          } else {
-            card.classList.add('hidden');
-          }
-        });
-
-        // Force a style recalculation so the browser records the
-        // display:none -> block change at opacity:0 before we animate in.
-        void document.body.offsetHeight;
-
-        requestAnimationFrame(() => {
-          toShow.forEach(card => {
-            card.style.opacity = '1';
-            card.style.transform = 'translateY(0)';
-          });
-        });
-      }, 250);
+      if (status) {
+        status.textContent = `Showing ${visible} of ${cards.length} menu items.`;
+      }
     };
 
     buttons.forEach(btn => {
@@ -219,30 +197,21 @@
 
   /* -----------------------------------------------------------
      3. Spice selectors
-        - Auto-wires <label for> ↔ <select id> if the markup
-          did not already provide one
-        - Rewrites the WhatsApp CTA link on change
+        The wrapping <label class="spice-field"> already provides
+        the accessible name for each <select> — no JS association
+        needed. This only rewrites the WhatsApp CTA link on change.
      ----------------------------------------------------------- */
   function initSpiceSelectors() {
     document.querySelectorAll('.menu-card[data-spice="true"]').forEach(card => {
       const select = card.querySelector('.spice-select');
       const cta = card.querySelector('.order-cta');
-      const label = card.querySelector('.spice-label');
       if (!select || !cta) return;
-
-      // Ensure label association for screen readers
-      if (label && !label.htmlFor && !select.id) {
-        const id = 'spice-' + Math.random().toString(36).slice(2, 9);
-        select.id = id;
-        label.setAttribute('for', id);
-      }
 
       const item = card.getAttribute('data-item') || 'this dish';
       const price = card.getAttribute('data-price') || '';
 
       const update = () => {
-        const spice = select.value;
-        const message = `Hi Redwood! I'd like the ${item} (${price}) — ${spice}.`;
+        const message = `Hi Redwood! I'd like the ${item} (${price}) — ${select.value}.`;
         cta.href = `https://wa.me/254702555093?text=${encodeURIComponent(message)}`;
       };
 
@@ -253,22 +222,19 @@
 
   /* -----------------------------------------------------------
      4. Scroll reveal
-        - Uses `.reveal-hidden` (visibility:hidden) so items are
-          not focusable or exposed while off-screen
-        - Skips entirely under reduced motion or no IO support
+        Menu cards are excluded — they own their own CSS animation
+        and would otherwise fight the reveal system for opacity.
      ----------------------------------------------------------- */
   function initScrollReveal() {
     if (!('IntersectionObserver' in window)) return;
     if (prefersReducedMotion()) return;
 
     const targets = document.querySelectorAll(
-      '.menu-card, .bg-dark-card .card-lift, .faq-item'
+      '.card-lift:not(.menu-card), .faq-item, .step-number'
     );
-    const steps = document.querySelectorAll('.step-number');
-    const all = [...targets, ...steps];
-    if (!all.length) return;
+    if (!targets.length) return;
 
-    all.forEach(el => {
+    targets.forEach(el => {
       el.classList.add('reveal-hidden');
       el.style.transition =
         'opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1), ' +
@@ -289,17 +255,17 @@
       threshold: 0.15
     });
 
-    all.forEach(el => observer.observe(el));
+    targets.forEach(el => observer.observe(el));
   }
 
   /* -----------------------------------------------------------
      5. Smooth anchor scroll
-        - Reads header height dynamically (mobile 4rem / desktop 5rem)
-        - Respects prefers-reduced-motion at click time
-        - Moves focus to the target for keyboard/AT users
+        Reads header height dynamically. Respects reduced motion.
+        Moves focus to the target for keyboard/AT users.
+        Skips bare "#" links (the logo now points at #hero).
      ----------------------------------------------------------- */
   function initSmoothScroll() {
-    const header = document.querySelector('header, .header-bg');
+    const header = document.querySelector('.header-bg');
 
     const getOffset = () => {
       const h = header ? header.getBoundingClientRect().height : 80;
@@ -321,8 +287,6 @@
         const behavior = prefersReducedMotion() ? 'auto' : 'smooth';
         window.scrollTo({ top, behavior });
 
-        // Focus target so keyboard users land in context.
-        // (Makes element programmatically focusable if it isn't already.)
         if (!target.hasAttribute('tabindex')) {
           target.setAttribute('tabindex', '-1');
           target.addEventListener('blur', function once() {
@@ -343,6 +307,28 @@
     if (!el) return;
     const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
     el.textContent = days[new Date().getDay()];
+  }
+
+  /* -----------------------------------------------------------
+     7. Append "(opens in a new tab)" hint to external links
+        programmatically so we don't have to repeat it ~15× in HTML.
+     ----------------------------------------------------------- */
+  function initExternalLinkHints() {
+    document.querySelectorAll('a[target="_blank"]').forEach(link => {
+      if (link.querySelector('.sr-only')) return;
+      const span = document.createElement('span');
+      span.className = 'sr-only';
+      span.textContent = ' (opens in a new tab)';
+      link.appendChild(span);
+    });
+  }
+
+  /* -----------------------------------------------------------
+     8. Current year in footer
+     ----------------------------------------------------------- */
+  function initYear() {
+    const el = document.getElementById('year');
+    if (el) el.textContent = String(new Date().getFullYear());
   }
 
 })();
