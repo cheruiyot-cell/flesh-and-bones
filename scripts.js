@@ -1,334 +1,283 @@
-/* =============================================================
-   scripts.js — Redwood Restaurant
-   Progressive enhancement only. No dependencies.
-   ============================================================= */
+/* ==========================================================
+   FLESH AND BONES GYM — PREMIUM INTERACTION ENGINE
+   ========================================================== */
 
 (function () {
   'use strict';
 
-  /* Shared: live reduced-motion check (users can toggle OS setting) */
-  const reducedMotionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
-  const prefersReducedMotion = () => reducedMotionQuery.matches;
-
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', init);
-  } else {
-    init();
-  }
-
-  function init() {
-    initMobileMenu();
-    initMenuFilter();
-    initSpiceSelectors();
-    initScrollReveal();
-    initSmoothScroll();
-    initSpecialDay();
-    initExternalLinkHints();
-    initYear();
-  }
-
-  /* -----------------------------------------------------------
-     1. Mobile menu toggle
-        - Escape closes
-        - Click outside closes
-        - Focus is trapped while open
-        - Body scroll is locked (with scrollbar-width compensation)
-        - Close animation completes via transitionend, not a magic timer
-     ----------------------------------------------------------- */
-  function initMobileMenu() {
-    const toggle = document.getElementById('menu-toggle');
-    const menu = document.getElementById('mobile-menu');
-    if (!toggle || !menu) return;
-
-    toggle.setAttribute('aria-controls', 'mobile-menu');
-    toggle.setAttribute('aria-expanded', 'false');
-    toggle.setAttribute('aria-label', 'Open menu');
-    menu.classList.add('hidden');
-
-    let isOpen = false;
-    let closeTimer = null;
-
-    const lockScroll = () => {
-      const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
-      if (scrollbarWidth > 0) {
-        document.body.style.paddingRight = scrollbarWidth + 'px';
-      }
-      document.body.style.overflow = 'hidden';
-    };
-
-    const unlockScroll = () => {
-      document.body.style.overflow = '';
-      document.body.style.paddingRight = '';
-    };
-
-    const openMenu = () => {
-      if (isOpen) return;
-      isOpen = true;
-      clearTimeout(closeTimer);
-      menu.classList.remove('hidden');
-      // Force reflow so max-height transition runs from 0
-      void menu.offsetWidth;
-      menu.classList.add('open');
-      toggle.setAttribute('aria-expanded', 'true');
-      toggle.setAttribute('aria-label', 'Close menu');
-      lockScroll();
-
-      const firstFocusable = menu.querySelector('a, button, [tabindex]:not([tabindex="-1"])');
-      if (firstFocusable) firstFocusable.focus();
-    };
-
-    const closeMenu = ({ returnFocus = true } = {}) => {
-      if (!isOpen) return;
-      isOpen = false;
-      menu.classList.remove('open');
-      toggle.setAttribute('aria-expanded', 'false');
-      toggle.setAttribute('aria-label', 'Open menu');
-      unlockScroll();
-
-      // Use transitionend, with a fallback timeout if the transition
-      // doesn't fire (e.g. reduced-motion short-circuit).
-      let finished = false;
-      const finish = () => {
-        if (finished) return;
-        finished = true;
-        if (!isOpen) menu.classList.add('hidden');
-        menu.removeEventListener('transitionend', onEnd);
-        clearTimeout(closeTimer);
-      };
-      const onEnd = (e) => {
-        if (e.target === menu && e.propertyName === 'max-height') finish();
-      };
-      menu.addEventListener('transitionend', onEnd);
-      closeTimer = setTimeout(finish, 500);
-
-      if (returnFocus) toggle.focus();
-    };
-
-    toggle.addEventListener('click', () => {
-      isOpen ? closeMenu() : openMenu();
-    });
-
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && isOpen) closeMenu();
-    });
-
-    document.addEventListener('click', (e) => {
-      if (!isOpen) return;
-      if (menu.contains(e.target) || toggle.contains(e.target)) return;
-      closeMenu({ returnFocus: false });
-    });
-
-    // Focus trap
-    menu.addEventListener('keydown', (e) => {
-      if (e.key !== 'Tab' || !isOpen) return;
-      const focusables = menu.querySelectorAll(
-        'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])'
-      );
-      if (!focusables.length) return;
-      const first = focusables[0];
-      const last = focusables[focusables.length - 1];
-      if (e.shiftKey && document.activeElement === first) {
-        e.preventDefault();
-        last.focus();
-      } else if (!e.shiftKey && document.activeElement === last) {
-        e.preventDefault();
-        first.focus();
-      }
-    });
-
-    // Close when a nav link is followed
-    menu.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', () => closeMenu({ returnFocus: false }));
-    });
-
-    // Safety: if viewport grows past lg, reset state
-    const mql = window.matchMedia('(min-width: 1024px)');
-    const onWide = (e) => { if (e.matches && isOpen) closeMenu({ returnFocus: false }); };
-    if (typeof mql.addEventListener === 'function') mql.addEventListener('change', onWide);
-    else if (typeof mql.addListener === 'function') mql.addListener(onWide);
-  }
-
-  /* -----------------------------------------------------------
-     2. Menu filtering
-        - Toggles .hidden (display:none). The CSS animation on
-          .menu-card restarts automatically on display change.
-        - Announced via the #menu-status live region.
-        - No inline opacity/transform → no conflict with the
-          scroll-reveal system (which owns those properties).
-     ----------------------------------------------------------- */
-  function initMenuFilter() {
-    const buttons = document.querySelectorAll('.filter-btn');
-    const cards = document.querySelectorAll('.menu-card');
-    const status = document.getElementById('menu-status');
-    if (!buttons.length || !cards.length) return;
-
-    const setActive = (activeBtn) => {
-      buttons.forEach(btn => {
-        btn.classList.remove('active');
-        btn.setAttribute('aria-pressed', 'false');
-      });
-      activeBtn.classList.add('active');
-      activeBtn.setAttribute('aria-pressed', 'true');
-    };
-
-    const filter = (value) => {
-      let visible = 0;
-      cards.forEach(card => {
-        const cat = card.getAttribute('data-category');
-        const show = value === 'all' || cat === value;
-        card.classList.toggle('hidden', !show);
-        if (show) visible++;
-      });
-      if (status) {
-        status.textContent = `Showing ${visible} of ${cards.length} menu items.`;
+  // Helper: throttle function for performance
+  function throttle(func, limit) {
+    let inThrottle;
+    return function (...args) {
+      const context = this;
+      if (!inThrottle) {
+        func.apply(context, args);
+        inThrottle = true;
+        setTimeout(() => (inThrottle = false), limit);
       }
     };
-
-    buttons.forEach(btn => {
-      btn.addEventListener('click', () => {
-        setActive(btn);
-        filter(btn.getAttribute('data-filter'));
-      });
-    });
-
-    const defaultActive = document.querySelector('.filter-btn.active') || buttons[0];
-    if (defaultActive) setActive(defaultActive);
   }
 
-  /* -----------------------------------------------------------
-     3. Spice selectors
-        The wrapping <label class="spice-field"> already provides
-        the accessible name for each <select> — no JS association
-        needed. This only rewrites the WhatsApp CTA link on change.
-     ----------------------------------------------------------- */
-  function initSpiceSelectors() {
-    document.querySelectorAll('.menu-card[data-spice="true"]').forEach(card => {
-      const select = card.querySelector('.spice-select');
-      const cta = card.querySelector('.order-cta');
-      if (!select || !cta) return;
+  // ------------------------------------------------------------------
+  // Theme Toggle (persisted in localStorage)
+  // ------------------------------------------------------------------
+  const themeToggle = document.getElementById('themeToggle');
+  const savedTheme = localStorage.getItem('fb_theme');
 
-      const item = card.getAttribute('data-item') || 'this dish';
-      const price = card.getAttribute('data-price') || '';
+  if (savedTheme === 'dark') {
+    document.documentElement.setAttribute('data-theme', 'dark');
+    themeToggle.innerHTML = '<i class="fas fa-sun" aria-hidden="true"></i>';
+  }
 
-      const update = () => {
-        const message = `Hi Redwood! I'd like the ${item} (${price}) — ${select.value}.`;
-        cta.href = `https://wa.me/254702555093?text=${encodeURIComponent(message)}`;
-      };
-
-      update();
-      select.addEventListener('change', update);
+  if (themeToggle) {
+    themeToggle.addEventListener('click', () => {
+      const current = document.documentElement.getAttribute('data-theme');
+      if (current === 'dark') {
+        document.documentElement.removeAttribute('data-theme');
+        localStorage.setItem('fb_theme', 'light');
+        themeToggle.innerHTML = '<i class="fas fa-moon" aria-hidden="true"></i>';
+      } else {
+        document.documentElement.setAttribute('data-theme', 'dark');
+        localStorage.setItem('fb_theme', 'dark');
+        themeToggle.innerHTML = '<i class="fas fa-sun" aria-hidden="true"></i>';
+      }
     });
   }
 
-  /* -----------------------------------------------------------
-     4. Scroll reveal
-        Menu cards are excluded — they own their own CSS animation
-        and would otherwise fight the reveal system for opacity.
-     ----------------------------------------------------------- */
-  function initScrollReveal() {
-    if (!('IntersectionObserver' in window)) return;
-    if (prefersReducedMotion()) return;
+  // ------------------------------------------------------------------
+  // Mobile Navigation
+  // ------------------------------------------------------------------
+  const hamburger = document.getElementById('hamburger');
+  const navLinks = document.getElementById('navLinks');
 
-    const targets = document.querySelectorAll(
-      '.card-lift:not(.menu-card), .faq-item, .step-number'
-    );
-    if (!targets.length) return;
+  function toggleNav(forceClose = false) {
+    const isOpen = navLinks.classList.contains('open');
+    const shouldOpen = forceClose ? false : !isOpen;
 
-    targets.forEach(el => {
-      el.classList.add('reveal-hidden');
-      el.style.transition =
-        'opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1), ' +
-        'transform 0.6s cubic-bezier(0.22, 1, 0.36, 1)';
-    });
+    hamburger.classList.toggle('active', shouldOpen);
+    navLinks.classList.toggle('open', shouldOpen);
+    hamburger.setAttribute('aria-expanded', shouldOpen);
+    document.body.style.overflow = shouldOpen ? 'hidden' : '';
+  }
 
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          const el = entry.target;
-          el.classList.remove('reveal-hidden');
-          observer.unobserve(el);
+  hamburger.addEventListener('click', () => toggleNav());
+
+  // Close mobile menu when a link is clicked
+  navLinks.querySelectorAll('a').forEach((link) => {
+    link.addEventListener('click', () => toggleNav(true));
+  });
+
+  // ------------------------------------------------------------------
+  // Toast Notification System
+  // ------------------------------------------------------------------
+  let toastTimer;
+  function showToast(icon, msg, sub = '') {
+    const toast = document.getElementById('toast');
+    const toastIcon = document.getElementById('toastIcon');
+    const toastMsg = document.getElementById('toastMsg');
+    const toastSub = document.getElementById('toastSub');
+
+    toastIcon.textContent = icon;
+    toastMsg.textContent = msg;
+    toastSub.textContent = sub;
+
+    toast.classList.add('show');
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(() => toast.classList.remove('show'), 4500);
+  }
+
+  // ------------------------------------------------------------------
+  // Accordions (FAQ & Legal)
+  // ------------------------------------------------------------------
+  function initAccordions(containerClass, headerClass, bodyClass, itemClass) {
+    const containers = document.querySelectorAll(containerClass);
+    containers.forEach((container) => {
+      const headers = container.querySelectorAll(headerClass);
+      headers.forEach((header) => {
+        const item = header.closest(itemClass);
+        const body = item.querySelector(bodyClass);
+        const isOpen = item.classList.contains('open');
+
+        if (isOpen && body) {
+          body.style.maxHeight = body.scrollHeight + 'px';
         }
-      });
-    }, {
-      root: null,
-      rootMargin: '0px 0px -60px 0px',
-      threshold: 0.15
-    });
 
-    targets.forEach(el => observer.observe(el));
+        header.addEventListener('click', () => {
+          const currentlyOpen = item.classList.contains('open');
+
+          // Close all siblings
+          container.querySelectorAll(itemClass).forEach((sibling) => {
+            if (sibling !== item) {
+              sibling.classList.remove('open');
+              const sibBody = sibling.querySelector(bodyClass);
+              if (sibBody) sibBody.style.maxHeight = null;
+              const sibHeader = sibling.querySelector(headerClass);
+              if (sibHeader) sibHeader.setAttribute('aria-expanded', 'false');
+            }
+          });
+
+          if (currentlyOpen) {
+            item.classList.remove('open');
+            header.setAttribute('aria-expanded', 'false');
+            if (body) body.style.maxHeight = null;
+          } else {
+            item.classList.add('open');
+            header.setAttribute('aria-expanded', 'true');
+            if (body) body.style.maxHeight = body.scrollHeight + 'px';
+          }
+        });
+      });
+    });
   }
 
-  /* -----------------------------------------------------------
-     5. Smooth anchor scroll
-        Reads header height dynamically. Respects reduced motion.
-        Moves focus to the target for keyboard/AT users.
-        Skips bare "#" links (the logo now points at #hero).
-     ----------------------------------------------------------- */
-  function initSmoothScroll() {
-    const header = document.querySelector('.header-bg');
+  initAccordions('.faq-grid', '.faq-question', '.faq-answer', '.faq-item');
+  initAccordions('.legal-grid', '.legal-header', '.legal-body', '.legal-card');
 
-    const getOffset = () => {
-      const h = header ? header.getBoundingClientRect().height : 80;
-      return h + 8;
-    };
+  // ------------------------------------------------------------------
+  // Contact Form → WhatsApp (Streamlined)
+  // ------------------------------------------------------------------
+  const contactForm = document.getElementById('contactForm');
+  if (contactForm) {
+    contactForm.addEventListener('submit', (e) => {
+      e.preventDefault();
 
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function (e) {
-        const href = this.getAttribute('href');
-        if (!href || href === '#' || href.length < 2) return;
+      if (!contactForm.checkValidity()) {
+        showToast('⚠️', 'Form Incomplete', 'Please provide your name, phone, and message.');
+        return;
+      }
 
-        let target = null;
-        try { target = document.querySelector(href); } catch (_) { /* invalid selector */ }
-        if (!target) return;
+      const name = document.getElementById('contactName').value.trim();
+      const phone = document.getElementById('contactPhone').value.trim();
+      const msg = document.getElementById('contactMessage').value.trim();
 
-        e.preventDefault();
+      showToast('📩', 'Opening WhatsApp...', 'Redirecting with your message pre-filled.');
 
-        const top = target.getBoundingClientRect().top + window.pageYOffset - getOffset();
-        const behavior = prefersReducedMotion() ? 'auto' : 'smooth';
-        window.scrollTo({ top, behavior });
+      const text =
+        `Hi Flesh & Bones Gym! My name is ${name} (${phone}).\n\n${msg}`;
 
-        if (!target.hasAttribute('tabindex')) {
-          target.setAttribute('tabindex', '-1');
-          target.addEventListener('blur', function once() {
-            target.removeAttribute('tabindex');
-            target.removeEventListener('blur', once);
+      setTimeout(() => {
+        window.open(`https://wa.me/254702555093?text=${encodeURIComponent(text)}`, '_blank');
+      }, 800);
+
+      contactForm.reset();
+    });
+  }
+
+  // ------------------------------------------------------------------
+  // Scroll Effects: Navbar & Back-to-Top
+  // ------------------------------------------------------------------
+  const navbar = document.getElementById('navbar');
+  const backToTop = document.getElementById('backToTop');
+
+  const onScroll = throttle(() => {
+    const y = window.scrollY;
+    navbar.classList.toggle('scrolled', y > 40);
+    backToTop.classList.toggle('visible', y > 400);
+  }, 100);
+
+  window.addEventListener('scroll', onScroll, { passive: true });
+
+  backToTop.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+
+  // ------------------------------------------------------------------
+  // Reveal Animations via IntersectionObserver
+  // ------------------------------------------------------------------
+  const revealElements = document.querySelectorAll(
+    '.plan-card, .trainer-card, .program-card, .amenity-card, .testimonial-card, .gallery-item'
+  );
+
+  if ('IntersectionObserver' in window) {
+    const revealObserver = new IntersectionObserver(
+      (entries, observer) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('revealed');
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.1, rootMargin: '0px 0px -50px 0px' }
+    );
+
+    revealElements.forEach((el) => {
+      el.classList.add('reveal-init');
+      revealObserver.observe(el);
+    });
+  } else {
+    // Fallback: show everything
+    revealElements.forEach((el) => el.classList.add('revealed'));
+  }
+
+  // ------------------------------------------------------------------
+  // Active Nav Link Highlight
+  // ------------------------------------------------------------------
+  const sections = document.querySelectorAll('section[id]');
+  const navAnchors = document.querySelectorAll('.nav-links a');
+
+  if ('IntersectionObserver' in window) {
+    const sectionObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const id = entry.target.id;
+            navAnchors.forEach((a) => {
+              const isActive = a.getAttribute('href') === `#${id}`;
+              a.classList.toggle('active', isActive);
+              if (isActive) {
+                a.setAttribute('aria-current', 'page');
+              } else {
+                a.removeAttribute('aria-current');
+              }
+            });
+          }
+        });
+      },
+      { rootMargin: '-30% 0px -60% 0px' }
+    );
+
+    sections.forEach((section) => sectionObserver.observe(section));
+  }
+
+  // ------------------------------------------------------------------
+  // Hero Stat Counter Animation
+  // ------------------------------------------------------------------
+  const stats = document.querySelectorAll('.hero-stats .stat h3');
+  let statsAnimated = false;
+
+  const statsObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting && !statsAnimated) {
+          statsAnimated = true;
+          stats.forEach((stat) => {
+            const text = stat.innerText;
+            // Skip if the text contains a colon (time format)
+            if (text.includes(':')) return;
+            const target = parseInt(text.replace(/[^0-9]/g, ''), 10);
+            const suffix = text.replace(/[0-9]/g, '');
+
+            if (isNaN(target)) return;
+
+            let current = 0;
+            const step = Math.max(1, Math.ceil(target / 40));
+            const timer = setInterval(() => {
+              current += step;
+              if (current >= target) {
+                stat.innerText = target + suffix;
+                clearInterval(timer);
+              } else {
+                stat.innerText = current + suffix;
+              }
+            }, 30);
           });
         }
-        target.focus({ preventScroll: true });
       });
-    });
-  }
+    },
+    { threshold: 0.5 }
+  );
 
-  /* -----------------------------------------------------------
-     6. Inject current weekday into special headline
-     ----------------------------------------------------------- */
-  function initSpecialDay() {
-    const el = document.getElementById('special-day');
-    if (!el) return;
-    const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
-    el.textContent = days[new Date().getDay()];
-  }
-
-  /* -----------------------------------------------------------
-     7. Append "(opens in a new tab)" hint to external links
-        programmatically so we don't have to repeat it ~15× in HTML.
-     ----------------------------------------------------------- */
-  function initExternalLinkHints() {
-    document.querySelectorAll('a[target="_blank"]').forEach(link => {
-      if (link.querySelector('.sr-only')) return;
-      const span = document.createElement('span');
-      span.className = 'sr-only';
-      span.textContent = ' (opens in a new tab)';
-      link.appendChild(span);
-    });
-  }
-
-  /* -----------------------------------------------------------
-     8. Current year in footer
-     ----------------------------------------------------------- */
-  function initYear() {
-    const el = document.getElementById('year');
-    if (el) el.textContent = String(new Date().getFullYear());
-  }
-
+  const heroStats = document.querySelector('.hero-stats');
+  if (heroStats) statsObserver.observe(heroStats);
 })();

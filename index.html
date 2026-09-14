@@ -1,731 +1,660 @@
-<!-- index.html -->
 <!DOCTYPE html>
-<html lang="en-KE">
+<html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
-    <title>Redwood Restaurant | Real Nyama Choma, Delivered in 30–45 Min – Order on WhatsApp</title>
-    <meta name="description"
-        content="Flame-grilled nyama choma and Hustler's Wraps, cooked to order in Nairobi CBD. Delivered hot in 30–45 min. From KES 150. M-Pesa. Order on WhatsApp." />
-    <meta name="keywords"
-        content="Redwood, nyama choma, pork ribs, Kenyan food, organic, fast casual, Nairobi, WhatsApp order, M-Pesa, delivery" />
-    <meta name="author" content="Redwood Restaurant" />
-    <meta name="theme-color" content="#E53935" />
-    <link rel="canonical" href="https://redwood.co.ke" />
-
-    <!-- Favicon (inline SVG, no external file) -->
-    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%23E53935'/%3E%3Ctext x='50' y='74' font-family='Georgia,serif' font-size='68' font-weight='bold' fill='white' text-anchor='middle'%3ER%3C/text%3E%3C/svg%3E" />
-
-    <!-- iOS + Android home-screen icons -->
-    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-    <link rel="manifest" href="/manifest.webmanifest" />
-
-    <!-- Open Graph (1200×630 for LinkedIn / Twitter / Facebook) -->
-    <meta property="og:title" content="Real Nyama Choma. Delivered in 30–45 Minutes. From KES 150." />
-    <meta property="og:description"
-        content="Flame-grilled pork ribs, Hustler's Wraps and hot irio — cooked to order, delivered across Nairobi. Pay by M-Pesa. Order on WhatsApp in 30 seconds." />
-    <meta property="og:image"
-        content="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=1200&h=630&fit=crop&q=80" />
-    <meta property="og:image:width" content="1200" />
-    <meta property="og:image:height" content="630" />
-    <meta property="og:url" content="https://redwood.co.ke" />
-    <meta property="og:type" content="website" />
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Real Nyama Choma. Delivered in 30–45 Minutes. From KES 150." />
-    <meta name="twitter:description"
-        content="Cooked to order in Nairobi CBD. Delivered hot. M-Pesa accepted. Order on WhatsApp." />
-    <meta name="twitter:image"
-        content="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=1200&h=630&fit=crop&q=80" />
-
-    <!-- Fonts: preconnect first, then stylesheet (non-blocking pattern) -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="preconnect" href="https://images.unsplash.com" />
-    <link rel="preconnect" href="https://i.ibb.co" />
-    <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@400;600;700&display=swap" />
-
-    <!-- Hero image preload (matches the <img> srcset/sizes below) -->
-    <link rel="preload" as="image"
-        href="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=1200&q=80"
-        imagesrcset="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=800&q=80 800w,
-                     https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=1200&q=80 1200w"
-        imagesizes="(max-width: 768px) 100vw, 1200px" />
-
-    <link rel="stylesheet" href="styles.css" />
-    <script src="scripts.js" defer></script>
-
-    <script type="application/ld+json">
-        {
-            "@context": "https://schema.org",
-            "@type": "Restaurant",
-            "name": "Redwood Restaurant",
-            "description": "Flame-grilled nyama choma, Hustler's Wraps and hot irio — cooked to order in Nairobi CBD, delivered hot in 30–45 min. From KES 150. M-Pesa accepted.",
-            "url": "https://redwood.co.ke",
-            "telephone": "+254702555093",
-            "email": "hello@redwood.co.ke",
-            "image": "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=1200&h=630&fit=crop&q=80",
-            "logo": "https://redwood.co.ke/icon-512.png",
-            "address": {
-                "@type": "PostalAddress",
-                "streetAddress": "Biashara Street",
-                "addressLocality": "Nairobi",
-                "addressRegion": "Nairobi County",
-                "addressCountry": "KE"
-            },
-            "geo": {
-                "@type": "GeoCoordinates",
-                "latitude": -1.2841,
-                "longitude": 36.8233
-            },
-            "areaServed": ["Nairobi CBD", "Westlands", "Kilimani", "Upperhill", "Parklands"],
-            "servesCuisine": "Kenyan",
-            "priceRange": "KES 150-1000",
-            "paymentAccepted": "M-Pesa, Cash, Credit Card",
-            "acceptsReservations": "False",
-            "hasMenu": "https://redwood.co.ke/#full-menu",
-            "openingHoursSpecification": [
-                {
-                    "@type": "OpeningHoursSpecification",
-                    "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
-                    "opens": "10:00",
-                    "closes": "21:00"
-                },
-                {
-                    "@type": "OpeningHoursSpecification",
-                    "dayOfWeek": "Sunday",
-                    "opens": "11:00",
-                    "closes": "19:00"
-                }
-            ],
-            "sameAs": ["https://www.instagram.com/redwoodke", "https://www.tiktok.com/@redwoodke"]
-        }
-    </script>
-
-    <!-- No-JS fallback: make the mobile nav usable and hide the toggle -->
-    <noscript>
-        <style>
-            @media (max-width: 1023px) {
-                #mobile-menu.hidden { display: block !important; }
-                #mobile-menu { max-height: none !important; opacity: 1 !important; overflow: visible !important; }
-                #menu-toggle { display: none !important; }
-            }
-        </style>
-    </noscript>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Flesh and Bones Gym | Premium Fitness & Strength Hub in Imara, Nairobi</title>
+  <meta name="description" content="Nairobi's premier strength & conditioning gym in Imara. State-of-the-art weights, steam room, smoothie bar, and top coaches. Book your free day pass today!" />
+  <meta name="keywords" content="gym Imara Nairobi, fitness center Nairobi, personal trainer Imara, bodybuilding Nairobi, steam room gym Imara, weight loss Nairobi, M-Pesa gym payment" />
+  <link rel="canonical" href="https://fleshandbonesgym.com/" />
+  <meta property="og:title" content="Flesh and Bones Gym – No Stories. Just Results." />
+  <meta property="og:description" content="Level up your fitness at Imara's top-rated world-class gym. Steam room, functional turf, elite coaches, and zero excuses. Claim your free trial!" />
+  <meta property="og:image" content="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=1200&h=630&q=80" />
+  <meta name="robots" content="index, follow" />
+  <meta name="theme-color" content="#f8f9fa" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preconnect" href="https://images.unsplash.com" />
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com" />
+  <link rel="preload" as="image" href="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=800&q=80" fetchpriority="high" />
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ExerciseGym",
+      "name": "Flesh and Bones Gym",
+      "image": "https://images.unsplash.com/photo-1518310383802-640c2de311b2?auto=format&fit=crop&w=400&h=400&q=80",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "123 Imara Road, off Mombasa Road",
+        "addressLocality": "Nairobi",
+        "addressRegion": "Nairobi County",
+        "postalCode": "00100",
+        "addressCountry": "KE"
+      },
+      "telephone": "+254702555093",
+      "email": "harrisoncheruiyot04@gmail.com",
+      "priceRange": "KES 300 - KES 9000",
+      "openingHours": "Mo-Fr 05:00-23:00, Sa-Su 07:00-21:00",
+      "sameAs": [
+        "https://www.facebook.com/fleshandbonesgym",
+        "https://www.instagram.com/fleshandbonesgym"
+      ]
+    }
+  </script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" media="print" onload="this.media='all'" />
+  <noscript>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  </noscript>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Fraunces:opsz,wght@9..144,700;9..144,800;9..144,900&display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
+  <noscript>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Fraunces:opsz,wght@9..144,700;9..144,800;9..144,900&display=swap" rel="stylesheet" />
+  </noscript>
+  <link rel="stylesheet" href="styles.css" />
 </head>
-<body class="antialiased">
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
 
-    <a href="#main-content" class="skip-link">Skip to main content</a>
+  <!-- ===== WHATSAPP FLOATING CTA ===== -->
+  <a href="https://wa.me/254702555093?text=Hi%20Flesh%20%26%20Bones%20Gym!%20I%20want%20to%20claim%20my%20Free%20Trial%20Pass." class="whatsapp-float" target="_blank" aria-label="Chat on WhatsApp">
+    <i class="fab fa-whatsapp" aria-hidden="true"></i>
+    <span>Chat with Us</span>
+  </a>
 
-    <header class="header-bg sticky top-0 z-40 border-b border-subtle">
-        <div class="container">
-            <div class="header-inner flex items-center justify-between">
-                <a href="#hero" class="flex items-center focus-visible:outline-none focus-visible:ring-2" aria-label="Redwood Home">
-                    <span class="font-display text-2xl lg:text-3xl font-bold tracking-wide text-bone">Redwood Restaurant</span>
-                </a>
-                <nav class="hidden lg:flex items-center space-x-8 text-sm font-medium" aria-label="Main navigation">
-                    <a href="#hero" class="hover:text-primary">Home</a>
-                    <a href="#signature" class="hover:text-primary">Menu</a>
-                    <a href="#story" class="hover:text-primary">Our Story</a>
-                    <a href="#faq" class="hover:text-primary">FAQ</a>
-                    <a href="#contact" class="hover:text-primary">Find Us</a>
-                </nav>
-                <div class="hidden lg:flex items-center gap-4">
-                    <a href="https://wa.me/254702555093?text=Hi%20Redwood!%20I%20want%20to%20order."
-                        target="_blank" rel="noopener noreferrer"
-                        class="btn-primary px-5 py-2.5 rounded-full text-sm inline-flex items-center gap-2">
-                        <svg class="icon" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
-                        Order on WhatsApp
-                    </a>
-                </div>
-                <button id="menu-toggle" class="lg:hidden text-bone p-2" aria-label="Open menu"
-                    aria-expanded="false" aria-controls="mobile-menu" type="button">
-                    <svg class="icon text-2xl" viewBox="0 0 24 24" width="28" height="28" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
-                </button>
-            </div>
-        </div>
-        <div id="mobile-menu" class="lg:hidden hidden bg-charcoal border-t border-subtle" aria-label="Mobile navigation">
-            <a href="#hero" class="block py-3 text-bone hover:text-primary">Home</a>
-            <a href="#signature" class="block py-3 text-bone hover:text-primary">Menu</a>
-            <a href="#story" class="block py-3 text-bone hover:text-primary">Our Story</a>
-            <a href="#faq" class="block py-3 text-bone hover:text-primary">FAQ</a>
-            <a href="#contact" class="block py-3 text-bone hover:text-primary">Find Us</a>
-            <a href="https://wa.me/254702555093?text=Hi%20Redwood!%20I%20want%20to%20order." target="_blank"
-                rel="noopener noreferrer"
-                class="mt-3 btn-primary py-3 rounded-full text-center flex items-center justify-center gap-2">
-                <svg class="icon" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
-                Order on WhatsApp
+  <!-- ===== NAVBAR ===== -->
+  <header class="navbar" id="navbar">
+    <div class="container">
+      <a href="#home" class="logo" aria-label="Flesh and Bones Gym">
+        <i class="fas fa-dumbbell" aria-hidden="true"></i> Flesh<span>&Bones</span>
+      </a>
+      <nav aria-label="Main Navigation">
+        <ul class="nav-links" id="navLinks">
+          <li><a href="#home" class="active" aria-current="page">Home</a></li>
+          <li><a href="#amenities">Facilities</a></li>
+          <li><a href="#plans">Memberships</a></li>
+          <li><a href="#trainers">Coaches</a></li>
+          <li><a href="#programs">Classes</a></li>
+          <li><a href="#testimonials">Reviews</a></li>
+          <li><a href="#booking">Free Pass</a></li>
+          <li><a href="#contact">Contact</a></li>
+          <li><a href="#faq">FAQ</a></li>
+        </ul>
+      </nav>
+      <div class="nav-actions">
+        <a href="https://wa.me/254702555093?text=Hi%20Coach,%20I'm%20ready%20to%20start%20my%20fitness%20journey!" target="_blank" class="btn btn-sm btn-whatsapp">
+          <i class="fab fa-whatsapp" aria-hidden="true"></i> Quick WhatsApp
+        </a>
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" type="button">
+          <i class="fas fa-moon" aria-hidden="true"></i>
+        </button>
+        <button class="hamburger" id="hamburger" aria-label="Toggle navigation" aria-expanded="false" aria-controls="navLinks" type="button">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- ===== HERO ===== -->
+    <section class="hero" id="home" aria-labelledby="hero-title">
+      <div class="hero-overlay"></div>
+      <div class="container">
+        <div class="hero-content">
+          <span class="hero-tag"><i class="fas fa-fire" aria-hidden="true"></i> Form Ni Gani? Stop Planning, Start Lifting</span>
+          <h1 id="hero-title">No Stories. <span>Just Pure Gains.</span></h1>
+          <p>Nairobi’s hardest-working community right here in Imara. World-class heavy iron, functional turf, recovery steam rooms, and coaches who make sure you don't drop the momentum after work. Beat the Mombasa Road stress with a heavy session.</p>
+          <div class="hero-buttons">
+            <a href="https://wa.me/254702555093?text=Hi!%20I%20want%20to%20book%20a%20Free%20Trial%20Session%20at%20Flesh%20and%20Bones%20Gym." class="btn btn-primary" target="_blank">
+              <i class="fab fa-whatsapp" aria-hidden="true"></i> Claim Free Day Pass (WhatsApp)
             </a>
+            <a href="#plans" class="btn btn-outline"><i class="fas fa-tag" aria-hidden="true"></i> View Membership Rates</a>
+          </div>
+          <div class="hero-stats">
+            <div class="stat"><h3>800+</h3><p>Active Nairobi Lifters</p></div>
+            <div class="stat"><h3>100%</h3><p>Pure Energy Vibe</p></div>
+            <div class="stat"><h3>5:00 AM</h3><p>Early Bird Kickoff</p></div>
+          </div>
         </div>
-    </header>
-
-    <main id="main-content">
-
-        <!-- ============ HERO ============ -->
-        <section id="hero" class="relative min-h-screen flex items-center justify-center overflow-hidden" aria-labelledby="hero-heading">
-            <div class="absolute inset-0 z-0">
-                <img src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=800&q=80"
-                    srcset="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=800&q=80 800w,
-                            https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=1200&q=80 1200w"
-                    sizes="(max-width: 768px) 100vw, 1200px"
-                    alt="Flame-grilled Kenyan meat over open fire"
-                    class="w-full h-full object-cover opacity-40" loading="eager" fetchpriority="high" width="1200" height="800" />
-                <div class="hero-overlay absolute inset-0"></div>
-            </div>
-            <div class="relative z-10 text-center px-4 max-w-4xl mx-auto">
-                <h1 id="hero-heading" class="font-display text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold leading-tight text-bone mb-6">
-                    Real nyama choma.<br class="hidden sm:block" />
-                    At your desk in ~30 minutes.<br class="hidden sm:block" />
-                    From KES 150.
-                </h1>
-                <p class="text-base sm:text-lg text-muted max-w-2xl mx-auto mb-6">
-                    Flame-grilled pork ribs, Hustler's Wraps and hot irio. Cooked to order in Nairobi CBD, delivered across Westlands, Kilimani, Upperhill and Parklands.
-                </p>
-                <p class="text-sm sm:text-base text-bone font-semibold mb-8">
-                    Pay by M-Pesa. Order on WhatsApp in 30 seconds.
-                </p>
-                <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                    <a href="https://wa.me/254702555093?text=Hi%20Redwood!%20I%20want%20to%20place%20an%20order."
-                        target="_blank" rel="noopener noreferrer"
-                        class="btn-primary px-8 py-4 rounded-full text-lg inline-flex items-center justify-center gap-2">
-                        <svg class="icon" viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
-                        Order on WhatsApp
-                    </a>
-                    <a href="#full-menu"
-                        class="btn-outline-yellow px-8 py-4 rounded-full text-lg inline-flex items-center justify-center">
-                        See the full menu
-                    </a>
-                </div>
-                <p class="mt-6 text-sm text-muted">No app. No account. No card. Just a text.</p>
-            </div>
-        </section>
-
-        <!-- ============ TRUST BAR ============ -->
-        <section class="trust-bar py-5 bg-dark-card border-y border-subtle" aria-label="Quick facts">
-            <div class="container">
-                <ul class="flex flex-wrap items-center justify-center gap-x-6 gap-y-3 text-sm text-bone text-center">
-                    <li class="inline-flex items-center gap-2"><span aria-hidden="true">🔥</span> Flame-grilled to order</li>
-                    <li class="hidden sm:inline text-faint" aria-hidden="true">·</li>
-                    <li class="inline-flex items-center gap-2"><span aria-hidden="true">🚴</span> Free delivery over KES 1,500</li>
-                    <li class="hidden sm:inline text-faint" aria-hidden="true">·</li>
-                    <li class="inline-flex items-center gap-2"><span aria-hidden="true">📱</span> M-Pesa accepted</li>
-                    <li class="hidden sm:inline text-faint" aria-hidden="true">·</li>
-                    <li class="inline-flex items-center gap-2"><span aria-hidden="true">📍</span> 5 delivery zones</li>
-                </ul>
-            </div>
-        </section>
-
-        <!-- ============ SIGNATURE DISHES ============ -->
-        <section id="signature" class="py-20 bg-charcoal" aria-labelledby="signature-heading">
-            <div class="container">
-                <h2 id="signature-heading" class="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-center mb-4 text-bone">
-                    The two plates that built us
-                </h2>
-                <p class="text-center text-muted mb-16 max-w-xl mx-auto">Same fire, same recipe, every single day.</p>
-                <div class="grid md:grid-cols-2 gap-8 lg:gap-12">
-                    <div class="bg-dark-card rounded-2xl overflow-hidden shadow-2xl card-lift relative">
-                        <span class="badge-most-ordered">Most Ordered</span>
-                        <img src="https://i.ibb.co/xSBqp0Dg/1784548006009.png"
-                            alt="Glazed Pork Ribs — 6-hour smoked, honey-glazed, served with steaming irio mash"
-                            class="w-full h-64 sm:h-80 object-cover" loading="lazy" decoding="async" width="640" height="480" />
-                        <div class="p-6 sm:p-8">
-                            <h3 class="font-display text-2xl sm:text-3xl font-bold mb-2">Glazed Pork Ribs</h3>
-                            <p class="text-muted mb-4">Six hours on the smoke, glazed with local honey, served on steaming irio. <span class="text-bone/80">Serves 1–2.</span></p>
-                            <p class="text-primary font-bold text-xl mb-6">From KES 450</p>
-                            <a href="https://wa.me/254702555093?text=Hi%20Redwood!%20I'd%20like%20the%20Glazed%20Pork%20Ribs%20platter%20(KES%20450)."
-                                target="_blank" rel="noopener noreferrer"
-                                class="btn-primary inline-flex items-center gap-2 px-6 py-3 rounded-full">
-                                <svg class="icon" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
-                                Order on WhatsApp
-                            </a>
-                        </div>
-                    </div>
-                    <div class="bg-dark-card rounded-2xl overflow-hidden shadow-2xl card-lift">
-                        <img src="https://i.ibb.co/RTNdGT1q/1784543431198.png"
-                            alt="The Hustler's Wrap — flame-grilled nyama choma with pili pili and fresh kachumbari in a chapati"
-                            class="w-full h-64 sm:h-80 object-cover" loading="lazy" decoding="async" width="640" height="480" />
-                        <div class="p-6 sm:p-8">
-                            <h3 class="font-display text-2xl sm:text-3xl font-bold mb-2">The Hustler's Wrap</h3>
-                            <p class="text-muted mb-4">Flame-grilled nyama choma, house pili pili, fresh kachumbari, rolled in soft chapati. <span class="text-bone/80">Built for a 20-minute lunch break.</span></p>
-                            <p class="text-primary font-bold text-xl mb-6">From KES 150</p>
-                            <a href="https://wa.me/254702555093?text=Hi%20Redwood!%20I'd%20like%20one%20Hustler's%20Wrap%20(KES%20150)."
-                                target="_blank" rel="noopener noreferrer"
-                                class="btn-primary inline-flex items-center gap-2 px-6 py-3 rounded-full">
-                                <svg class="icon" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
-                                Order on WhatsApp
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- ============ WHY REDWOOD ============ -->
-        <section class="py-16 bg-dark-card" aria-labelledby="trust-heading">
-            <div class="container">
-                <h2 id="trust-heading" class="sr-only">Why choose Redwood</h2>
-                <div class="grid md:grid-cols-3 gap-10 text-center">
-                    <div class="flex flex-col items-center">
-                        <div class="w-16 h-16 rounded-full bg-primary\/10 flex items-center justify-center mb-5">
-                            <svg class="icon text-primary text-2xl" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path fill="currentColor" d="M17 8C8 10 5.9 16.17 3.82 21.34l1.89.66.95-2.3c.48.17.98.3 1.34.3C19 20 22 3 22 3c-1 2-8 2.25-13 3.25S2 11.5 2 13.5s1.75 3.75 1.75 3.75"/></svg>
-                        </div>
-                        <h3 class="font-display text-xl font-bold mb-2">Cooked after you order. Not before.</h3>
-                        <p class="text-muted max-w-xs mx-auto">Nothing sits under a lamp. Your ribs hit the grill the moment your WhatsApp lands.</p>
-                    </div>
-                    <div class="flex flex-col items-center">
-                        <div class="w-16 h-16 rounded-full bg-secondary\/10 flex items-center justify-center mb-5">
-                            <svg class="icon text-secondary text-2xl" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path fill="currentColor" d="M12 2a7 7 0 0 0-7 7c0 5.25 7 13 7 13s7-7.75 7-13a7 7 0 0 0-7-7m0 9.5A2.5 2.5 0 1 1 14.5 9 2.5 2.5 0 0 1 12 11.5z"/></svg>
-                        </div>
-                        <h3 class="font-display text-xl font-bold mb-2">We'll tell you the farm.</h3>
-                        <p class="text-muted max-w-xs mx-auto">One pork supplier. The same three vegetable growers every week. Ask us where your plate came from — we'll name it.</p>
-                    </div>
-                    <div class="flex flex-col items-center">
-                        <div class="w-16 h-16 rounded-full bg-primary\/10 flex items-center justify-center mb-5">
-                            <svg class="icon text-primary text-2xl" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path fill="currentColor" d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
-                        </div>
-                        <h3 class="font-display text-xl font-bold mb-2">KES 150 to KES 500. No surprises.</h3>
-                        <p class="text-muted max-w-xs mx-auto">The price on the card is the price you pay. Delivery fee is stated upfront, before you confirm.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- ============ HOW IT WORKS ============ -->
-        <section class="py-20 bg-charcoal" aria-labelledby="how-it-works-heading">
-            <div class="container">
-                <h2 id="how-it-works-heading" class="font-display text-3xl sm:text-4xl font-bold text-center mb-16">How it works</h2>
-                <div class="grid md:grid-cols-3 gap-10 text-center">
-                    <div class="flex flex-col items-center">
-                        <div class="step-number" aria-hidden="true">1</div>
-                        <h3 class="font-display text-2xl font-bold mb-2">Pick your plate</h3>
-                        <p class="text-muted">Browse the menu below.</p>
-                    </div>
-                    <div class="flex flex-col items-center">
-                        <div class="step-number" aria-hidden="true">2</div>
-                        <h3 class="font-display text-2xl font-bold mb-2">Text us</h3>
-                        <p class="text-muted">Hit the button — your order's already typed out for you.</p>
-                    </div>
-                    <div class="flex flex-col items-center">
-                        <div class="step-number" aria-hidden="true">3</div>
-                        <h3 class="font-display text-2xl font-bold mb-2">We confirm, cook, and ride</h3>
-                        <p class="text-muted">You get a text when the rider leaves. Food lands hot.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- ============ FULL MENU ============ -->
-        <section class="py-20 bg-dark-card" id="full-menu" aria-labelledby="full-menu-heading">
-            <div class="container">
-                <h2 id="full-menu-heading" class="font-display text-3xl sm:text-4xl font-bold text-center mb-4">The full menu</h2>
-                <p class="text-center text-muted mb-12 max-w-xl mx-auto">Everything below is cooked to order. Choose your spice level on the meat dishes.</p>
-                <div class="flex flex-wrap justify-center gap-3 mb-6" role="group" aria-label="Filter menu by category">
-                    <button class="filter-btn active px-5 py-2 rounded-full" data-filter="all" type="button" aria-pressed="true">All</button>
-                    <button class="filter-btn px-5 py-2 rounded-full" data-filter="pork" type="button" aria-pressed="false">Pork</button>
-                    <button class="filter-btn px-5 py-2 rounded-full" data-filter="nyamachoma" type="button" aria-pressed="false">Nyama Choma</button>
-                    <button class="filter-btn px-5 py-2 rounded-full" data-filter="wraps" type="button" aria-pressed="false">Wraps &amp; Chapatis</button>
-                    <button class="filter-btn px-5 py-2 rounded-full" data-filter="sides" type="button" aria-pressed="false">Sides &amp; Irio</button>
-                </div>
-                <p class="sr-only" aria-live="polite" id="menu-status"></p>
-
-                <div id="menu-grid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-
-                    <!-- Item 1 -->
-                    <div class="menu-card bg-charcoal rounded-2xl overflow-hidden shadow-lg card-lift relative"
-                         data-category="pork" data-item="Glazed Pork Ribs" data-price="KES 450" data-spice="true">
-                        <span class="badge-most-ordered">Most Ordered</span>
-                        <img src="https://i.ibb.co/xSBqp0Dg/1784548006009.png" alt="Glazed Pork Ribs" class="w-full h-48 object-cover" loading="lazy" decoding="async" width="500" height="300" />
-                        <div class="p-5">
-                            <h3 class="font-display text-xl font-bold mb-1">Glazed Pork Ribs</h3>
-                            <p class="text-muted text-sm mb-1">Smoked six hours, honey glaze, steaming irio. <span class="serves-tag">Serves 1–2</span></p>
-                            <p class="text-primary font-bold text-lg mb-3">KES 450</p>
-                            <label class="spice-field">
-                                <span class="spice-label">Spice level</span>
-                                <select class="spice-select">
-                                    <option value="Mild">Mild</option>
-                                    <option value="Medium" selected>Medium</option>
-                                    <option value="Pili Pili Proper">Pili Pili Proper</option>
-                                </select>
-                            </label>
-                            <a href="https://wa.me/254702555093?text=Hi%20Redwood!%20I'd%20like%20the%20Glazed%20Pork%20Ribs%20(KES%20450)%20%E2%80%94%20Medium."
-                                target="_blank" rel="noopener noreferrer"
-                                class="btn-primary order-cta inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm mt-3">
-                                <svg class="icon" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
-                                Order on WhatsApp
-                            </a>
-                        </div>
-                    </div>
-
-                    <!-- Item 2 -->
-                    <div class="menu-card bg-charcoal rounded-2xl overflow-hidden shadow-lg card-lift"
-                         data-category="nyamachoma" data-item="Nyama Choma Platter" data-price="KES 500" data-spice="true">
-                        <img src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=500&q=80" alt="Nyama Choma Platter" class="w-full h-48 object-cover" loading="lazy" decoding="async" width="500" height="300" />
-                        <div class="p-5">
-                            <h3 class="font-display text-xl font-bold mb-1">Nyama Choma Platter</h3>
-                            <p class="text-muted text-sm mb-1">Fire-grilled beef, kachumbari, ugali or irio. <span class="serves-tag">Serves 2</span></p>
-                            <p class="text-primary font-bold text-lg mb-3">KES 500</p>
-                            <label class="spice-field">
-                                <span class="spice-label">Spice level</span>
-                                <select class="spice-select">
-                                    <option value="Mild">Mild</option>
-                                    <option value="Medium" selected>Medium</option>
-                                    <option value="Pili Pili Proper">Pili Pili Proper</option>
-                                </select>
-                            </label>
-                            <a href="https://wa.me/254702555093?text=Hi%20Redwood!%20I'd%20like%20the%20Nyama%20Choma%20Platter%20(KES%20500)%20%E2%80%94%20Medium."
-                                target="_blank" rel="noopener noreferrer"
-                                class="btn-primary order-cta inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm mt-3">
-                                <svg class="icon" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
-                                Order on WhatsApp
-                            </a>
-                        </div>
-                    </div>
-
-                    <!-- Item 3 -->
-                    <div class="menu-card bg-charcoal rounded-2xl overflow-hidden shadow-lg card-lift"
-                         data-category="wraps" data-item="The Hustler's Wrap" data-price="KES 150" data-spice="true">
-                        <img src="https://i.ibb.co/RTNdGT1q/1784543431198.png" alt="The Hustler's Wrap" class="w-full h-48 object-cover" loading="lazy" decoding="async" width="500" height="300" />
-                        <div class="p-5">
-                            <h3 class="font-display text-xl font-bold mb-1">The Hustler's Wrap</h3>
-                            <p class="text-muted text-sm mb-1">Nyama choma, pili pili, kachumbari in a chapati. <span class="serves-tag">Serves 1</span></p>
-                            <p class="text-primary font-bold text-lg mb-3">KES 150</p>
-                            <label class="spice-field">
-                                <span class="spice-label">Spice level</span>
-                                <select class="spice-select">
-                                    <option value="Mild">Mild</option>
-                                    <option value="Medium" selected>Medium</option>
-                                    <option value="Pili Pili Proper">Pili Pili Proper</option>
-                                </select>
-                            </label>
-                            <a href="https://wa.me/254702555093?text=Hi%20Redwood!%20I'd%20like%20one%20Hustler's%20Wrap%20(KES%20150)%20%E2%80%94%20Medium."
-                                target="_blank" rel="noopener noreferrer"
-                                class="btn-primary order-cta inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm mt-3">
-                                <svg class="icon" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
-                                Order on WhatsApp
-                            </a>
-                        </div>
-                    </div>
-
-                    <!-- Item 4 -->
-                    <div class="menu-card bg-charcoal rounded-2xl overflow-hidden shadow-lg card-lift"
-                         data-category="wraps" data-item="Chapati (5 pcs)" data-price="KES 150" data-spice="false">
-                        <img src="https://i.ibb.co/v6rPTMxG/1784551237074.png" alt="Chapati (5 pcs)" class="w-full h-48 object-cover" loading="lazy" decoding="async" width="500" height="300" />
-                        <div class="p-5">
-                            <h3 class="font-display text-xl font-bold mb-1">Chapati (5 pcs)</h3>
-                            <p class="text-muted text-sm mb-1">Soft, organic, pan-grilled.</p>
-                            <p class="text-primary font-bold text-lg mb-3">KES 150</p>
-                            <a href="https://wa.me/254702555093?text=Hi%20Redwood!%20I'd%20like%20Chapati%20(5%20pcs)%20(KES%20150)."
-                                target="_blank" rel="noopener noreferrer"
-                                class="btn-primary order-cta inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm">
-                                <svg class="icon" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
-                                Order on WhatsApp
-                            </a>
-                        </div>
-                    </div>
-
-                    <!-- Item 5 -->
-                    <div class="menu-card bg-charcoal rounded-2xl overflow-hidden shadow-lg card-lift"
-                         data-category="sides" data-item="Steaming Irio" data-price="KES 200" data-spice="false">
-                        <img src="https://i.ibb.co/hF830wy1/1784542873230.png" alt="Steaming Irio" class="w-full h-48 object-cover" loading="lazy" decoding="async" width="500" height="300" />
-                        <div class="p-5">
-                            <h3 class="font-display text-xl font-bold mb-1">Steaming Irio</h3>
-                            <p class="text-muted text-sm mb-1">Mashed peas and potatoes with corn.</p>
-                            <p class="text-primary font-bold text-lg mb-3">KES 200</p>
-                            <a href="https://wa.me/254702555093?text=Hi%20Redwood!%20I'd%20like%20Steaming%20Irio%20(KES%20200)."
-                                target="_blank" rel="noopener noreferrer"
-                                class="btn-primary order-cta inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm">
-                                <svg class="icon" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
-                                Order on WhatsApp
-                            </a>
-                        </div>
-                    </div>
-
-                    <!-- Item 6 -->
-                    <div class="menu-card bg-charcoal rounded-2xl overflow-hidden shadow-lg card-lift"
-                         data-category="pork" data-item="Pork Sausages (5 pcs)" data-price="KES 250" data-spice="true">
-                        <img src="https://i.ibb.co/n8QfzCV6/1784543297457.png" alt="Pork Sausages (5 pcs)" class="w-full h-48 object-cover" loading="lazy" decoding="async" width="500" height="300" />
-                        <div class="p-5">
-                            <h3 class="font-display text-xl font-bold mb-1">Pork Sausages (5 pcs)</h3>
-                            <p class="text-muted text-sm mb-1">Coarse-ground, grilled over open flame.</p>
-                            <p class="text-primary font-bold text-lg mb-3">KES 250</p>
-                            <label class="spice-field">
-                                <span class="spice-label">Spice level</span>
-                                <select class="spice-select">
-                                    <option value="Mild" selected>Mild</option>
-                                    <option value="Medium">Medium</option>
-                                    <option value="Pili Pili Proper">Pili Pili Proper</option>
-                                </select>
-                            </label>
-                            <a href="https://wa.me/254702555093?text=Hi%20Redwood!%20I'd%20like%20Pork%20Sausages%20(5%20pcs)%20(KES%20250)%20%E2%80%94%20Mild."
-                                target="_blank" rel="noopener noreferrer"
-                                class="btn-primary order-cta inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm mt-3">
-                                <svg class="icon" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
-                                Order on WhatsApp
-                            </a>
-                        </div>
-                    </div>
-
-                    <!-- Item 7 -->
-                    <div class="menu-card bg-charcoal rounded-2xl overflow-hidden shadow-lg card-lift"
-                         data-category="nyamachoma" data-item="Spicy Chicken Wings" data-price="KES 420" data-spice="true">
-                        <img src="https://i.ibb.co/B5g7NP43/1784551556649.png" alt="Spicy Chicken Wings" class="w-full h-48 object-cover" loading="lazy" decoding="async" width="500" height="300" />
-                        <div class="p-5">
-                            <h3 class="font-display text-xl font-bold mb-1">Spicy Chicken Wings</h3>
-                            <p class="text-muted text-sm mb-1">Marinated overnight, chargrilled.</p>
-                            <p class="text-primary font-bold text-lg mb-3">KES 420</p>
-                            <label class="spice-field">
-                                <span class="spice-label">Spice level</span>
-                                <select class="spice-select">
-                                    <option value="Mild">Mild</option>
-                                    <option value="Medium">Medium</option>
-                                    <option value="Pili Pili Proper" selected>Pili Pili Proper</option>
-                                </select>
-                            </label>
-                            <a href="https://wa.me/254702555093?text=Hi%20Redwood!%20I'd%20like%20Spicy%20Chicken%20Wings%20(KES%20420)%20%E2%80%94%20Pili%20Pili%20Proper."
-                                target="_blank" rel="noopener noreferrer"
-                                class="btn-primary order-cta inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm mt-3">
-                                <svg class="icon" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
-                                Order on WhatsApp
-                            </a>
-                        </div>
-                    </div>
-
-                    <!-- Item 8 -->
-                    <div class="menu-card bg-charcoal rounded-2xl overflow-hidden shadow-lg card-lift"
-                         data-category="sides" data-item="Kachumbari Salad" data-price="KES 150" data-spice="false">
-                        <img src="https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?w=500&q=80" alt="Kachumbari Salad" class="w-full h-48 object-cover" loading="lazy" decoding="async" width="500" height="300" />
-                        <div class="p-5">
-                            <h3 class="font-display text-xl font-bold mb-1">Kachumbari Salad</h3>
-                            <p class="text-muted text-sm mb-1">Fresh tomato, onion, cilantro, lime.</p>
-                            <p class="text-primary font-bold text-lg mb-3">KES 150</p>
-                            <a href="https://wa.me/254702555093?text=Hi%20Redwood!%20I'd%20like%20Kachumbari%20Salad%20(KES%20150)."
-                                target="_blank" rel="noopener noreferrer"
-                                class="btn-primary order-cta inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm">
-                                <svg class="icon" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
-                                Order on WhatsApp
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- ============ TESTIMONIALS ============ -->
-        <section class="py-20 bg-charcoal" aria-labelledby="testimonials-heading">
-            <div class="container">
-                <h2 id="testimonials-heading" class="font-display text-3xl sm:text-4xl font-bold text-center mb-4">What our customers say</h2>
-                <p class="text-center text-muted mb-16 max-w-xl mx-auto">Real messages from the Redwood WhatsApp line.</p>
-                <div class="grid md:grid-cols-3 gap-8">
-                    <figure class="bg-dark-card p-6 rounded-2xl shadow-lg card-lift m-0">
-                        <div class="text-yellow text-2xl mb-4" aria-label="5 out of 5 stars">★★★★★</div>
-                        <blockquote class="text-muted italic mb-4">"Ordered at 12:40. On my desk at 1:07. Still hot."</blockquote>
-                        <figcaption class="font-semibold">— Brian K., Advocate, Upperhill</figcaption>
-                    </figure>
-                    <figure class="bg-dark-card p-6 rounded-2xl shadow-lg card-lift m-0">
-                        <div class="text-yellow text-2xl mb-4" aria-label="5 out of 5 stars">★★★★★</div>
-                        <blockquote class="text-muted italic mb-4">"KES 450 for ribs that taste like a Sunday barbecue. I've stopped cooking on Fridays."</blockquote>
-                        <figcaption class="font-semibold">— Muthoni W., Salon Owner, Kilimani</figcaption>
-                    </figure>
-                    <figure class="bg-dark-card p-6 rounded-2xl shadow-lg card-lift m-0">
-                        <div class="text-yellow text-2xl mb-4" aria-label="5 out of 5 stars">★★★★★</div>
-                        <blockquote class="text-muted italic mb-4">"Feeds my whole crew for under 3K. Fridays are sorted."</blockquote>
-                        <figcaption class="font-semibold">— Otieno M., Site Foreman, Industrial Area</figcaption>
-                    </figure>
-                </div>
-            </div>
-        </section>
-
-        <!-- ============ TODAY'S SPECIAL ============ -->
-        <section class="py-16 special-section" aria-labelledby="special-heading">
-            <div class="container text-center">
-                <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-8">
-                    <h2 id="special-heading" class="text-2xl sm:text-3xl font-display font-bold text-white">
-                        🔥 Today only — <span id="special-day">today</span>
-                    </h2>
-                    <img src="https://i.ibb.co/fYJVkFV7/1784544829697.png"
-                        alt="Today's special — two nyama choma platters with free ugali"
-                        class="w-32 h-32 object-cover rounded-xl shadow-lg" loading="lazy" decoding="async" width="128" height="128" />
-                    <p class="text-lg text-white\/90 m-0">Two Nyama Choma Platters + free ugali. <strong>KES 850.</strong></p>
-                </div>
-                <p class="text-white\/90 mb-6 text-sm">Order before 3pm to lock in the price.</p>
-                <a href="https://wa.me/254702555093?text=SPECIAL" target="_blank" rel="noopener noreferrer"
-                    class="btn-secondary inline-flex items-center gap-2 px-8 py-4 rounded-full text-lg">
-                    <svg class="icon" viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
-                    WhatsApp 'SPECIAL'
-                </a>
-            </div>
-        </section>
-
-        <!-- ============ STORY ============ -->
-        <section id="story" class="py-20 bg-charcoal" aria-labelledby="story-heading">
-            <div class="container">
-                <div class="grid lg:grid-cols-2 gap-12 items-center">
-                    <div>
-                        <h2 id="story-heading" class="font-display text-3xl sm:text-4xl font-bold mb-6">Why we cook this way</h2>
-                        <p class="text-muted leading-relaxed mb-4">We buy our pork from one farm in Kiambu and our vegetables from the same three growers every week. Same hands. Same fires. Same recipe, whether it's a quiet Tuesday or a packed-out Saturday.</p>
-                        <p class="text-muted leading-relaxed mb-6">That's why we can tell you exactly where your plate came from — and why the ribs taste the same today as they did six months ago.</p>
-                        <div class="flex flex-wrap gap-4">
-                            <span class="bg-primary\/10 text-primary px-4 py-2 rounded-full text-sm font-medium">One pork farm. Named on request.</span>
-                            <span class="bg-secondary\/10 text-secondary px-4 py-2 rounded-full text-sm font-medium">🇰🇪 Sourced in Kenya</span>
-                            <span class="bg-primary\/10 text-primary px-4 py-2 rounded-full text-sm font-medium">🔥 Cooked to order</span>
-                        </div>
-                    </div>
-                    <div class="rounded-2xl overflow-hidden shadow-2xl">
-                        <img src="https://i.ibb.co/MD1bbqbT/1784543596004.png"
-                            alt="Redwood's open-flame grilled meat with fresh ingredients"
-                            class="w-full h-auto object-cover" loading="lazy" decoding="async" width="600" height="400" />
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- ============ FAQ ============ -->
-        <section id="faq" class="py-20 bg-dark-card" aria-labelledby="faq-heading">
-            <div class="faq-container">
-                <h2 id="faq-heading" class="font-display text-3xl sm:text-4xl font-bold text-center mb-4">Straight answers</h2>
-                <p class="text-center text-muted mb-12">Everything people ask us before their first order.</p>
-
-                <div class="faq-list">
-                    <details class="faq-item">
-                        <summary>How fast is delivery?</summary>
-                        <p>CBD: 25–35 min. Westlands, Kilimani, Upperhill, Parklands: 35–45 min. We text you the moment the rider leaves.</p>
-                    </details>
-
-                    <details class="faq-item">
-                        <summary>What's the delivery fee?</summary>
-                        <p>KES 100 in CBD. KES 150 to outer zones. <strong>Free over KES 1,500.</strong> The fee is confirmed before you pay.</p>
-                    </details>
-
-                    <details class="faq-item">
-                        <summary>Do you take M-Pesa?</summary>
-                        <p>Yes. We send you the Till number on WhatsApp when you confirm your order. Cash and card on delivery also work.</p>
-                    </details>
-
-                    <details class="faq-item">
-                        <summary>Is there a minimum order?</summary>
-                        <p>KES 300. Below that, the standard delivery fee applies.</p>
-                    </details>
-
-                    <details class="faq-item">
-                        <summary>Is the meat really organic?</summary>
-                        <p>Yes — one farm in Kiambu, the same one for two years. Ask us on WhatsApp and we'll tell you the name.</p>
-                    </details>
-
-                    <details class="faq-item">
-                        <summary>What if my food arrives cold?</summary>
-                        <p>Send us a photo within 15 minutes. We remake it or refund you. No argument.</p>
-                    </details>
-
-                    <details class="faq-item">
-                        <summary>How spicy is "Pili Pili Proper"?</summary>
-                        <p>Proper. If you're unsure, start with Medium — you can always add more from the sachet we send with every meat order.</p>
-                    </details>
-
-                    <details class="faq-item">
-                        <summary>Can I order for a group?</summary>
-                        <p>Yes. Message us on WhatsApp with the headcount and time. For 6+ people we'll confirm a pickup or delivery window in writing.</p>
-                    </details>
-                </div>
-            </div>
-        </section>
-
-        <!-- ============ CONTACT ============ -->
-        <section id="contact" class="py-20 bg-charcoal" aria-labelledby="contact-heading">
-            <div class="container">
-                <h2 id="contact-heading" class="font-display text-3xl sm:text-4xl font-bold text-center mb-12">Find us. Or we'll find you.</h2>
-                <div class="max-w-2xl mx-auto space-y-8 text-left">
-                    <div>
-                        <h3 class="font-display text-2xl font-bold mb-2">Visit us</h3>
-                        <p class="text-muted">Redwood Restaurant, Biashara Street, Nairobi CBD</p>
-                        <p class="text-muted mt-1"><a href="https://maps.google.com/?q=Biashara+Street+Nairobi" target="_blank" rel="noopener noreferrer" class="text-primary hover:text-accent underline">Get directions →</a></p>
-                    </div>
-                    <div>
-                        <h3 class="font-display text-2xl font-bold mb-2">Hours</h3>
-                        <p class="text-muted">Mon–Sat: 10:00 AM – 9:00 PM</p>
-                        <p class="text-muted">Sun: 11:00 AM – 7:00 PM</p>
-                    </div>
-                    <div>
-                        <h3 class="font-display text-2xl font-bold mb-2">Delivery zones</h3>
-                        <p class="text-muted">CBD · Westlands · Kilimani · Upperhill · Parklands</p>
-                        <p class="text-muted text-sm mt-1">Not sure if we reach you? Send us your location on WhatsApp — we'll confirm in under a minute.</p>
-                    </div>
-                    <div>
-                        <h3 class="font-display text-2xl font-bold mb-2">Payment</h3>
-                        <p class="text-muted">M-Pesa · Cash · Card on delivery</p>
-                    </div>
-                    <div class="flex flex-wrap gap-6 pt-4">
-                        <a href="https://wa.me/254702555093" target="_blank" rel="noopener noreferrer"
-                            class="text-primary hover:text-accent inline-flex items-center gap-2">
-                            <svg class="icon text-2xl" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
-                            <span>+254 702 555 093</span>
-                        </a>
-                        <a href="mailto:hello@redwood.co.ke"
-                            class="text-primary hover:text-accent inline-flex items-center gap-2">
-                            <svg class="icon text-2xl" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline fill="none" stroke="currentColor" stroke-width="2" points="22,6 12,13 2,6"/></svg>
-                            <span>hello@redwood.co.ke</span>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <!-- ============ FOOTER ============ -->
-    <footer class="bg-dark-card border-t border-subtle py-12">
-        <div class="container">
-            <div class="grid md:grid-cols-3 gap-8 text-center md:text-left">
-                <div>
-                    <span class="font-display text-2xl font-bold text-bone">Redwood</span>
-                    <p class="text-muted mt-2 text-sm">Hot food. Fair prices. Fast.</p>
-                </div>
-                <div>
-                    <h3 class="font-semibold mb-3">Quick links</h3>
-                    <ul class="space-y-2 text-sm text-muted">
-                        <li><a href="#hero" class="hover:text-primary">Home</a></li>
-                        <li><a href="#full-menu" class="hover:text-primary">Menu</a></li>
-                        <li><a href="#story" class="hover:text-primary">Our Story</a></li>
-                        <li><a href="#faq" class="hover:text-primary">FAQ</a></li>
-                        <li><a href="#contact" class="hover:text-primary">Find Us</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h3 class="font-semibold mb-3">Get the Friday special first</h3>
-                    <p class="text-sm text-muted mb-3">One WhatsApp message. We'll add you to the list.</p>
-                    <a href="https://wa.me/254702555093?text=Hi%20Redwood!%20Please%20add%20me%20to%20the%20specials%20list."
-                        target="_blank" rel="noopener noreferrer"
-                        class="btn-primary inline-flex items-center gap-2 px-6 py-2 rounded-full text-sm">
-                        <svg class="icon" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
-                        Get specials on WhatsApp
-                    </a>
-                    <div class="socials flex justify-center md:justify-start gap-4 mt-5">
-                        <a href="https://www.instagram.com/redwoodke" target="_blank" rel="noopener noreferrer"
-                            class="hover:text-primary" aria-label="Follow Redwood on Instagram">
-                            <svg class="icon" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path fill="currentColor" d="M7.8 2h8.4C19.4 2 22 4.6 22 7.8v8.4a5.8 5.8 0 0 1-5.8 5.8H7.8C4.6 22 2 19.4 2 16.2V7.8A5.8 5.8 0 0 1 7.8 2m-.2 2A3.6 3.6 0 0 0 4 7.6v8.8C4 18.39 5.61 20 7.6 20h8.8a3.6 3.6 0 0 0 3.6-3.6V7.6C20 5.61 18.39 4 16.4 4H7.6m9.65 1.5a1.25 1.25 0 0 1 1.25 1.25A1.25 1.25 0 0 1 17.25 8 1.25 1.25 0 0 1 16 6.75a1.25 1.25 0 0 1 1.25-1.25M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3z"/></svg>
-                        </a>
-                        <a href="https://www.tiktok.com/@redwoodke" target="_blank" rel="noopener noreferrer"
-                            class="hover:text-primary" aria-label="Follow Redwood on TikTok">
-                            <svg class="icon" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path fill="currentColor" d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg>
-                        </a>
-                        <a href="https://www.google.com/maps/place/Redwood+Restaurant+Nairobi" target="_blank"
-                            rel="noopener noreferrer" class="hover:text-primary"
-                            aria-label="Find Redwood on Google Maps">
-                            <svg class="icon" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path fill="currentColor" d="M12.48 10.92v3.28h7.84c-.24 1.84-.853 3.187-1.787 4.133-1.147 1.147-2.933 2.4-6.053 2.4-4.827 0-8.6-3.893-8.6-8.72s3.773-8.72 8.6-8.72c2.6 0 4.507 1.027 5.907 2.347l2.307-2.307C18.747 1.44 16.133 0 12.48 0 5.867 0 .307 5.387.307 12s5.56 12 12.173 12c3.573 0 6.267-1.173 8.373-3.36 2.16-2.16 2.84-5.213 2.84-7.667 0-.76-.053-1.467-.173-2.053H12.48z"/></svg>
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <div class="footer-bottom mt-10 pt-6 border-t border-subtle text-center text-sm">
-                © <span id="year">2025</span> Redwood. All rights reserved.
-            </div>
+        <div class="hero-image">
+          <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=800&q=80"
+            srcset="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=400&q=80 400w,
+            https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=800&q=80 800w,
+            https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=1200&q=80 1200w"
+            sizes="(max-width: 768px) 100vw, 50vw" width="520" height="390" fetchpriority="high"
+            alt="Flesh and Bones Gym workout session in Imara Nairobi"
+            onerror="this.onerror=null; this.src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4MDAiIGhlaWdodD0iNjAwIiB2aWV3Qm94PSIwIDAgODAwIDYwMCI+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0iI2UyZTRlYSIvPjx0ZXh0IHg9IjUwJSIgeT0iNTAlIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMjQiIGZpbGw9IiM5Y2EzYWYiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGR5PSIuMzVlbSI+Rmxlc2ggJiBCb25lcyBHeW08L3RleHQ+PC9zdmc+'" />
         </div>
+      </div>
+    </section>
+
+    <!-- ===== WORLD-CLASS AMENITIES ===== -->
+    <section class="section" id="amenities" aria-labelledby="amenities-title">
+      <div class="container">
+        <div class="section-header">
+          <span class="tag"><i class="fas fa-star" aria-hidden="true"></i> World-Class Standard</span>
+          <h2 id="amenities-title">Built for Performance. <span>Designed for Comfort.</span></h2>
+          <p>Everything you need under one roof to train like a pro and recover like royalty.</p>
+        </div>
+        <div class="amenities-grid">
+          <div class="amenity-card">
+            <i class="fas fa-dumbbell" aria-hidden="true"></i>
+            <h3>Hammer Strength &amp; Eleiko Racks</h3>
+            <p>Heavy duty Olympic platforms, bumper plates, power cages, and dumbbells scaling up to 50kg for serious lifters.</p>
+          </div>
+          <div class="amenity-card">
+            <i class="fas fa-spa" aria-hidden="true"></i>
+            <h3>Steam Room &amp; Detox Sauna</h3>
+            <p>Recover faster, relax sore muscles, and flush out toxins after high-intensity training sessions.</p>
+          </div>
+          <div class="amenity-card">
+            <i class="fas fa-cocktail" aria-hidden="true"></i>
+            <h3>Fuel Bar &amp; Smoothie Station</h3>
+            <p>Fresh pre-workout shots, whey protein shakes, electrolyte brews, and clean recovery meals ready on demand.</p>
+          </div>
+          <div class="amenity-card">
+            <i class="fas fa-shower" aria-hidden="true"></i>
+            <h3>Hot Showers &amp; Secure Lockers</h3>
+            <p>Spacious, ultra-clean executive changing facilities with keycard lockers and high-pressure hot showers.</p>
+          </div>
+          <div class="amenity-card">
+            <i class="fas fa-wifi" aria-hidden="true"></i>
+            <h3>High-Speed Fibre Wi-Fi</h3>
+            <p>Stream your workout playlists or stay connected while catching your breather on our turf zone.</p>
+          </div>
+          <div class="amenity-card">
+            <i class="fas fa-parking" aria-hidden="true"></i>
+            <h3>Secure Ample Parking</h3>
+            <p>24/7 guarded parking space right off Imara Road. Drive in, smash your workout, drive out stress-free.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== MEMBERSHIP PLANS ===== -->
+    <section class="section section-alt" id="plans" aria-labelledby="plans-title">
+      <div class="container">
+        <div class="section-header">
+          <span class="tag"><i class="fas fa-wallet" aria-hidden="true"></i> Transparent Pricing</span>
+          <h2 id="plans-title">No Hidden Fees. <span>Pay via M-Pesa.</span></h2>
+          <p>Invest in your health with flexible payment plans. Instant M-Pesa Till activation at front desk or online.</p>
+        </div>
+        <div class="plans-grid">
+          <!-- Daily Pass -->
+          <div class="plan-card">
+            <div class="icon">⚡</div>
+            <h3>Daily Pass</h3>
+            <div class="price">KES 300 <span>/ day</span></div>
+            <ul>
+              <li><i class="fas fa-check-circle" aria-hidden="true"></i> Full weight room &amp; turf access</li>
+              <li><i class="fas fa-check-circle" aria-hidden="true"></i> Hot shower &amp; locker usage</li>
+              <li><i class="fas fa-check-circle" aria-hidden="true"></i> High-speed Wi-Fi access</li>
+              <li><i class="fas fa-check-circle" aria-hidden="true"></i> Drop-in access to group HIIT</li>
+            </ul>
+            <a href="https://wa.me/254702555093?text=Hi!%20I%20want%20to%20get%20a%20KES%20300%20Daily%20Pass." class="btn btn-outline btn-full" target="_blank">
+              Get Daily Pass
+            </a>
+          </div>
+          <!-- Monthly Regular (Popular) -->
+          <div class="plan-card popular">
+            <div class="badge">Most Popular in Imara</div>
+            <div class="icon">🔥</div>
+            <h3>Monthly Beast</h3>
+            <div class="price">KES 3,500 <span>/ month</span></div>
+            <ul>
+              <li><i class="fas fa-check-circle" aria-hidden="true"></i> Unlimited Gym Access (5 AM – 11 PM)</li>
+              <li><i class="fas fa-check-circle" aria-hidden="true"></i> Free Access to Steam Room &amp; Sauna</li>
+              <li><i class="fas fa-check-circle" aria-hidden="true"></i> Unlimited Group Classes (Zumba, HIIT, Boxing)</li>
+              <li><i class="fas fa-check-circle" aria-hidden="true"></i> 1-on-1 Fitness Assessment &amp; Meal Roadmap</li>
+              <li><i class="fas fa-check-circle" aria-hidden="true"></i> 2 Guest Passes per month for your squad</li>
+            </ul>
+            <a href="https://wa.me/254702555093?text=Hi!%20I%20want%20to%20subscribe%20to%20the%20Monthly%20Beast%20Plan%20(KES%203500)." class="btn btn-primary btn-full" target="_blank">
+              <i class="fab fa-whatsapp" aria-hidden="true"></i> Join Monthly via WhatsApp
+            </a>
+          </div>
+          <!-- Quarterly Beast -->
+          <div class="plan-card">
+            <div class="badge">Save KES 1,500</div>
+            <div class="icon">👑</div>
+            <h3>Quarterly Champion</h3>
+            <div class="price">KES 9,000 <span>/ 3 months</span></div>
+            <ul>
+              <li><i class="fas fa-check-circle" aria-hidden="true"></i> All Monthly Beast privileges included</li>
+              <li><i class="fas fa-check-circle" aria-hidden="true"></i> 3 Personal Training coaching sessions</li>
+              <li><i class="fas fa-check-circle" aria-hidden="true"></i> Custom M-Pesa payment split available</li>
+              <li><i class="fas fa-check-circle" aria-hidden="true"></i> Free Flesh &amp; Bones branded shaker bottle</li>
+              <li><i class="fas fa-check-circle" aria-hidden="true"></i> Priority reservation for Sauna slots</li>
+            </ul>
+            <a href="https://wa.me/254702555093?text=Hi!%20I'm%20interested%20in%20the%20Quarterly%20Champion%20Package." class="btn btn-outline btn-full" target="_blank">
+              Get Quarterly Package
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== TRAINERS ===== -->
+    <section class="section" id="trainers" aria-labelledby="trainers-title">
+      <div class="container">
+        <div class="section-header">
+          <span class="tag"><i class="fas fa-user-shield" aria-hidden="true"></i> Verified Results</span>
+          <h2 id="trainers-title">Meet Your <span>Nairobi Coaches</span></h2>
+          <p>No phone-scrolling while you train. Our elite coaches correct your form, push your limits, and keep you disciplined.</p>
+        </div>
+        <div class="trainers-grid">
+          <!-- Harrison -->
+          <div class="trainer-card">
+            <img src="https://images.unsplash.com/photo-1567013127542-490d757e51fc?auto=format&fit=crop&w=500&h=500&q=80" alt="Coach Kevin Mark" loading="lazy" width="260" height="260" onerror="this.onerror=null; this.src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI1MDAiIGhlaWdodD0iNTAwIiB2aWV3Qm94PSIwIDAgNTAwIDUwMCI+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0iI2UyZTRlYSIvPjx0ZXh0IHg9IjUwJSIgeT0iNTAlIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMjAiIGZpbGw9IiM5Y2EzYWYiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGR5PSIuMzVlbSI+Q29hY2g8L3RleHQ+PC9zdmc+'" />
+            <div class="info">
+              <h4>Kevin Mark</h4>
+              <div class="role">Head Coach &amp; Founder</div>
+              <p>10+ years driving transformations in Nairobi. Specializes in powerlifting mechanics, body recomposition, and strength programming.</p>
+              <div class="badges"><span>Strength</span><span>Powerlifting</span><span>Fat Loss</span></div>
+            </div>
+          </div>
+          <!-- Sarah -->
+          <div class="trainer-card">
+            <img src="https://images.unsplash.com/photo-1541534741688-6078c6bfb5c5?auto=format&fit=crop&w=500&h=500&q=80" alt="Sarah Mwangi" loading="lazy" width="260" height="260" onerror="this.onerror=null; this.src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI1MDAiIGhlaWdodD0iNTAwIiB2aWV3Qm94PSIwIDAgNTAwIDUwMCI+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0iI2UyZTRlYSIvPjx0ZXh0IHg9IjUwJSIgeT0iNTAlIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMjAiIGZpbGw9IiM5Y2EzYWYiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGR5PSIuMzVlbSI+Q29hY2g8L3RleHQ+PC9zdmc+'" />
+            <div class="info">
+              <h4>Sarah Mwangi</h4>
+              <div class="role">HIIT &amp; Conditioning Specialist</div>
+              <p>High-energy cardio coach who ensures you burn max calories while building cardiovascular endurance and agility.</p>
+              <div class="badges"><span>HIIT</span><span>Endurance</span><span>Group Fitness</span></div>
+            </div>
+          </div>
+          <!-- Alex -->
+          <div class="trainer-card">
+            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=500&h=500&q=80" alt="Lady Boss" loading="lazy" width="260" height="260" onerror="this.onerror=null; this.src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI1MDAiIGhlaWdodD0iNTAwIiB2aWV3Qm94PSIwIDAgNTAwIDUwMCI+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0iI2UyZTRlYSIvPjx0ZXh0IHg9IjUwJSIgeT0iNTAlIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMjAiIGZpbGw9IiM5Y2EzYWYiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGR5PSIuMzVlbSI+Q29hY2g8L3RleHQ+PC9zdmc+'" />
+            <div class="info">
+              <h4>Lady Boss</h4>
+              <div class="role">Hypertrophy &amp; Bodybuilding</div>
+              <p>Focused on scientific muscle growth, safe execution of compound movements, and personalized macro nutrition planning.</p>
+              <div class="badges"><span>Hypertrophy</span><span>Macros</span><span>Prep</span></div>
+            </div>
+          </div>
+          <!-- Mercy -->
+          <div class="trainer-card">
+            <img src="https://images.unsplash.com/photo-1517838277536-f5f99be501cd?auto=format&fit=crop&w=500&h=500&q=80" alt="Mercy Wanjiru" loading="lazy" width="260" height="260" onerror="this.onerror=null; this.src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI1MDAiIGhlaWdodD0iNTAwIiB2aWV3Qm94PSIwIDAgNTAwIDUwMCI+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0iI2UyZTRlYSIvPjx0ZXh0IHg9IjUwJSIgeT0iNTAlIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMjAiIGZpbGw9IiM5Y2EzYWYiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGR5PSIuMzVlbSI+Q29hY2g8L3RleHQ+PC9zdmc+'" />
+            <div class="info">
+              <h4>Mercy Wanjiru</h4>
+              <div class="role">Mobility &amp; Posture Rehab</div>
+              <p>Helps office workers undo desk-posture slump, restore joint integrity, and prevent lower back discomfort.</p>
+              <div class="badges"><span>Mobility</span><span>Rehab</span><span>Flexibility</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== PROGRAMS ===== -->
+    <section class="section section-alt" id="programs" aria-labelledby="programs-title">
+      <div class="container">
+        <div class="section-header">
+          <span class="tag"><i class="fas fa-calendar-days" aria-hidden="true"></i> Daily Class Schedule</span>
+          <h2 id="programs-title">High-Octane <span>Group Programs</span></h2>
+          <p>Workouts structured to push your endurance, break plateaus, and build real strength alongside a motivated crew.</p>
+        </div>
+        <div class="programs-grid">
+          <div class="program-card">
+            <div class="emoji">🏋️‍♂️</div>
+            <h4>Barbell &amp; Iron Strength</h4>
+            <p>Master deadlifts, squats, and overhead presses safely with expert coaching on form and weight selection.</p>
+            <div class="meta">Mon / Wed / Fri • 6:00 AM &amp; 6:30 PM</div>
+          </div>
+          <div class="program-card">
+            <div class="emoji">🔥</div>
+            <h4>Nairobi Burn HIIT</h4>
+            <p>High-tempo interval training combining kettlebells, plyometrics, and battle ropes to melt stubborn fat fast.</p>
+            <div class="meta">Tue / Thu / Sat • 6:30 AM &amp; 5:30 PM</div>
+          </div>
+          <div class="program-card">
+            <div class="emoji">🥊</div>
+            <h4>BoxFit &amp; Conditioning</h4>
+            <p>Burn up to 800 calories per session with heavy bag combos, footwork drills, and core conditioning.</p>
+            <div class="meta">Mon / Wed • 7:15 PM</div>
+          </div>
+          <div class="program-card">
+            <div class="emoji">🧘‍♀️</div>
+            <h4>Steam &amp; Stretch Recovery</h4>
+            <p>Decompress your spine, release tight hamstrings, and end with a guided steam session to reset for the week.</p>
+            <div class="meta">Sunday • 8:30 AM</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== GALLERY ===== -->
+    <section class="section" id="gallery" aria-labelledby="gallery-title">
+      <div class="container">
+        <div class="section-header">
+          <span class="tag"><i class="fas fa-camera" aria-hidden="true"></i> Facility Tour</span>
+          <h2 id="gallery-title">Step Inside <span>The Iron Temple</span></h2>
+          <p>Spacious, clean, well-lit, and fully packed with premium gear. Take a look at your new home for gains.</p>
+        </div>
+        <div class="gallery-grid">
+          <div class="gallery-item">
+            <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=600&h=600&q=80" alt="Free Weights & Barbells Zone" loading="lazy" width="300" height="300" onerror="this.onerror=null; this.src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI2MDAiIGhlaWdodD0iNjAwIiB2aWV3Qm94PSIwIDAgNjAwIDYwMCI+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0iI2UyZTRlYSIvPjx0ZXh0IHg9IjUwJSIgeT0iNTAlIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMjQiIGZpbGw9IiM5Y2EzYWYiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGR5PSIuMzVlbSI+RmFjaWxpdHk8L3RleHQ+PC9zdmc+'" />
+            <div class="label">Heavy Iron &amp; Power Racks</div>
+          </div>
+          <div class="gallery-item">
+            <img src="https://images.unsplash.com/photo-1517838277536-f5f99be501cd?auto=format&fit=crop&w=600&h=600&q=80" alt="Functional Turf & Kettlebells" loading="lazy" width="300" height="300" onerror="this.onerror=null; this.src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI2MDAiIGhlaWdodD0iNjAwIiB2aWV3Qm94PSIwIDAgNjAwIDYwMCI+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0iI2UyZTRlYSIvPjx0ZXh0IHg9IjUwJSIgeT0iNTAlIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMjQiIGZpbGw9IiM5Y2EzYWYiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGR5PSIuMzVlbSI+RmFjaWxpdHk8L3RleHQ+PC9zdmc+'" />
+            <div class="label">Functional Sprint Turf Track</div>
+          </div>
+          <div class="gallery-item">
+            <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=600&h=600&q=80" alt="Group HIIT Studio" loading="lazy" width="300" height="300" onerror="this.onerror=null; this.src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI2MDAiIGhlaWdodD0iNjAwIiB2aWV3Qm94PSIwIDAgNjAwIDYwMCI+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0iI2UyZTRlYSIvPjx0ZXh0IHg9IjUwJSIgeT0iNTAlIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMjQiIGZpbGw9IiM5Y2EzYWYiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGR5PSIuMzVlbSI+RmFjaWxpdHk8L3RleHQ+PC9zdmc+'" />
+            <div class="label">Group Workout Studio</div>
+          </div>
+          <div class="gallery-item">
+            <img src="https://images.unsplash.com/photo-1576678927484-cc909957088c?auto=format&fit=crop&w=600&h=600&q=80" alt="Cardio Deck & Treadmills" loading="lazy" width="300" height="300" onerror="this.onerror=null; this.src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI2MDAiIGhlaWdodD0iNjAwIiB2aWV3Qm94PSIwIDAgNjAwIDYwMCI+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0iI2UyZTRlYSIvPjx0ZXh0IHg9IjUwJSIgeT0iNTAlIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMjQiIGZpbGw9IiM5Y2EzYWYiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGR5PSIuMzVlbSI+RmFjaWxpdHk8L3RleHQ+PC9zdmc+'" />
+            <div class="label">Cardio Deck with TV Screens</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== TESTIMONIALS ===== -->
+    <section class="section section-alt" id="testimonials" aria-labelledby="testimonials-title">
+      <div class="container">
+        <div class="section-header">
+          <span class="tag"><i class="fas fa-quote-left" aria-hidden="true"></i> Real Stories</span>
+          <h2 id="testimonials-title">What <span>Nairobi Lifters</span> Say</h2>
+          <p>Don't take our word for it. Here is what members from Imara, South B, and Syokimau have achieved with us.</p>
+        </div>
+        <div class="testimonials-grid">
+          <!-- Brian -->
+          <div class="testimonial-card">
+            <div class="stars">★★★★★</div>
+            <blockquote>“I used to spend 2 hours in Mombasa Road traffic thinking about working out. Now I drop into Flesh &amp; Bones at 5:30 AM. Down 12kg in 4 months. The steam room after a leg session is legendary!”</blockquote>
+            <div class="author">
+              <div class="initials">BK</div>
+              <div><div class="name">Brian Kiprop</div><div class="detail">Imara Resident • Member 8 Months</div></div>
+            </div>
+          </div>
+          <!-- Eunice -->
+          <div class="testimonial-card">
+            <div class="stars">★★★★★</div>
+            <blockquote>“Coach kevin doesn't let you slack! The trainers fix your form so you don't hurt your back. Plus, paying via M-Pesa at the counter is super smooth.”</blockquote>
+            <div class="author">
+              <div class="initials">EN</div>
+              <div><div class="name">Eunice Njeri</div><div class="detail">South B • Member 1 Year</div></div>
+            </div>
+          </div>
+          <!-- Kevin -->
+          <div class="testimonial-card">
+            <div class="stars">★★★★★</div>
+            <blockquote>“Best gym in Imara hands down. Real iron, clean showers, zero waiting for machines, and genuine brotherhood in the weight room.”</blockquote>
+            <div class="author">
+              <div class="initials">KO</div>
+              <div><div class="name">laurell olives</div><div class="detail">Syokimau • Member 5 Months</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== FREE TRIAL BOOKING (Streamlined via WhatsApp) ===== -->
+    <section class="section" id="booking" aria-labelledby="booking-title">
+      <div class="container">
+        <div class="section-header">
+          <span class="tag"><i class="fas fa-ticket" aria-hidden="true"></i> Zero Risk</span>
+          <h2 id="booking-title">Get Your <span>Free Day Pass</span></h2>
+          <p>Experience the facilities, test out the equipment, and meet our coaches. No long commitment required.</p>
+        </div>
+        <div class="booking-wrapper">
+          <div class="booking-info">
+            <h3>What's Included In Your Pass:</h3>
+            <ul>
+              <li><i class="fas fa-check-circle" aria-hidden="true"></i> 1-on-1 Workout Orientation with a Coach</li>
+              <li><i class="fas fa-check-circle" aria-hidden="true"></i> Full access to Heavy Weights &amp; Cardio Deck</li>
+              <li><i class="fas fa-check-circle" aria-hidden="true"></i> Complimentary Sauna &amp; Hot Shower Trial</li>
+              <li><i class="fas fa-check-circle" aria-hidden="true"></i> Body Composition &amp; BMI Breakdown</li>
+            </ul>
+            <p class="booking-note">All bookings are handled via WhatsApp for speed and convenience. Click a button below and we'll confirm your slot instantly.</p>
+            <div class="direct-contact-box">
+              <p><strong>Prefer to chat first?</strong></p>
+              <a href="https://wa.me/254702555093?text=Hi%20Coach%20Harrison!%20I%27d%20like%20to%20know%20more%20about%20the%20gym%20before%20booking." class="btn btn-whatsapp btn-full" target="_blank">
+                <i class="fab fa-whatsapp" aria-hidden="true"></i> Message Us on WhatsApp
+              </a>
+            </div>
+          </div>
+          <div class="booking-actions">
+            <h3>Book Your Free Trial Now</h3>
+            <p>Choose a membership option or start with a free day pass. You'll be redirected to WhatsApp with a pre-filled message.</p>
+            <a href="https://wa.me/254702555093?text=Hi!%20I%20want%20to%20claim%20my%20FREE%20Day%20Pass%20at%20Flesh%20%26%20Bones%20Gym.%20My%20preferred%20date%20is%20%5Bdate%5D%20and%20time%20is%20%5Btime%5D." class="btn btn-primary btn-full" target="_blank">
+              <i class="fab fa-whatsapp" aria-hidden="true"></i> Claim Free Day Pass
+            </a>
+            <a href="https://wa.me/254702555093?text=Hi!%20I%20want%20to%20start%20with%20the%20Daily%20Pass%20(KES%20300).%20My%20preferred%20date%20is%20%5Bdate%5D." class="btn btn-outline btn-full" target="_blank">
+              <i class="fas fa-bolt" aria-hidden="true"></i> Get Daily Pass (KES 300)
+            </a>
+            <a href="https://wa.me/254702555093?text=Hi!%20I%20want%20to%20join%20the%20Monthly%20Beast%20Plan%20(KES%203500).%20Please%20share%20payment%20details." class="btn btn-outline btn-full" target="_blank">
+              <i class="fas fa-fire" aria-hidden="true"></i> Monthly Beast (KES 3,500)
+            </a>
+            <a href="https://wa.me/254702555093?text=Hi!%20I%20am%20interested%20in%20the%20Quarterly%20Champion%20Package%20(KES%209000).%20Please%20share%20payment%20details." class="btn btn-outline btn-full" target="_blank">
+              <i class="fas fa-crown" aria-hidden="true"></i> Quarterly Champion (KES 9,000)
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== CONTACT ===== -->
+    <section class="section section-alt" id="contact" aria-labelledby="contact-title">
+      <div class="container">
+        <div class="section-header">
+          <span class="tag"><i class="fas fa-location-dot" aria-hidden="true"></i> Visit Us Today</span>
+          <h2 id="contact-title">Located in the <span>Heart of Imara Daima</span></h2>
+          <p>Easy access for residents of Imara Daima, South B, Bellevue, and Mombasa Road environs.</p>
+        </div>
+        <div class="contact-wrapper">
+          <div class="contact-info">
+            <div class="item">
+              <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
+              <div class="text">
+                <h4>Physical Address</h4>
+                <p>123 Imara Road, off Mombasa Road, Imara, Nairobi</p>
+              </div>
+            </div>
+            <div class="item">
+              <i class="fab fa-whatsapp" aria-hidden="true"></i>
+              <div class="text">
+                <h4>Call / WhatsApp Direct</h4>
+                <p><a href="https://wa.me/254702555093" target="_blank">+254 702 555093</a></p>
+              </div>
+            </div>
+            <div class="item">
+              <i class="fas fa-envelope" aria-hidden="true"></i>
+              <div class="text">
+                <h4>Email Enquiries</h4>
+                <p><a href="mailto:harrisoncheruiyot04@gmail.com">harrisoncheruiyot04@gmail.com</a></p>
+              </div>
+            </div>
+            <div class="item">
+              <i class="fas fa-clock" aria-hidden="true"></i>
+              <div class="text">
+                <h4>Operating Hours</h4>
+                <p>Monday – Friday: 5:00 AM – 11:00 PM<br />Saturday – Sunday: 7:00 AM – 9:00 PM</p>
+              </div>
+            </div>
+          </div>
+          <!-- Simplify contact form to WhatsApp-only -->
+          <div class="contact-form-simple">
+            <h3>Send a Direct WhatsApp Message</h3>
+            <p>Fill in your details below and we'll open WhatsApp with your message pre-filled. No email required.</p>
+            <form id="contactForm" novalidate>
+              <div class="form-group">
+                <label for="contactName">Your Name *</label>
+                <input type="text" id="contactName" placeholder="e.g. Joy Wambui" autocomplete="name" required />
+              </div>
+              <div class="form-group">
+                <label for="contactPhone">Phone / WhatsApp Number *</label>
+                <input type="tel" id="contactPhone" placeholder="0702555093" autocomplete="tel" inputmode="tel" required />
+              </div>
+              <div class="form-group">
+                <label for="contactMessage">How can we help you? *</label>
+                <textarea id="contactMessage" placeholder="Ask about memberships, personal training packages, steam room passes..." required></textarea>
+              </div>
+              <button type="submit" class="btn btn-primary btn-full"><i class="fab fa-whatsapp" aria-hidden="true"></i> Send via WhatsApp</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== FAQ ===== -->
+    <section class="section" id="faq" aria-labelledby="faq-title">
+      <div class="container">
+        <div class="section-header">
+          <span class="tag"><i class="fas fa-circle-question" aria-hidden="true"></i> Clear Answers</span>
+          <h2 id="faq-title">Frequently Asked <span>Questions</span></h2>
+          <p>Got questions before stepping into the gym? We have answers.</p>
+        </div>
+        <div class="faq-grid">
+          <!-- Item 1 -->
+          <div class="faq-item open">
+            <button class="faq-question" aria-expanded="true" aria-controls="faq1">
+              <span>Where exactly are you located in Imara?</span>
+              <i class="fas fa-chevron-down" aria-hidden="true"></i>
+            </button>
+            <div class="faq-answer" id="faq1">
+              <p>We are conveniently situated along 123 Imara Road, just off Mombasa Road. We have dedicated, well-lit, and 24/7 guarded parking for all gym members.</p>
+            </div>
+          </div>
+          <!-- Item 2 -->
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false" aria-controls="faq2">
+              <span>How do payments work? Do you accept M-Pesa?</span>
+              <i class="fas fa-chevron-down" aria-hidden="true"></i>
+            </button>
+            <div class="faq-answer" id="faq2">
+              <p>Yes! We accept instant M-Pesa payments (Till/Paybill) directly at the front desk or via WhatsApp booking. Cash and major cards are also accepted.</p>
+            </div>
+          </div>
+          <!-- Item 3 -->
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false" aria-controls="faq3">
+              <span>I am a total beginner. Will I get support?</span>
+              <i class="fas fa-chevron-down" aria-hidden="true"></i>
+            </button>
+            <div class="faq-answer" id="faq3">
+              <p>100%. Every new member gets an introductory session with one of our certified coaches to walk through equipment usage, safety, and proper exercise posture.</p>
+            </div>
+          </div>
+          <!-- Item 4 -->
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false" aria-controls="faq4">
+              <span>Is steam room and sauna access included in membership?</span>
+              <i class="fas fa-chevron-down" aria-hidden="true"></i>
+            </button>
+            <div class="faq-answer" id="faq4">
+              <p>Yes! All Monthly Beast and Quarterly Champion packages include access to our clean steam room and detox sauna facilities.</p>
+            </div>
+          </div>
+          <!-- Item 5 -->
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false" aria-controls="faq5">
+              <span>Can I pause my membership if I travel outside Nairobi?</span>
+              <i class="fas fa-chevron-down" aria-hidden="true"></i>
+            </button>
+            <div class="faq-answer" id="faq5">
+              <p>Absolutely. You can freeze your monthly membership for up to 14 days with prior WhatsApp notification to our administration desk.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== TERMS & PRIVACY ===== -->
+    <section class="section section-alt" id="legal" aria-labelledby="legal-title">
+      <div class="container">
+        <div class="section-header">
+          <span class="tag"><i class="fas fa-shield-halved" aria-hidden="true"></i> Gym Policy</span>
+          <h2 id="legal-title">Terms &amp; <span>Gym Rules</span></h2>
+          <p>We maintain high standards of safety, hygiene, and mutual respect for all members.</p>
+        </div>
+        <div class="legal-grid">
+          <!-- Terms -->
+          <div class="legal-card open">
+            <button class="legal-header" aria-expanded="true" aria-controls="legal1">
+              <span>Gym Etiquette &amp; Code of Conduct</span>
+              <i class="fas fa-chevron-down" aria-hidden="true"></i>
+            </button>
+            <div class="legal-body" id="legal1">
+              <h4>1. Re-rack Your Weights</h4>
+              <p>Always return dumbbells, plates, and bars to their respective racks after completing your sets.</p>
+              <h4>2. Hygiene &amp; Towels</h4>
+              <p>Carry a workout towel at all times. Wipe down benches and equipment seats after use.</p>
+            </div>
+          </div>
+          <!-- Privacy -->
+          <div class="legal-card">
+            <button class="legal-header" aria-expanded="false" aria-controls="legal2">
+              <span>Privacy &amp; Data Security</span>
+              <i class="fas fa-chevron-down" aria-hidden="true"></i>
+            </button>
+            <div class="legal-body" id="legal2">
+              <h4>1. Contact Confidentiality</h4>
+              <p>Your WhatsApp number and email are strictly used for booking confirmations, workout updates, and membership renewals.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-grid">
+          <div class="footer-brand">
+            <h3><i class="fas fa-dumbbell" aria-hidden="true"></i> Flesh<span>&Bones</span></h3>
+            <p>Imara’s premier fitness hub. Built on strength, community, and zero excuses. Transform your body with real coaches.</p>
+          </div>
+          <div class="footer-col">
+            <h4>Quick Links</h4>
+            <ul>
+              <li><a href="#plans">Membership Pricing</a></li>
+              <li><a href="#amenities">World-Class Facilities</a></li>
+              <li><a href="#trainers">Coaching Staff</a></li>
+              <li><a href="#programs">Class Timetable</a></li>
+              <li><a href="#booking">Book Free Trial</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h4>Direct Contact</h4>
+            <ul>
+              <li><a href="https://wa.me/254702555093" target="_blank"><i class="fab fa-whatsapp" aria-hidden="true"></i> 0702555093</a></li>
+              <li><a href="mailto:harrisoncheruiyot04@gmail.com"><i class="fas fa-envelope" aria-hidden="true"></i> Email Head Coach</a></li>
+              <li><a href="#contact"><i class="fas fa-location-dot" aria-hidden="true"></i> 123 Imara Road, Nairobi</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h4>Connect With Us</h4>
+            <div class="footer-socials">
+              <a href="https://www.instagram.com/fleshandbonesgym" target="_blank" aria-label="Instagram"><i class="fab fa-instagram" aria-hidden="true"></i></a>
+              <a href="https://www.facebook.com/fleshandbonesgym" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f" aria-hidden="true"></i></a>
+              <a href="https://wa.me/254702555093" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp" aria-hidden="true"></i></a>
+            </div>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <span>© 2026 Flesh and Bones Gym. All rights reserved.</span>
+          <span>Built with energy in Nairobi <i class="fas fa-fire" style="color: var(--primary);"></i></span>
+        </div>
+      </div>
     </footer>
+  </main>
 
-    <!-- Floating WhatsApp button -->
-    <a href="https://wa.me/254702555093?text=Hi%20Redwood!%20I'd%20like%20to%20place%20an%20order." target="_blank"
-        rel="noopener noreferrer" class="wa-float" aria-label="Order now via WhatsApp">
-        <svg viewBox="0 0 24 24" width="28" height="28" aria-hidden="true">
-            <path fill="#fff" d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/>
-        </svg>
-    </a>
+  <!-- ===== BACK TO TOP ===== -->
+  <button class="back-to-top" id="backToTop" aria-label="Back to top" type="button">
+    <i class="fas fa-chevron-up" aria-hidden="true"></i>
+  </button>
+
+  <!-- ===== TOAST ===== -->
+  <div class="toast" id="toast" role="alert" aria-live="polite">
+    <span class="icon" id="toastIcon">✅</span>
+    <div>
+      <div class="msg" id="toastMsg">Success!</div>
+      <div class="sub" id="toastSub">Your request was received. We'll reply on WhatsApp!</div>
+    </div>
+  </div>
+
+  <script src="scripts.js" defer></script>
 </body>
 </html>
