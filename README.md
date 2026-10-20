@@ -1,151 +1,46 @@
-# Flesh and Bones Gym — Portfolio Demo
+## v2 — Audit remediation notes
 
-A mobile-first single-page site for a fictional Nairobi gym, built as a **portfolio demonstration** of a full audit → diagnose → remediate loop.
+This release implements the P0–P3 findings from the mobile-first audit. Highlights:
 
-> **Portfolio demo** — business details, testimonials, coach bios, and before/after imagery are illustrative. Replace with verified information before any commercial launch.
+### Conversion
+- **`tel:` click-to-call** added to the contact block, footer, nav-actions, and booking pre-chat box.
+- Hours copy unified across hero trust strip, contact section, and `ExerciseGym` JSON-LD.
+- Booking widget now hides the *time* field for Monthly/Quarterly subscriptions (only a start date is required).
+- **"Your First Visit"** 3-step section added before the booking section to answer "what happens when I show up?"
 
----
+### Performance
+- **Font Awesome CDN removed** — replaced with a ~33-icon inline SVG sprite (`<use href="#icon-…">`). Saves ~100 KB from first paint.
+- Service worker rewired to **stale-while-revalidate** for same-origin assets. The manual `v1 → v2` cache bump is no longer required to ship CSS/JS updates safely; successful navigations are also cached for offline.
+- `content-visibility: auto` **removed** from `.section` — the CLS risk from `contain-intrinsic-size: auto 500px` outweighed the marginal paint gain on a page this size.
+- Hero `min-height` capped to `min(100svh, 720px)` to prevent excessive scroll on small phones.
 
-## Quick start
+### Accessibility
+- Icon system now uses inline `<svg>` with `aria-hidden="true"` — no icon-font FOIT.
+- **Language toggle announces** via a visually-hidden `aria-live` region (`#langAnnounce`).
+- **Savings calculator** results announced via debounced `aria-live` region (`#calcAnnounce`).
+- **Timetable tabpanel** now sets `aria-labelledby` dynamically to the active tab.
+- **Contact form error messages** are field-specific ("Please enter your name", "Please enter a valid phone number") instead of generic.
+- **Theme toggle icon** swaps via CSS `[data-theme]` selector (no `innerHTML` rewrite).
+- `.tt-meta` no longer uppercased at 16px on mobile.
+- WhatsApp float min-size enforced (44×44).
+- Timetable tabs 4+3 wrapped at ≤480px (44×44 min).
 
-The site is a **static HTML page** — no build step, no npm install, no framework.
+### Trust & SEO
+- **Featured testimonial** moved below the hero — social proof is now visible in the first scroll.
+- Gallery moved after testimonials (supporting evidence after social proof).
+- `og:url`, `og:type`, `og:image:width/height`, `og:site_name`, `twitter:card`, `twitter:title/description/image` added.
+- `<meta name="keywords">` removed (obsolete).
+- FAQ JSON-LD answers **synced verbatim** with the visible `<details>` copy.
+- `<noscript>` fallback added to the map block (direct Google Maps link).
+- "Reviews" unhidden in the mobile nav.
 
-```bash
-# Option 1 — Python
-python3 -m http.server 3000
+### Bug fixes
+- Booking `min` date now uses **local** timezone (previously UTC — off-by-one near midnight for Nairobi users).
+- `localStorage` access wrapped in try/catch — safe in Safari private mode.
 
-# Option 2 — Node
-npx serve -l 3000 .
-
-# Option 3 — PHP
-php -S localhost:3000
-```
-
-Then open <http://localhost:3000>.
-
-> **Note:** the service worker only registers over HTTP(S). Open via `localhost` or HTTPS to test PWA behaviour.
-
----
-
-## What's included
-
-- **WhatsApp-first conversion** — every CTA opens WhatsApp with a contextual message.
-- **Booking widget** — native date/time pickers, structured message, draft persistence.
-- **Interactive timetable** with per-class `.ics` calendar download.
-- **Bilingual EN ⇄ Kiswahili** toggle (core journey only).
-- **Before/after slider** — keyboard, touch, and screen-reader accessible.
-- **Savings calculator** — interactive range comparison.
-- **Click-to-load Google Map** — no third-party iframe until the user opts in.
-- **Per-coach booking** — each trainer card links to a dedicated WhatsApp CTA.
-- **Contact form** — per-field validation, `aria-invalid`, draft persistence.
-- **Dark/light theme** with persisted preference.
-- **PWA** — installable, offline app shell.
-- **Scroll progress bar** and reveal-on-scroll animations.
-- **Full no-JS fallbacks** — navigation, FAQ, and legal all work without JavaScript.
-
----
-
-## Stack
-
-- **HTML5** — semantic landmarks, skip link, structured data (ExerciseGym, FAQPage, OfferCatalog).
-- **CSS3** — variables, `clamp()`, `prefers-reduced-motion`, `@supports`.
-- **Vanilla JavaScript** — deferred, IIFE-scoped, no framework.
-
----
-
-## File structure
-
-```
-.
-├── index.html
-├── styles.css
-├── scripts.js
-├── manifest.webmanifest
-├── sw.js
-└── README.md
-```
-
----
-
-## Technical decisions
-
-### Native `<details>` for FAQ & legal
-FAQ and legal sections use native `<details>`/`<summary>` so they work **without JavaScript**. Answers remain keyboard and screen-reader accessible by default.
-
-### Progressive enhancement of mobile nav
-`<html class="no-js">` is swapped to `class="js"` in `<head>` before render. Without JS, the nav is a **visible wrapped list**. With JS, it becomes a drawer.
-
-### No framework, by choice
-The site is a single page with ~600 lines of behaviour. A framework would add hundreds of KB of JS, a build step, and state bugs that don't exist here.
-
-### i18n scope is deliberate
-The EN ⇄ SW toggle translates the **core journey** (nav, hero, CTAs, form labels, section headers, footer). Testimonial copy, plan features, and legal text stay in English. Real bilingual sites are pragmatic about coverage.
-
-**Note:** Swahili copy is best-effort and should be reviewed by a native speaker before production.
-
-### ICS uses floating local time
-Calendar downloads use floating local time (`DTSTART:20260412T060000`, no `Z`). This is the correct format for a Nairobi gym: "06:00 in the user's local calendar." Full UTC conversion was rejected as over-engineering for a single-timezone business.
-
-### Service worker is honest
-- **HTML** — network-first (updates ship immediately)
-- **Static assets** — cache-first
-- **Cross-origin** — network only
-
-A portfolio piece should demonstrate the pattern without pretending to be a production CDN strategy.
-
----
-
-## Accessibility
-
-Verified in code:
-
-- Semantic landmarks, skip link, logical heading structure
-- Keyboard-operable mobile drawer (Escape closes, focus returns to hamburger)
-- Focus trap within open drawer
-- Native `<details>`/`<summary>` FAQ
-- Visible focus indicators (`:focus-visible`)
-- `aria-invalid` + `aria-describedby` + `role="alert"` on validation errors
-- Before/after slider implemented as native range input
-- `prefers-reduced-motion` respected (CSS + JS counter + slider)
-- 16px minimum body text on mobile
-- Touch targets ≥ 44×44 for interactive controls
-
-**Manual verification still required:**
-- Colour contrast of small `--primary` labels
-- Full screen-reader walk-through (VoiceOver / NVDA)
-- 200% browser zoom
-- Physical device test on a mid-range Android phone
-
----
-
-## Deployment
-
-Works on any static host: GitHub Pages, Netlify, Vercel, Cloudflare Pages.
-
-The service worker uses relative paths, so it works on subpaths (e.g. `user.github.io/repo/`).
-
-### Optional production build
+### Self-hosting still recommended for production
+The Unsplash image dependency was **not** removed in this pass, as self-hosting requires downloading and converting ~13 images to AVIF/WebP at their rendered dimensions. For a real launch:
 
 ```bash
-npx lightningcss --minify styles.css -o styles.min.css
-npx esbuild scripts.js --minify --outfile=scripts.min.js
-```
-
-Then update the two references in `index.html` to the `.min` files.
-
-For further performance gains, self-host the two font families and swap Font Awesome for inline SVGs.
-
----
-
-## Limitations
-
-- **No backend.** All flows open WhatsApp with a pre-filled message. No data is stored server-side.
-- **Illustrative content.** Business details and images are demo content.
-- **Swahili copy** is best-effort.
-- **Analytics** hooks (`data-track` attributes, `trackEvent()`) are present but no analytics script is loaded. Add your tool of choice when deploying.
-
----
-
-## License
-
-MIT — free to use as a reference.
+# one-time, per image
+npx @squoosh/cli --avif '{"cqLevel":30}' --webp '{"quality":75}' hero.jpg

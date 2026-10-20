@@ -1,6 +1,8 @@
 /* ==========================================================
-   FLESH AND BONES GYM — INTERACTION ENGINE
+   FLESH AND BONES GYM — INTERACTION ENGINE (v2)
    Vanilla JS, IIFE-scoped, progressive enhancement throughout.
+   v2: SVG icon system, aria-live announcements, subscription-aware booking,
+       per-field form errors, local-date fix, tabpanel a11y.
    ========================================================== */
 
 (function () {
@@ -30,6 +32,22 @@
   }
 
   const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  function safeStorageGet(key) {
+    try { return localStorage.getItem(key); } catch (e) { return null; }
+  }
+  function safeStorageSet(key, val) {
+    try { localStorage.setItem(key, val); } catch (e) {}
+  }
+  function safeStorageRemove(key) {
+    try { localStorage.removeItem(key); } catch (e) {}
+  }
+
+  // Local YYYY-MM-DD from a Date (not UTC)
+  function localIsoDate(d) {
+    const pad = (n) => String(n).padStart(2, '0');
+    return d.getFullYear() + '-' + pad(d.getMonth() + 1) + '-' + pad(d.getDate());
+  }
 
   // ------------------------------------------------------------
   // Analytics hook (optional — activate by including GA4/Plausible)
@@ -63,25 +81,22 @@
   }
 
   // ------------------------------------------------------------
-  // Theme (persisted)
+  // Theme — CSS-driven icon swap, no JS innerHTML
   // ------------------------------------------------------------
   const themeToggle = document.getElementById('themeToggle');
-  const savedTheme = localStorage.getItem('fb_theme');
+  const savedTheme = safeStorageGet('fb_theme');
   if (savedTheme === 'dark') {
     document.documentElement.setAttribute('data-theme', 'dark');
-    if (themeToggle) themeToggle.innerHTML = '<i class="fas fa-sun" aria-hidden="true"></i>';
   }
   if (themeToggle) {
     themeToggle.addEventListener('click', () => {
       const current = document.documentElement.getAttribute('data-theme');
       if (current === 'dark') {
         document.documentElement.removeAttribute('data-theme');
-        localStorage.setItem('fb_theme', 'light');
-        themeToggle.innerHTML = '<i class="fas fa-moon" aria-hidden="true"></i>';
+        safeStorageSet('fb_theme', 'light');
       } else {
         document.documentElement.setAttribute('data-theme', 'dark');
-        localStorage.setItem('fb_theme', 'dark');
-        themeToggle.innerHTML = '<i class="fas fa-sun" aria-hidden="true"></i>';
+        safeStorageSet('fb_theme', 'dark');
       }
     });
   }
@@ -131,7 +146,7 @@
       'hero.lede': 'Chuma kizito, eneo la mazoezi, chumba cha mvuke, na makocha wanaokufanya uwajibike — katikati ya Imara, Nairobi.',
 
       'trust.mpesa': 'M-Pesa inakubaliwa',
-      'trust.hours': 'Wazi 5 AM – 11 PM',
+      'trust.hours': 'Jumatatu–Ijumaa 5–11, Jumamosi–Jumapili 7–9',
       'trust.location': 'Imara Daima, Nairobi',
 
       'stat.members': 'Wanachama Hai',
@@ -260,7 +275,7 @@
       'faq.title2': 'Yanayoulizwa Mara kwa Mara',
 
       'footer.quick': 'Viungo vya Haraka',
-      'footer.contact': 'Mawasiliano ya Moja kwa Moja',
+      'footer.contact': 'Mawasiliano ya Moja kwa moja',
       'footer.connect': 'Ungana Nasi',
       'footer.bookTrial': 'Weka Jaribio la Bure'
     }
@@ -290,15 +305,21 @@
       );
     }
 
-    try { localStorage.setItem('fb_lang', lang); } catch (e) {}
+    // Announce change for screen readers
+    const announce = document.getElementById('langAnnounce');
+    if (announce) {
+      announce.textContent = lang === 'sw'
+        ? 'Lugha imebadilishwa kuwa Kiswahili'
+        : 'Language switched to English';
+    }
+
+    safeStorageSet('fb_lang', lang);
   }
 
   let preferredLang = 'en';
-  try {
-    const stored = localStorage.getItem('fb_lang');
-    if (stored === 'sw' || stored === 'en') preferredLang = stored;
-    else if (navigator.language && navigator.language.toLowerCase().startsWith('sw')) preferredLang = 'sw';
-  } catch (e) {}
+  const stored = safeStorageGet('fb_lang');
+  if (stored === 'sw' || stored === 'en') preferredLang = stored;
+  else if (navigator.language && navigator.language.toLowerCase().startsWith('sw')) preferredLang = 'sw';
 
   const langToggle = document.getElementById('langToggle');
   if (langToggle) {
@@ -404,7 +425,7 @@
   // Reveal animations
   // ------------------------------------------------------------
   const revealElements = document.querySelectorAll(
-    '.plan-card, .trainer-card, .amenity-card, .testimonial-card, .gallery-item, .tt-item'
+    '.plan-card, .trainer-card, .amenity-card, .testimonial-card, .gallery-item, .tt-item, .step-card, .featured-quote'
   );
 
   if ('IntersectionObserver' in window) {
@@ -502,12 +523,23 @@
     function validateField(input) {
       const errorEl = document.getElementById(input.id + 'Error');
       let message = '';
+      const phoneRe = /^[0-9+\s()\-]{7,}$/;
+
       if (input.validity.valueMissing) {
-        message = 'Please fill in this field.';
+        switch (input.id) {
+          case 'contactName': message = 'Please enter your name.'; break;
+          case 'contactPhone': message = 'Please enter your phone number.'; break;
+          case 'contactMessage': message = 'Please tell us how we can help.'; break;
+          default: message = 'Please fill in this field.';
+        }
       } else if (input.validity.tooShort) {
         message = 'Please use at least ' + input.minLength + ' characters.';
       } else if (input.validity.typeMismatch) {
-        message = 'Please enter a valid value.';
+        message = input.type === 'tel'
+          ? 'Please enter a valid phone number (e.g. 0702555093).'
+          : 'Please enter a valid value.';
+      } else if (input.type === 'tel' && input.value.trim() && !phoneRe.test(input.value.trim())) {
+        message = 'Please enter a valid phone number (e.g. 0702555093).';
       }
 
       if (errorEl) errorEl.textContent = message;
@@ -523,13 +555,13 @@
           phone: document.getElementById('contactPhone').value,
           message: document.getElementById('contactMessage').value
         };
-        localStorage.setItem(DRAFT_KEY, JSON.stringify(data));
+        safeStorageSet(DRAFT_KEY, JSON.stringify(data));
       } catch (e) {}
     }, 500);
 
     function restoreDraft() {
       try {
-        const raw = localStorage.getItem(DRAFT_KEY);
+        const raw = safeStorageGet(DRAFT_KEY);
         if (!raw) return;
         const data = JSON.parse(raw);
         if (data.name) document.getElementById('contactName').value = data.name;
@@ -539,7 +571,7 @@
     }
 
     function clearDraft() {
-      try { localStorage.removeItem(DRAFT_KEY); } catch (e) {}
+      safeStorageRemove(DRAFT_KEY);
     }
 
     restoreDraft();
@@ -580,7 +612,7 @@
   }
 
   // ------------------------------------------------------------
-  // Booking widget
+  // Booking widget — subscription-aware fields
   // ------------------------------------------------------------
   const bookingWidget = document.getElementById('bookingWidget');
   if (bookingWidget) {
@@ -588,27 +620,55 @@
     const timeInput = document.getElementById('bwTime');
     const passInput = document.getElementById('bwPass');
     const errorEl = document.getElementById('bwError');
+    const timeRow = document.getElementById('bwTimeRow');
+    const dateLabel = document.getElementById('bwDateLabel');
 
-    const today = new Date();
-    const iso = today.toISOString().split('T')[0];
-    if (dateInput) dateInput.min = iso;
+    // min date from local time, not UTC
+    if (dateInput) dateInput.min = localIsoDate(new Date());
 
+    // restore draft
     try {
-      const draft = JSON.parse(localStorage.getItem('fb_booking_draft') || '{}');
-      if (draft.pass && passInput) passInput.value = draft.pass;
-      if (draft.date && dateInput) dateInput.value = draft.date;
-      if (draft.time && timeInput) timeInput.value = draft.time;
+      const draftRaw = safeStorageGet('fb_booking_draft');
+      if (draftRaw) {
+        const draft = JSON.parse(draftRaw);
+        if (draft.pass && passInput) passInput.value = draft.pass;
+        if (draft.date && dateInput) dateInput.value = draft.date;
+        if (draft.time && timeInput) timeInput.value = draft.time;
+      }
     } catch (e) {}
+
+    function updateBookingFields() {
+      if (!passInput) return;
+      const isSubscription = /Monthly|Quarterly/.test(passInput.value);
+      if (timeRow) timeRow.style.display = isSubscription ? 'none' : '';
+      if (timeInput) timeInput.required = !isSubscription;
+      if (dateInput) dateInput.required = true;
+      if (dateLabel) {
+        dateLabel.textContent = isSubscription ? 'Preferred start date' : 'Preferred date';
+      }
+      if (isSubscription && timeInput) timeInput.value = '';
+      if (errorEl) errorEl.textContent = '';
+    }
+
+    if (passInput) {
+      passInput.addEventListener('change', updateBookingFields);
+      updateBookingFields();
+    }
 
     bookingWidget.addEventListener('submit', (e) => {
       e.preventDefault();
       const pass = passInput.value;
+      const isSubscription = /Monthly|Quarterly/.test(pass);
       const date = dateInput.value;
-      const time = timeInput.value;
+      const time = isSubscription ? null : timeInput.value;
 
-      if (!pass || !date || !time) {
-        if (errorEl) errorEl.textContent = 'Please choose a pass, date, and time.';
-        const focusTarget = !date ? dateInput : (!time ? timeInput : passInput);
+      if (!pass || !date || (!isSubscription && !time)) {
+        if (errorEl) {
+          errorEl.textContent = isSubscription
+            ? 'Please choose a membership and a start date.'
+            : 'Please choose a pass, date, and time.';
+        }
+        const focusTarget = !date ? dateInput : (!isSubscription && !time ? timeInput : passInput);
         if (focusTarget) focusTarget.focus();
         return;
       }
@@ -619,10 +679,12 @@
         weekday: 'short', day: 'numeric', month: 'short', year: 'numeric'
       });
 
-      const text = 'Hi! I\'d like to book a ' + pass + ' for ' + formatted + ' at ' + time + '. Please confirm.';
+      const text = isSubscription
+        ? 'Hi! I\'d like to start the ' + pass + ' on ' + formatted + '. Please confirm.'
+        : 'Hi! I\'d like to book a ' + pass + ' for ' + formatted + ' at ' + time + '. Please confirm.';
 
       try {
-        localStorage.setItem('fb_booking_draft', JSON.stringify({ pass, date, time }));
+        safeStorageSet('fb_booking_draft', JSON.stringify({ pass, date, time: time || '' }));
       } catch (e) {}
 
       trackEvent('booking:widget-success');
@@ -765,7 +827,7 @@
         addBtn.type = 'button';
         addBtn.className = 'tt-add';
         addBtn.setAttribute('aria-label', 'Add ' + cls.title + ' to calendar');
-        addBtn.innerHTML = '<i class="fas fa-calendar-plus" aria-hidden="true"></i> Add';
+        addBtn.innerHTML = '<svg class="icon" aria-hidden="true"><use href="#icon-calendar-plus"/></svg> Add';
 
         addBtn.addEventListener('click', () => {
           const start = getNextOccurrence(dayKey, cls.time);
@@ -794,6 +856,8 @@
         const isSel = tab.dataset.day === dayKey;
         tab.setAttribute('aria-selected', isSel ? 'true' : 'false');
       });
+      // Update tabpanel aria-labelledby to active tab
+      if (list) list.setAttribute('aria-labelledby', 'tab-' + dayKey);
       renderDay(dayKey);
     }
 
@@ -835,13 +899,18 @@
   }
 
   // ------------------------------------------------------------
-  // Savings calculator
+  // Savings calculator (debounced live region for screen readers)
   // ------------------------------------------------------------
   const visitsRange = document.getElementById('visitsRange');
   const visitsOut = document.getElementById('visitsOut');
   const calcDaily = document.getElementById('calcDaily');
   const calcSaveMonthly = document.getElementById('calcSaveMonthly');
   const calcSaveQuarterly = document.getElementById('calcSaveQuarterly');
+  const calcAnnounce = document.getElementById('calcAnnounce');
+
+  const announceCalc = debounce((msg) => {
+    if (calcAnnounce) calcAnnounce.textContent = msg;
+  }, 800);
 
   if (visitsRange) {
     const DAILY = 300;
@@ -860,6 +929,12 @@
       if (calcDaily) calcDaily.textContent = fmt(dailyCost);
       if (calcSaveMonthly) calcSaveMonthly.textContent = 'Save KES ' + fmt(saveMonthly);
       if (calcSaveQuarterly) calcSaveQuarterly.textContent = 'Save KES ' + fmt(saveQuarterly) + ' / mo';
+
+      announceCalc(
+        'Visits: ' + visits + ' per month. Daily passes total ' + fmt(dailyCost) +
+        ' KES. Monthly Beast saves ' + fmt(saveMonthly) +
+        ' KES. Quarterly saves ' + fmt(saveQuarterly) + ' KES per month.'
+      );
     }
     visitsRange.addEventListener('input', recalc);
     recalc();

@@ -5,11 +5,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <title>Flesh and Bones Gym | Premium Fitness & Strength Hub in Imara, Nairobi</title>
   <meta name="description" content="Nairobi's premier strength & conditioning gym in Imara. Heavy iron, steam room, smoothie bar, and top coaches. Book your free day pass today!" />
-  <meta name="keywords" content="gym Imara Nairobi, fitness center Nairobi, personal trainer Imara, bodybuilding Nairobi, steam room gym Imara, weight loss Nairobi, M-Pesa gym payment" />
   <link rel="canonical" href="https://fleshandbonesgym.com/" />
+
   <meta property="og:title" content="Flesh and Bones Gym – No Stories. Just Results." />
   <meta property="og:description" content="Level up your fitness at Imara's top-rated world-class gym. Steam room, functional turf, elite coaches, and zero excuses." />
   <meta property="og:image" content="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=1200&h=630&q=80" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:url" content="https://fleshandbonesgym.com/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Flesh and Bones Gym" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Flesh and Bones Gym – No Stories. Just Results." />
+  <meta name="twitter:description" content="Imara's premium strength & recovery gym. Free day pass, no long commitment." />
+  <meta name="twitter:image" content="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=1200&h=630&q=80" />
+
   <meta name="robots" content="index, follow" />
   <meta name="theme-color" content="#d1342c" />
 
@@ -22,7 +33,6 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="preconnect" href="https://images.unsplash.com" />
-  <link rel="preconnect" href="https://cdnjs.cloudflare.com" />
 
   <link rel="preload" as="image"
     imagesrcset="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=400&q=80 400w, https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=800&q=80 800w, https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=1200&q=80 1200w"
@@ -60,11 +70,11 @@
       "@type": "FAQPage",
       "mainEntity": [
         { "@type": "Question", "name": "Where exactly are you located in Imara?",
-          "acceptedAnswer": { "@type": "Answer", "text": "We are on the ground floor of Imara Daima Business Park, just off Mombasa Road. 24/7 guarded parking is available for all gym members." } },
+          "acceptedAnswer": { "@type": "Answer", "text": "We're on the ground floor of Imara Daima Business Park, just off Mombasa Road. Dedicated, well-lit, 24/7 guarded parking is available for all gym members." } },
         { "@type": "Question", "name": "How do payments work? Do you accept M-Pesa?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Yes — instant M-Pesa Till or Paybill at the front desk or via WhatsApp. Cash and major cards are also accepted." } },
+          "acceptedAnswer": { "@type": "Answer", "text": "Yes — instant M-Pesa (Till/Paybill) at the front desk or via WhatsApp booking. Cash and major cards are also accepted." } },
         { "@type": "Question", "name": "I am a total beginner. Will I get support?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Every new member gets an introductory session with a certified coach covering equipment, safety, and posture." } },
+          "acceptedAnswer": { "@type": "Answer", "text": "100%. Every new member gets an introductory session with a certified coach covering equipment, safety, and posture." } },
         { "@type": "Question", "name": "Is steam room and sauna access included?",
           "acceptedAnswer": { "@type": "Answer", "text": "Yes — all Monthly Beast and Quarterly Champion packages include steam room and detox sauna access." } },
         { "@type": "Question", "name": "Can I pause my membership?",
@@ -86,39 +96,71 @@
     }
   </script>
 
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" media="print" onload="this.media='all'" />
-  <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" /></noscript>
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Fraunces:opsz,wght@9..144,700;9..144,800;9..144,900&display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
   <noscript><link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Fraunces:opsz,wght@9..144,700;9..144,800;9..144,900&display=swap" rel="stylesheet" /></noscript>
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <!--
-    PORTFOLIO DEMONSTRATION SITE
-    Business details, testimonials, coach bios, and before/after imagery are
-    illustrative. Replace with verified information before any commercial launch.
-  -->
+
+  <!-- SVG SPRITE — inline icon system (replaces Font Awesome CDN) -->
+  <svg xmlns="http://www.w3.org/2000/svg" style="position:absolute;width:0;height:0;overflow:hidden" aria-hidden="true" focusable="false">
+    <!-- Brand -->
+    <symbol id="icon-whatsapp" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></symbol>
+    <symbol id="icon-instagram" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></symbol>
+    <symbol id="icon-facebook" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></symbol>
+    <!-- Outline / UI -->
+    <symbol id="icon-dumbbell" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6.5 6.5h11"/><path d="M6.5 17.5h11"/><path d="M3 9v6"/><path d="M21 9v6"/><path d="M6 5v14"/><path d="M18 5v14"/></symbol>
+    <symbol id="icon-fire" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8.5 14.5A2.5 2.5 0 0011 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 11-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 002.5 2.5z"/></symbol>
+    <symbol id="icon-clock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></symbol>
+    <symbol id="icon-map-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></symbol>
+    <symbol id="icon-phone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></symbol>
+    <symbol id="icon-smartphone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></symbol>
+    <symbol id="icon-tag" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.59 13.41l-7.17 7.17a2 2 0 01-2.83 0L2 12V2h10l8.59 8.59a2 2 0 010 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></symbol>
+    <symbol id="icon-star" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></symbol>
+    <symbol id="icon-spa" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2c2 3 2 5 0 7s-2 4 0 7c0 0-2-1-4-3s-2-5 0-7 4-4 4-4z"/></symbol>
+    <symbol id="icon-cocktail" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 22h8"/><path d="M12 11v11"/><path d="M3 2h18l-9 11z"/></symbol>
+    <symbol id="icon-shower" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4l2.5 2.5"/><path d="M13.381 13.381A2 2 0 1015 16l5.5-5.5a2 2 0 10-2.828-2.828L13.381 13.381z"/><path d="M4 20v-4"/><path d="M8 20v-4"/><path d="M12 20v-4"/><path d="M16 20v-4"/></symbol>
+    <symbol id="icon-wifi" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.55a11 11 0 0114.08 0"/><path d="M1.42 9a16 16 0 0121.16 0"/><path d="M8.53 16.11a6 6 0 016.95 0"/><line x1="12" y1="20" x2="12.01" y2="20"/></symbol>
+    <symbol id="icon-parking" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 17V7h4a3 3 0 010 6H9"/></symbol>
+    <symbol id="icon-wallet" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12V8H6a2 2 0 01-2-2c0-1.1.9-2 2-2h12v4"/><path d="M4 6v12c0 1.1.9 2 2 2h14v-4"/><path d="M18 12a2 2 0 000 4h4v-4z"/></symbol>
+    <symbol id="icon-check-circle" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></symbol>
+    <symbol id="icon-shield" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></symbol>
+    <symbol id="icon-calendar" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></symbol>
+    <symbol id="icon-calendar-plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/><line x1="12" y1="14" x2="12" y2="18"/><line x1="10" y1="16" x2="14" y2="16"/></symbol>
+    <symbol id="icon-camera" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 01-2 2H3a2 2 0 01-2-2V8a2 2 0 012-2h4l2-3h6l2 3h4a2 2 0 012 2z"/><circle cx="12" cy="13" r="4"/></symbol>
+    <symbol id="icon-sparkles" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.9 4.6L18.5 9.5 13.9 11.4 12 16l-1.9-4.6L5.5 9.5 10.1 7.6z"/></symbol>
+    <symbol id="icon-quote" viewBox="0 0 24 24" fill="currentColor"><path d="M6 17h3l2-4V7H5v6h3zm8 0h3l2-4V7h-6v6h3z"/></symbol>
+    <symbol id="icon-ticket" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9a2 2 0 012-2h14a2 2 0 012 2v2a2 2 0 010 4v2a2 2 0 01-2 2H5a2 2 0 01-2-2v-2a2 2 0 010-4z"/></symbol>
+    <symbol id="icon-bolt" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></symbol>
+    <symbol id="icon-crown" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 4l3 12h14l3-12-6 7-4-7-4 7-6-7z"/></symbol>
+    <symbol id="icon-mail" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></symbol>
+    <symbol id="icon-map" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"/><line x1="8" y1="2" x2="8" y2="18"/><line x1="16" y1="6" x2="16" y2="22"/></symbol>
+    <symbol id="icon-help" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></symbol>
+    <symbol id="icon-chevron-down" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></symbol>
+    <symbol id="icon-chevron-up" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></symbol>
+    <symbol id="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></symbol>
+    <symbol id="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></symbol>
+  </svg>
 
   <a class="skip-link" href="#main">Skip to main content</a>
 
-  <!-- Scroll progress -->
+  <div id="langAnnounce" class="visually-hidden" aria-live="polite"></div>
+
   <div class="scroll-progress" aria-hidden="true">
     <div class="scroll-progress-bar" id="scrollProgress"></div>
   </div>
 
-  <!-- Floating WhatsApp -->
   <a href="https://wa.me/254702555093?text=Hi%20Flesh%20%26%20Bones%20Gym!%20I%20want%20to%20claim%20my%20Free%20Trial%20Pass."
      class="whatsapp-float" target="_blank" rel="noopener"
      aria-label="Chat on WhatsApp" data-track="float:whatsapp">
-    <i class="fab fa-whatsapp" aria-hidden="true"></i>
+    <svg class="icon" aria-hidden="true"><use href="#icon-whatsapp"/></svg>
     <span data-i18n="cta.chat">Chat with Us</span>
   </a>
 
-  <!-- NAVBAR -->
   <header class="navbar" id="navbar">
     <div class="container">
       <a href="#home" class="logo" aria-label="Flesh and Bones Gym home">
-        <i class="fas fa-dumbbell" aria-hidden="true"></i> Flesh<span>&amp;Bones</span>
+        <svg class="icon" aria-hidden="true"><use href="#icon-dumbbell"/></svg> Flesh<span>&amp;Bones</span>
       </a>
       <nav aria-label="Main Navigation">
         <ul class="nav-links" id="navLinks" role="list">
@@ -126,24 +168,28 @@
           <li><a href="#amenities" data-i18n="nav.facilities">Facilities</a></li>
           <li><a href="#plans" data-i18n="nav.memberships">Memberships</a></li>
           <li><a href="#trainers" data-i18n="nav.coaches">Coaches</a></li>
+          <li><a href="#testimonials" data-i18n="nav.reviews">Reviews</a></li>
           <li class="nav-secondary"><a href="#programs" data-i18n="nav.classes">Classes</a></li>
-          <li class="nav-secondary"><a href="#testimonials" data-i18n="nav.reviews">Reviews</a></li>
           <li class="nav-secondary"><a href="#faq" data-i18n="nav.faq">FAQ</a></li>
           <li><a href="#contact" data-i18n="nav.contact">Contact</a></li>
           <li><a href="#booking" class="nav-cta" data-track="nav:free-pass" data-i18n="nav.freePass">Free Pass</a></li>
         </ul>
       </nav>
       <div class="nav-actions">
+        <a href="tel:+254702555093" class="icon-btn" aria-label="Call us" data-track="nav:call">
+          <svg class="icon" aria-hidden="true"><use href="#icon-phone"/></svg>
+        </a>
         <button class="lang-toggle" id="langToggle" type="button"
                 aria-label="Switch language to Kiswahili">SW</button>
         <a href="https://wa.me/254702555093?text=Hi%20Coach,%20I'm%20ready%20to%20start%20my%20fitness%20journey!"
            target="_blank" rel="noopener" class="btn btn-sm btn-whatsapp"
            data-track="nav:whatsapp">
-          <i class="fab fa-whatsapp" aria-hidden="true"></i>
+          <svg class="icon" aria-hidden="true"><use href="#icon-whatsapp"/></svg>
           <span data-i18n="cta.quickWhatsapp">Quick WhatsApp</span>
         </a>
         <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" type="button">
-          <i class="fas fa-moon" aria-hidden="true"></i>
+          <svg class="icon theme-icon-light" aria-hidden="true"><use href="#icon-moon"/></svg>
+          <svg class="icon theme-icon-dark" aria-hidden="true"><use href="#icon-sun"/></svg>
         </button>
         <button class="hamburger" id="hamburger" aria-label="Toggle navigation"
                 aria-expanded="false" aria-controls="navLinks" type="button">
@@ -161,7 +207,7 @@
       <div class="container">
         <div class="hero-content">
           <span class="hero-tag">
-            <i class="fas fa-fire" aria-hidden="true"></i>
+            <svg class="icon" aria-hidden="true"><use href="#icon-fire"/></svg>
             <span data-i18n="hero.tag">Form Ni Gani? Stop Planning, Start Lifting</span>
           </span>
           <h1 id="hero-title">
@@ -172,18 +218,18 @@
           <div class="hero-buttons">
             <a href="https://wa.me/254702555093?text=Hi!%20I%20want%20to%20book%20a%20Free%20Trial%20Session%20at%20Flesh%20and%20Bones%20Gym."
                class="btn btn-primary" target="_blank" rel="noopener" data-track="hero:free-pass">
-              <i class="fab fa-whatsapp" aria-hidden="true"></i>
+              <svg class="icon" aria-hidden="true"><use href="#icon-whatsapp"/></svg>
               <span data-i18n="cta.claimPass">Claim Free Day Pass</span>
             </a>
             <a href="#plans" class="btn btn-outline" data-track="hero:view-plans">
-              <i class="fas fa-tag" aria-hidden="true"></i>
+              <svg class="icon" aria-hidden="true"><use href="#icon-tag"/></svg>
               <span data-i18n="cta.viewRates">View Membership Rates</span>
             </a>
           </div>
           <ul class="trust-strip" role="list" aria-label="Quick facts">
-            <li><i class="fas fa-mobile-screen" aria-hidden="true"></i><span data-i18n="trust.mpesa">M-Pesa accepted</span></li>
-            <li><i class="fas fa-clock" aria-hidden="true"></i><span data-i18n="trust.hours">Open 5 AM – 11 PM</span></li>
-            <li><i class="fas fa-location-dot" aria-hidden="true"></i><span data-i18n="trust.location">Imara Daima, Nairobi</span></li>
+            <li><svg class="icon" aria-hidden="true"><use href="#icon-smartphone"/></svg><span data-i18n="trust.mpesa">M-Pesa accepted</span></li>
+            <li><svg class="icon" aria-hidden="true"><use href="#icon-clock"/></svg><span data-i18n="trust.hours">Mon–Fri 5–11, Sat–Sun 7–9</span></li>
+            <li><svg class="icon" aria-hidden="true"><use href="#icon-map-pin"/></svg><span data-i18n="trust.location">Imara Daima, Nairobi</span></li>
           </ul>
           <div class="hero-stats">
             <div class="stat"><h3>500+</h3><p data-i18n="stat.members">Active Members</p></div>
@@ -203,42 +249,63 @@
       </div>
     </section>
 
+    <!-- FEATURED TESTIMONIAL — trust moment moved up -->
+    <section class="featured-quote-section" aria-labelledby="featured-quote-heading">
+      <div class="container">
+        <h2 id="featured-quote-heading" class="visually-hidden">Member testimonial</h2>
+        <figure class="featured-quote">
+          <div class="stars" aria-label="Rated 5 out of 5 stars">
+            <svg class="icon" aria-hidden="true"><use href="#icon-star"/></svg>
+            <svg class="icon" aria-hidden="true"><use href="#icon-star"/></svg>
+            <svg class="icon" aria-hidden="true"><use href="#icon-star"/></svg>
+            <svg class="icon" aria-hidden="true"><use href="#icon-star"/></svg>
+            <svg class="icon" aria-hidden="true"><use href="#icon-star"/></svg>
+          </div>
+          <blockquote>I used to sit in Mombasa Road traffic thinking about working out. Now I'm in the gym by 5:30 AM. Down 12kg in 4 months — the steam room after leg day is legendary.</blockquote>
+          <figcaption>
+            <span class="initials" aria-hidden="true">BK</span>
+            <span><strong>Brian Kiprop</strong> &middot; Imara Resident, 8 months</span>
+          </figcaption>
+        </figure>
+      </div>
+    </section>
+
     <!-- AMENITIES -->
     <section class="section" id="amenities" aria-labelledby="amenities-title">
       <div class="container">
         <div class="section-header">
-          <span class="tag"><i class="fas fa-star" aria-hidden="true"></i> <span data-i18n="amenities.tag">World-Class Standard</span></span>
+          <span class="tag"><svg class="icon" aria-hidden="true"><use href="#icon-star"/></svg> <span data-i18n="amenities.tag">World-Class Standard</span></span>
           <h2 id="amenities-title"><span data-i18n="amenities.title1">Built for Performance.</span> <span class="text-primary" data-i18n="amenities.title2">Designed for Comfort.</span></h2>
           <p data-i18n="amenities.lede">Everything you need under one roof to train like a pro and recover like royalty.</p>
         </div>
         <div class="amenities-grid">
           <div class="amenity-card">
-            <i class="fas fa-dumbbell" aria-hidden="true"></i>
+            <svg class="icon" aria-hidden="true"><use href="#icon-dumbbell"/></svg>
             <h3 data-i18n="amenity.iron.title">Hammer Strength &amp; Eleiko Racks</h3>
             <p data-i18n="amenity.iron.body">Heavy duty Olympic platforms, bumper plates, power cages, and dumbbells scaling up to 50kg for serious lifters.</p>
           </div>
           <div class="amenity-card">
-            <i class="fas fa-spa" aria-hidden="true"></i>
+            <svg class="icon" aria-hidden="true"><use href="#icon-spa"/></svg>
             <h3 data-i18n="amenity.steam.title">Steam Room &amp; Detox Sauna</h3>
             <p data-i18n="amenity.steam.body">Recover faster, relax sore muscles, and flush out toxins after high-intensity training sessions.</p>
           </div>
           <div class="amenity-card">
-            <i class="fas fa-cocktail" aria-hidden="true"></i>
+            <svg class="icon" aria-hidden="true"><use href="#icon-cocktail"/></svg>
             <h3 data-i18n="amenity.fuel.title">Fuel Bar &amp; Smoothie Station</h3>
             <p data-i18n="amenity.fuel.body">Fresh pre-workout shots, whey protein shakes, electrolyte brews, and clean recovery meals ready on demand.</p>
           </div>
           <div class="amenity-card">
-            <i class="fas fa-shower" aria-hidden="true"></i>
+            <svg class="icon" aria-hidden="true"><use href="#icon-shower"/></svg>
             <h3 data-i18n="amenity.showers.title">Hot Showers &amp; Secure Lockers</h3>
             <p data-i18n="amenity.showers.body">Spacious, ultra-clean executive changing facilities with keycard lockers and high-pressure hot showers.</p>
           </div>
           <div class="amenity-card">
-            <i class="fas fa-wifi" aria-hidden="true"></i>
+            <svg class="icon" aria-hidden="true"><use href="#icon-wifi"/></svg>
             <h3 data-i18n="amenity.wifi.title">High-Speed Fibre Wi-Fi</h3>
             <p data-i18n="amenity.wifi.body">Stream your workout playlists or stay connected while catching your breather on our turf zone.</p>
           </div>
           <div class="amenity-card">
-            <i class="fas fa-parking" aria-hidden="true"></i>
+            <svg class="icon" aria-hidden="true"><use href="#icon-parking"/></svg>
             <h3 data-i18n="amenity.parking.title">Secure Ample Parking</h3>
             <p data-i18n="amenity.parking.body">24/7 guarded parking right off Mombasa Road. Drive in, smash your workout, drive out stress-free.</p>
           </div>
@@ -246,15 +313,69 @@
       </div>
     </section>
 
-    <!-- MEMBERSHIP PLANS + SAVINGS CALCULATOR -->
+    <!-- MEMBERSHIP PLANS — plans first, calculator BELOW (audit fix) -->
     <section class="section section-alt" id="plans" aria-labelledby="plans-title">
       <div class="container">
         <div class="section-header">
-          <span class="tag"><i class="fas fa-wallet" aria-hidden="true"></i> <span data-i18n="plans.tag">Transparent Pricing</span></span>
+          <span class="tag"><svg class="icon" aria-hidden="true"><use href="#icon-wallet"/></svg> <span data-i18n="plans.tag">Transparent Pricing</span></span>
           <h2 id="plans-title"><span data-i18n="plans.title1">No Hidden Fees.</span> <span class="text-primary" data-i18n="plans.title2">Pay via M-Pesa.</span></h2>
           <p data-i18n="plans.lede">Invest in your health with flexible payment plans. Instant M-Pesa Till activation at front desk or online.</p>
         </div>
 
+        <div class="plans-grid">
+          <div class="plan-card">
+            <svg class="icon plan-icon" aria-hidden="true"><use href="#icon-bolt"/></svg>
+            <h3 data-i18n="plan.daily.name">Daily Pass</h3>
+            <div class="price">KES 300 <span data-i18n="plan.perDay">/ day</span></div>
+            <ul role="list">
+              <li><svg class="icon" aria-hidden="true"><use href="#icon-check-circle"/></svg> <span data-i18n="plan.daily.f1">Full weight room &amp; turf access</span></li>
+              <li><svg class="icon" aria-hidden="true"><use href="#icon-check-circle"/></svg> <span data-i18n="plan.daily.f2">Hot shower &amp; locker usage</span></li>
+              <li><svg class="icon" aria-hidden="true"><use href="#icon-check-circle"/></svg> <span data-i18n="plan.daily.f3">High-speed Wi-Fi access</span></li>
+              <li><svg class="icon" aria-hidden="true"><use href="#icon-check-circle"/></svg> <span data-i18n="plan.daily.f4">Drop-in access to group HIIT</span></li>
+            </ul>
+            <a href="https://wa.me/254702555093?text=Hi!%20I%20want%20to%20get%20a%20KES%20300%20Daily%20Pass."
+               class="btn btn-outline btn-full" target="_blank" rel="noopener" data-track="plan:daily">
+              <span data-i18n="cta.askDaily">Ask about Daily Pass</span>
+            </a>
+          </div>
+          <div class="plan-card popular">
+            <div class="badge" data-i18n="plan.popular">Most Popular in Imara</div>
+            <svg class="icon plan-icon" aria-hidden="true"><use href="#icon-fire"/></svg>
+            <h3 data-i18n="plan.monthly.name">Monthly Beast</h3>
+            <div class="price">KES 3,500 <span data-i18n="plan.perMonth">/ month</span></div>
+            <ul role="list">
+              <li><svg class="icon" aria-hidden="true"><use href="#icon-check-circle"/></svg> <span data-i18n="plan.monthly.f1">Unlimited Gym Access (5 AM – 11 PM)</span></li>
+              <li><svg class="icon" aria-hidden="true"><use href="#icon-check-circle"/></svg> <span data-i18n="plan.monthly.f2">Free Access to Steam Room &amp; Sauna</span></li>
+              <li><svg class="icon" aria-hidden="true"><use href="#icon-check-circle"/></svg> <span data-i18n="plan.monthly.f3">Unlimited Group Classes</span></li>
+              <li><svg class="icon" aria-hidden="true"><use href="#icon-check-circle"/></svg> <span data-i18n="plan.monthly.f4">1-on-1 Fitness Assessment &amp; Meal Roadmap</span></li>
+              <li><svg class="icon" aria-hidden="true"><use href="#icon-check-circle"/></svg> <span data-i18n="plan.monthly.f5">2 Guest Passes per month</span></li>
+            </ul>
+            <a href="https://wa.me/254702555093?text=Hi!%20I%20want%20to%20subscribe%20to%20the%20Monthly%20Beast%20Plan%20(KES%203500)."
+               class="btn btn-primary btn-full" target="_blank" rel="noopener" data-track="plan:monthly">
+              <svg class="icon" aria-hidden="true"><use href="#icon-whatsapp"/></svg>
+              <span data-i18n="cta.joinMonthly">Join Monthly via WhatsApp</span>
+            </a>
+          </div>
+          <div class="plan-card">
+            <div class="badge" data-i18n="plan.save">Save KES 1,500</div>
+            <svg class="icon plan-icon" aria-hidden="true"><use href="#icon-crown"/></svg>
+            <h3 data-i18n="plan.quarterly.name">Quarterly Champion</h3>
+            <div class="price">KES 9,000 <span data-i18n="plan.per3months">/ 3 months</span></div>
+            <ul role="list">
+              <li><svg class="icon" aria-hidden="true"><use href="#icon-check-circle"/></svg> <span data-i18n="plan.quarterly.f1">All Monthly Beast privileges included</span></li>
+              <li><svg class="icon" aria-hidden="true"><use href="#icon-check-circle"/></svg> <span data-i18n="plan.quarterly.f2">3 Personal Training coaching sessions</span></li>
+              <li><svg class="icon" aria-hidden="true"><use href="#icon-check-circle"/></svg> <span data-i18n="plan.quarterly.f3">Custom M-Pesa payment split available</span></li>
+              <li><svg class="icon" aria-hidden="true"><use href="#icon-check-circle"/></svg> <span data-i18n="plan.quarterly.f4">Free branded shaker bottle</span></li>
+              <li><svg class="icon" aria-hidden="true"><use href="#icon-check-circle"/></svg> <span data-i18n="plan.quarterly.f5">Priority reservation for Sauna slots</span></li>
+            </ul>
+            <a href="https://wa.me/254702555093?text=Hi!%20I'm%20interested%20in%20the%20Quarterly%20Champion%20Package."
+               class="btn btn-outline btn-full" target="_blank" rel="noopener" data-track="plan:quarterly">
+              <span data-i18n="cta.getQuarterly">Get Quarterly Package</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Savings calculator now BELOW the plans (audit fix) -->
         <div class="savings-calc" aria-label="Membership savings calculator">
           <div class="savings-calc-head">
             <label for="visitsRange">
@@ -264,7 +385,7 @@
             </label>
           </div>
           <input type="range" id="visitsRange" min="1" max="30" value="12" step="1"
-                 aria-label="Visits per month" />
+                 aria-label="Visits per month" aria-describedby="calcAnnounce" />
           <div class="savings-results">
             <div class="savings-row">
               <span data-i18n="calc.daily">Daily passes</span>
@@ -281,59 +402,7 @@
               <em id="calcSaveQuarterly">Save KES 600</em>
             </div>
           </div>
-        </div>
-
-        <div class="plans-grid">
-          <div class="plan-card">
-            <div class="icon" aria-hidden="true">⚡</div>
-            <h3 data-i18n="plan.daily.name">Daily Pass</h3>
-            <div class="price">KES 300 <span data-i18n="plan.perDay">/ day</span></div>
-            <ul role="list">
-              <li><i class="fas fa-check-circle" aria-hidden="true"></i> <span data-i18n="plan.daily.f1">Full weight room &amp; turf access</span></li>
-              <li><i class="fas fa-check-circle" aria-hidden="true"></i> <span data-i18n="plan.daily.f2">Hot shower &amp; locker usage</span></li>
-              <li><i class="fas fa-check-circle" aria-hidden="true"></i> <span data-i18n="plan.daily.f3">High-speed Wi-Fi access</span></li>
-              <li><i class="fas fa-check-circle" aria-hidden="true"></i> <span data-i18n="plan.daily.f4">Drop-in access to group HIIT</span></li>
-            </ul>
-            <a href="https://wa.me/254702555093?text=Hi!%20I%20want%20to%20get%20a%20KES%20300%20Daily%20Pass."
-               class="btn btn-outline btn-full" target="_blank" rel="noopener" data-track="plan:daily">
-              <span data-i18n="cta.askDaily">Ask about Daily Pass</span>
-            </a>
-          </div>
-          <div class="plan-card popular">
-            <div class="badge" data-i18n="plan.popular">Most Popular in Imara</div>
-            <div class="icon" aria-hidden="true">🔥</div>
-            <h3 data-i18n="plan.monthly.name">Monthly Beast</h3>
-            <div class="price">KES 3,500 <span data-i18n="plan.perMonth">/ month</span></div>
-            <ul role="list">
-              <li><i class="fas fa-check-circle" aria-hidden="true"></i> <span data-i18n="plan.monthly.f1">Unlimited Gym Access (5 AM – 11 PM)</span></li>
-              <li><i class="fas fa-check-circle" aria-hidden="true"></i> <span data-i18n="plan.monthly.f2">Free Access to Steam Room &amp; Sauna</span></li>
-              <li><i class="fas fa-check-circle" aria-hidden="true"></i> <span data-i18n="plan.monthly.f3">Unlimited Group Classes</span></li>
-              <li><i class="fas fa-check-circle" aria-hidden="true"></i> <span data-i18n="plan.monthly.f4">1-on-1 Fitness Assessment &amp; Meal Roadmap</span></li>
-              <li><i class="fas fa-check-circle" aria-hidden="true"></i> <span data-i18n="plan.monthly.f5">2 Guest Passes per month</span></li>
-            </ul>
-            <a href="https://wa.me/254702555093?text=Hi!%20I%20want%20to%20subscribe%20to%20the%20Monthly%20Beast%20Plan%20(KES%203500)."
-               class="btn btn-primary btn-full" target="_blank" rel="noopener" data-track="plan:monthly">
-              <i class="fab fa-whatsapp" aria-hidden="true"></i>
-              <span data-i18n="cta.joinMonthly">Join Monthly via WhatsApp</span>
-            </a>
-          </div>
-          <div class="plan-card">
-            <div class="badge" data-i18n="plan.save">Save KES 1,500</div>
-            <div class="icon" aria-hidden="true">👑</div>
-            <h3 data-i18n="plan.quarterly.name">Quarterly Champion</h3>
-            <div class="price">KES 9,000 <span data-i18n="plan.per3months">/ 3 months</span></div>
-            <ul role="list">
-              <li><i class="fas fa-check-circle" aria-hidden="true"></i> <span data-i18n="plan.quarterly.f1">All Monthly Beast privileges included</span></li>
-              <li><i class="fas fa-check-circle" aria-hidden="true"></i> <span data-i18n="plan.quarterly.f2">3 Personal Training coaching sessions</span></li>
-              <li><i class="fas fa-check-circle" aria-hidden="true"></i> <span data-i18n="plan.quarterly.f3">Custom M-Pesa payment split available</span></li>
-              <li><i class="fas fa-check-circle" aria-hidden="true"></i> <span data-i18n="plan.quarterly.f4">Free branded shaker bottle</span></li>
-              <li><i class="fas fa-check-circle" aria-hidden="true"></i> <span data-i18n="plan.quarterly.f5">Priority reservation for Sauna slots</span></li>
-            </ul>
-            <a href="https://wa.me/254702555093?text=Hi!%20I'm%20interested%20in%20the%20Quarterly%20Champion%20Package."
-               class="btn btn-outline btn-full" target="_blank" rel="noopener" data-track="plan:quarterly">
-              <span data-i18n="cta.getQuarterly">Get Quarterly Package</span>
-            </a>
-          </div>
+          <div id="calcAnnounce" class="visually-hidden" aria-live="polite"></div>
         </div>
       </div>
     </section>
@@ -342,7 +411,7 @@
     <section class="section" id="trainers" aria-labelledby="trainers-title">
       <div class="container">
         <div class="section-header">
-          <span class="tag"><i class="fas fa-user-shield" aria-hidden="true"></i> <span data-i18n="trainers.tag">Verified Results</span></span>
+          <span class="tag"><svg class="icon" aria-hidden="true"><use href="#icon-shield"/></svg> <span data-i18n="trainers.tag">Verified Results</span></span>
           <h2 id="trainers-title"><span data-i18n="trainers.title1">Meet Your</span> <span class="text-primary" data-i18n="trainers.title2">Nairobi Coaches</span></h2>
           <p data-i18n="trainers.lede">No phone-scrolling while you train. Our elite coaches correct your form, push your limits, and keep you disciplined.</p>
         </div>
@@ -356,7 +425,7 @@
               <div class="badges"><span>Strength</span><span>Powerlifting</span><span>Fat Loss</span></div>
               <a href="https://wa.me/254702555093?text=Hi!%20I%27d%20like%20to%20book%20a%20session%20with%20Coach%20Kevin%20about%20strength%20training."
                  class="btn btn-outline btn-full coach-book" target="_blank" rel="noopener" data-track="coach:kevin">
-                <i class="fab fa-whatsapp" aria-hidden="true"></i>
+                <svg class="icon" aria-hidden="true"><use href="#icon-whatsapp"/></svg>
                 <span data-i18n="cta.bookKevin">Book with Kevin</span>
               </a>
             </div>
@@ -370,7 +439,7 @@
               <div class="badges"><span>HIIT</span><span>Endurance</span><span>Group Fitness</span></div>
               <a href="https://wa.me/254702555093?text=Hi!%20I%27d%20like%20to%20book%20a%20HIIT%20session%20with%20Coach%20Sarah."
                  class="btn btn-outline btn-full coach-book" target="_blank" rel="noopener" data-track="coach:sarah">
-                <i class="fab fa-whatsapp" aria-hidden="true"></i>
+                <svg class="icon" aria-hidden="true"><use href="#icon-whatsapp"/></svg>
                 <span data-i18n="cta.bookSarah">Book with Sarah</span>
               </a>
             </div>
@@ -384,7 +453,7 @@
               <div class="badges"><span>Hypertrophy</span><span>Macros</span><span>Prep</span></div>
               <a href="https://wa.me/254702555093?text=Hi!%20I%27d%20like%20to%20book%20a%20hypertrophy%20session%20with%20Coach%20Lady%20Boss."
                  class="btn btn-outline btn-full coach-book" target="_blank" rel="noopener" data-track="coach:ladyboss">
-                <i class="fab fa-whatsapp" aria-hidden="true"></i>
+                <svg class="icon" aria-hidden="true"><use href="#icon-whatsapp"/></svg>
                 <span data-i18n="cta.bookLadyBoss">Book with Lady Boss</span>
               </a>
             </div>
@@ -398,7 +467,7 @@
               <div class="badges"><span>Mobility</span><span>Rehab</span><span>Flexibility</span></div>
               <a href="https://wa.me/254702555093?text=Hi!%20I%27d%20like%20to%20book%20a%20mobility%20session%20with%20Coach%20Mercy."
                  class="btn btn-outline btn-full coach-book" target="_blank" rel="noopener" data-track="coach:mercy">
-                <i class="fab fa-whatsapp" aria-hidden="true"></i>
+                <svg class="icon" aria-hidden="true"><use href="#icon-whatsapp"/></svg>
                 <span data-i18n="cta.bookMercy">Book with Mercy</span>
               </a>
             </div>
@@ -411,22 +480,22 @@
     <section class="section section-alt" id="programs" aria-labelledby="programs-title">
       <div class="container">
         <div class="section-header">
-          <span class="tag"><i class="fas fa-calendar-days" aria-hidden="true"></i> <span data-i18n="programs.tag">Weekly Timetable</span></span>
+          <span class="tag"><svg class="icon" aria-hidden="true"><use href="#icon-calendar"/></svg> <span data-i18n="programs.tag">Weekly Timetable</span></span>
           <h2 id="programs-title"><span data-i18n="programs.title1">High-Octane</span> <span class="text-primary" data-i18n="programs.title2">Group Programs</span></h2>
           <p data-i18n="programs.lede">Structured sessions to break plateaus. Add any class to your calendar in one tap.</p>
         </div>
 
         <div class="timetable" data-timetable>
           <div class="timetable-tabs" role="tablist" aria-label="Choose weekday">
-            <button type="button" role="tab" data-day="mon" aria-selected="true" aria-controls="timetableList">Mon</button>
-            <button type="button" role="tab" data-day="tue" aria-selected="false" aria-controls="timetableList">Tue</button>
-            <button type="button" role="tab" data-day="wed" aria-selected="false" aria-controls="timetableList">Wed</button>
-            <button type="button" role="tab" data-day="thu" aria-selected="false" aria-controls="timetableList">Thu</button>
-            <button type="button" role="tab" data-day="fri" aria-selected="false" aria-controls="timetableList">Fri</button>
-            <button type="button" role="tab" data-day="sat" aria-selected="false" aria-controls="timetableList">Sat</button>
-            <button type="button" role="tab" data-day="sun" aria-selected="false" aria-controls="timetableList">Sun</button>
+            <button type="button" role="tab" data-day="mon" id="tab-mon" aria-selected="true" aria-controls="timetableList">Mon</button>
+            <button type="button" role="tab" data-day="tue" id="tab-tue" aria-selected="false" aria-controls="timetableList">Tue</button>
+            <button type="button" role="tab" data-day="wed" id="tab-wed" aria-selected="false" aria-controls="timetableList">Wed</button>
+            <button type="button" role="tab" data-day="thu" id="tab-thu" aria-selected="false" aria-controls="timetableList">Thu</button>
+            <button type="button" role="tab" data-day="fri" id="tab-fri" aria-selected="false" aria-controls="timetableList">Fri</button>
+            <button type="button" role="tab" data-day="sat" id="tab-sat" aria-selected="false" aria-controls="timetableList">Sat</button>
+            <button type="button" role="tab" data-day="sun" id="tab-sun" aria-selected="false" aria-controls="timetableList">Sun</button>
           </div>
-          <div class="timetable-list" id="timetableList" role="tabpanel" aria-live="polite"></div>
+          <div class="timetable-list" id="timetableList" role="tabpanel" aria-live="polite" aria-labelledby="tab-mon"></div>
 
           <noscript>
             <div class="timetable-static">
@@ -437,68 +506,11 @@
       </div>
     </section>
 
-    <!-- GALLERY -->
-    <section class="section" id="gallery" aria-labelledby="gallery-title">
-      <div class="container">
-        <div class="section-header">
-          <span class="tag"><i class="fas fa-camera" aria-hidden="true"></i> <span data-i18n="gallery.tag">Facility Tour</span></span>
-          <h2 id="gallery-title"><span data-i18n="gallery.title1">Step Inside</span> <span class="text-primary" data-i18n="gallery.title2">The Iron Temple</span></h2>
-          <p data-i18n="gallery.lede">Spacious, clean, well-lit, and fully packed with premium gear.</p>
-        </div>
-        <div class="gallery-grid">
-          <div class="gallery-item">
-            <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=600&h=600&q=80" alt="Free weights and barbell zone" loading="lazy" width="300" height="300" />
-            <div class="label">Heavy Iron &amp; Power Racks</div>
-          </div>
-          <div class="gallery-item">
-            <img src="https://images.unsplash.com/photo-1517838277536-f5f99be501cd?auto=format&fit=crop&w=600&h=600&q=80" alt="Functional turf and kettlebells" loading="lazy" width="300" height="300" />
-            <div class="label">Functional Sprint Turf Track</div>
-          </div>
-          <div class="gallery-item">
-            <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=600&h=600&q=80" alt="Group workout studio" loading="lazy" width="300" height="300" />
-            <div class="label">Group Workout Studio</div>
-          </div>
-          <div class="gallery-item">
-            <img src="https://images.unsplash.com/photo-1576678927484-cc909957088c?auto=format&fit=crop&w=600&h=600&q=80" alt="Cardio deck with treadmills" loading="lazy" width="300" height="300" />
-            <div class="label">Cardio Deck with TV Screens</div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- BEFORE / AFTER -->
-    <section class="section section-alt" id="transformation" aria-labelledby="transformation-title">
-      <div class="container">
-        <div class="section-header">
-          <span class="tag"><i class="fas fa-wand-magic-sparkles" aria-hidden="true"></i> <span data-i18n="transform.tag">Transformation</span></span>
-          <h2 id="transformation-title"><span data-i18n="transform.title1">Consistency</span> <span class="text-primary" data-i18n="transform.title2">Speaks Louder</span></h2>
-          <p data-i18n="transform.lede">Drag the slider to compare the journey. Illustrative demonstration — not a specific member result.</p>
-        </div>
-        <figure class="ba-figure" data-ba>
-          <img class="ba-img ba-after"
-               src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=1200&h=750&q=80"
-               alt="After — members training with confidence" width="1200" height="750" loading="lazy" />
-          <div class="ba-before-wrap" aria-hidden="true">
-            <img class="ba-img"
-                 src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&w=1200&h=750&q=80"
-                 alt="" width="1200" height="750" loading="lazy" />
-          </div>
-          <span class="ba-label ba-label-before" aria-hidden="true">Before</span>
-          <span class="ba-label ba-label-after" aria-hidden="true">After</span>
-          <div class="ba-handle" aria-hidden="true"></div>
-          <input type="range" min="0" max="100" value="50" step="1"
-                 class="ba-slider" data-ba-input
-                 aria-label="Compare before and after photos" />
-        </figure>
-        <figcaption class="ba-caption">Illustrative demo imagery — replace with verified member results before public launch.</figcaption>
-      </div>
-    </section>
-
     <!-- TESTIMONIALS -->
     <section class="section" id="testimonials" aria-labelledby="testimonials-title">
       <div class="container">
         <div class="section-header">
-          <span class="tag"><i class="fas fa-quote-left" aria-hidden="true"></i> <span data-i18n="reviews.tag">Real Stories</span></span>
+          <span class="tag"><svg class="icon" aria-hidden="true"><use href="#icon-quote"/></svg> <span data-i18n="reviews.tag">Real Stories</span></span>
           <h2 id="testimonials-title"><span data-i18n="reviews.title1">What</span> <span class="text-primary" data-i18n="reviews.title2">Nairobi Lifters Say</span></h2>
           <p data-i18n="reviews.lede">Don't take our word for it. Here's what members from Imara, South B, and Syokimau have achieved.</p>
         </div>
@@ -531,11 +543,96 @@
       </div>
     </section>
 
-    <!-- BOOKING -->
-    <section class="section section-alt" id="booking" aria-labelledby="booking-title">
+    <!-- BEFORE / AFTER -->
+    <section class="section section-alt" id="transformation" aria-labelledby="transformation-title">
       <div class="container">
         <div class="section-header">
-          <span class="tag"><i class="fas fa-ticket" aria-hidden="true"></i> <span data-i18n="booking.tag">Zero Risk</span></span>
+          <span class="tag"><svg class="icon" aria-hidden="true"><use href="#icon-sparkles"/></svg> <span data-i18n="transform.tag">Transformation</span></span>
+          <h2 id="transformation-title"><span data-i18n="transform.title1">Consistency</span> <span class="text-primary" data-i18n="transform.title2">Speaks Louder</span></h2>
+          <p data-i18n="transform.lede">Drag the slider to compare the journey. Illustrative demonstration — not a specific member result.</p>
+        </div>
+        <figure class="ba-figure" data-ba>
+          <img class="ba-img ba-after"
+               src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=1200&h=750&q=80"
+               alt="After — members training with confidence" width="1200" height="750" loading="lazy" />
+          <div class="ba-before-wrap" aria-hidden="true">
+            <img class="ba-img"
+                 src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&w=1200&h=750&q=80"
+                 alt="" width="1200" height="750" loading="lazy" />
+          </div>
+          <span class="ba-label ba-label-before" aria-hidden="true">Before</span>
+          <span class="ba-label ba-label-after" aria-hidden="true">After</span>
+          <div class="ba-handle" aria-hidden="true"></div>
+          <input type="range" min="0" max="100" value="50" step="1"
+                 class="ba-slider" data-ba-input
+                 aria-label="Compare before and after photos" />
+        </figure>
+        <figcaption class="ba-caption">Illustrative demo imagery — replace with verified member results before public launch.</figcaption>
+      </div>
+    </section>
+
+    <!-- GALLERY (moved after testimonials, before first-visit) -->
+    <section class="section" id="gallery" aria-labelledby="gallery-title">
+      <div class="container">
+        <div class="section-header">
+          <span class="tag"><svg class="icon" aria-hidden="true"><use href="#icon-camera"/></svg> <span data-i18n="gallery.tag">Facility Tour</span></span>
+          <h2 id="gallery-title"><span data-i18n="gallery.title1">Step Inside</span> <span class="text-primary" data-i18n="gallery.title2">The Iron Temple</span></h2>
+          <p data-i18n="gallery.lede">Spacious, clean, well-lit, and fully packed with premium gear.</p>
+        </div>
+        <div class="gallery-grid">
+          <div class="gallery-item">
+            <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=600&h=600&q=80" alt="Free weights and barbell zone" loading="lazy" width="300" height="300" />
+            <div class="label">Heavy Iron &amp; Power Racks</div>
+          </div>
+          <div class="gallery-item">
+            <img src="https://images.unsplash.com/photo-1517838277536-f5f99be501cd?auto=format&fit=crop&w=600&h=600&q=80" alt="Functional turf and kettlebells" loading="lazy" width="300" height="300" />
+            <div class="label">Functional Sprint Turf Track</div>
+          </div>
+          <div class="gallery-item">
+            <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=600&h=600&q=80" alt="Group workout studio" loading="lazy" width="300" height="300" />
+            <div class="label">Group Workout Studio</div>
+          </div>
+          <div class="gallery-item">
+            <img src="https://images.unsplash.com/photo-1576678927484-cc909957088c?auto=format&fit=crop&w=600&h=600&q=80" alt="Cardio deck with treadmills" loading="lazy" width="300" height="300" />
+            <div class="label">Cardio Deck with TV Screens</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- YOUR FIRST VISIT (new section) -->
+    <section class="section section-alt" id="first-visit" aria-labelledby="first-visit-title">
+      <div class="container">
+        <div class="section-header">
+          <span class="tag"><svg class="icon" aria-hidden="true"><use href="#icon-map-pin"/></svg> <span>Your First Visit</span></span>
+          <h2 id="first-visit-title">Walking in is <span class="text-primary">easier than you think.</span></h2>
+          <p>Here's exactly what happens the day you show up — no surprises, no pressure.</p>
+        </div>
+        <ol class="steps-grid" role="list">
+          <li class="step-card">
+            <span class="step-num" aria-hidden="true">1</span>
+            <h3>Show your WhatsApp confirmation</h3>
+            <p>Grab your free day pass at the front desk — takes 30 seconds, no paperwork, no sales pitch.</p>
+          </li>
+          <li class="step-card">
+            <span class="step-num" aria-hidden="true">2</span>
+            <h3>Get a 15-minute orientation</h3>
+            <p>One of our coaches walks you through the floor, safety basics, and how to use every machine you'll need.</p>
+          </li>
+          <li class="step-card">
+            <span class="step-num" aria-hidden="true">3</span>
+            <h3>Train, recover, decide</h3>
+            <p>Use the whole gym for free — including the steam room. Sign up only if it feels right for you.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- BOOKING -->
+    <section class="section" id="booking" aria-labelledby="booking-title">
+      <div class="container">
+        <div class="section-header">
+          <span class="tag"><svg class="icon" aria-hidden="true"><use href="#icon-ticket"/></svg> <span data-i18n="booking.tag">Zero Risk</span></span>
           <h2 id="booking-title"><span data-i18n="booking.title1">Get Your</span> <span class="text-primary" data-i18n="booking.title2">Free Day Pass</span></h2>
           <p data-i18n="booking.lede">Experience the facilities, test the equipment, meet the coaches. No long commitment.</p>
         </div>
@@ -543,17 +640,21 @@
           <div class="booking-info">
             <h3 data-i18n="booking.includedTitle">What's Included:</h3>
             <ul role="list">
-              <li><i class="fas fa-check-circle" aria-hidden="true"></i> <span data-i18n="booking.inc1">1-on-1 Workout Orientation with a Coach</span></li>
-              <li><i class="fas fa-check-circle" aria-hidden="true"></i> <span data-i18n="booking.inc2">Full access to Heavy Weights &amp; Cardio Deck</span></li>
-              <li><i class="fas fa-check-circle" aria-hidden="true"></i> <span data-i18n="booking.inc3">Complimentary Sauna &amp; Hot Shower Trial</span></li>
-              <li><i class="fas fa-check-circle" aria-hidden="true"></i> <span data-i18n="booking.inc4">Body Composition &amp; BMI Breakdown</span></li>
+              <li><svg class="icon" aria-hidden="true"><use href="#icon-check-circle"/></svg> <span data-i18n="booking.inc1">1-on-1 Workout Orientation with a Coach</span></li>
+              <li><svg class="icon" aria-hidden="true"><use href="#icon-check-circle"/></svg> <span data-i18n="booking.inc2">Full access to Heavy Weights &amp; Cardio Deck</span></li>
+              <li><svg class="icon" aria-hidden="true"><use href="#icon-check-circle"/></svg> <span data-i18n="booking.inc3">Complimentary Sauna &amp; Hot Shower Trial</span></li>
+              <li><svg class="icon" aria-hidden="true"><use href="#icon-check-circle"/></svg> <span data-i18n="booking.inc4">Body Composition &amp; BMI Breakdown</span></li>
             </ul>
             <div class="direct-contact-box">
               <p><strong data-i18n="booking.preferChat">Prefer to chat first?</strong></p>
               <a href="https://wa.me/254702555093?text=Hi%20Coach!%20I%27d%20like%20to%20know%20more%20about%20the%20gym%20before%20booking."
                  class="btn btn-whatsapp btn-full" target="_blank" rel="noopener" data-track="booking:pre-chat">
-                <i class="fab fa-whatsapp" aria-hidden="true"></i>
+                <svg class="icon" aria-hidden="true"><use href="#icon-whatsapp"/></svg>
                 <span data-i18n="cta.messageWhatsapp">Message Us on WhatsApp</span>
+              </a>
+              <a href="tel:+254702555093" class="btn btn-outline btn-full" style="margin-top: 0.5rem;" data-track="booking:call">
+                <svg class="icon" aria-hidden="true"><use href="#icon-phone"/></svg>
+                <span>Call the Front Desk</span>
               </a>
             </div>
           </div>
@@ -571,11 +672,11 @@
                 </select>
               </div>
               <div class="bw-row">
-                <div class="bw-field">
-                  <label for="bwDate" data-i18n="booking.date">Preferred date</label>
+                <div class="bw-field" id="bwDateRow">
+                  <label for="bwDate" id="bwDateLabel" data-i18n="booking.date">Preferred date</label>
                   <input type="date" id="bwDate" name="bwDate" required />
                 </div>
-                <div class="bw-field">
+                <div class="bw-field" id="bwTimeRow">
                   <label for="bwTime" data-i18n="booking.time">Preferred time</label>
                   <select id="bwTime" name="bwTime" required>
                     <option value="" data-i18n="booking.time.placeholder">Choose a slot</option>
@@ -591,7 +692,7 @@
               </div>
               <p class="bw-error" id="bwError" role="alert"></p>
               <button type="submit" class="btn btn-primary btn-full" data-track="booking:widget-submit">
-                <i class="fab fa-whatsapp" aria-hidden="true"></i>
+                <svg class="icon" aria-hidden="true"><use href="#icon-whatsapp"/></svg>
                 <span data-i18n="cta.continueWhatsapp">Continue on WhatsApp</span>
               </button>
               <p class="booking-note"><span data-i18n="booking.widgetNote">You'll be redirected with a message pre-filled with your choice.</span></p>
@@ -607,7 +708,7 @@
 
             <a href="https://wa.me/254702555093?text=Hi!%20I%20want%20to%20claim%20my%20FREE%20Day%20Pass%20at%20Flesh%20%26%20Bones%20Gym."
                class="btn btn-outline btn-full" target="_blank" rel="noopener" data-track="booking:free-pass-generic">
-              <i class="fas fa-bolt" aria-hidden="true"></i>
+              <svg class="icon" aria-hidden="true"><use href="#icon-bolt"/></svg>
               <span data-i18n="cta.claimGeneric">Claim Free Day Pass</span>
             </a>
           </div>
@@ -616,38 +717,45 @@
     </section>
 
     <!-- CONTACT -->
-    <section class="section" id="contact" aria-labelledby="contact-title">
+    <section class="section section-alt" id="contact" aria-labelledby="contact-title">
       <div class="container">
         <div class="section-header">
-          <span class="tag"><i class="fas fa-location-dot" aria-hidden="true"></i> <span data-i18n="contact.tag">Visit Us Today</span></span>
+          <span class="tag"><svg class="icon" aria-hidden="true"><use href="#icon-map-pin"/></svg> <span data-i18n="contact.tag">Visit Us Today</span></span>
           <h2 id="contact-title"><span data-i18n="contact.title1">Located in the</span> <span class="text-primary" data-i18n="contact.title2">Heart of Imara Daima</span></h2>
           <p data-i18n="contact.lede">Easy access for residents of Imara Daima, South B, Bellevue, and Mombasa Road environs.</p>
         </div>
         <div class="contact-wrapper">
           <div class="contact-info">
             <div class="item">
-              <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
+              <svg class="icon" aria-hidden="true"><use href="#icon-map-pin"/></svg>
               <div class="text">
                 <h4 data-i18n="contact.address">Physical Address</h4>
-                <p>Imara Daima Business Park, Ground Floor, Off Mombasa Road, Nairobi</p>
+                <p><a href="https://maps.google.com/?q=Imara+Daima+Business+Park+Nairobi" target="_blank" rel="noopener">Imara Daima Business Park, Ground Floor, Off Mombasa Road, Nairobi</a></p>
               </div>
             </div>
             <div class="item">
-              <i class="fab fa-whatsapp" aria-hidden="true"></i>
+              <svg class="icon" aria-hidden="true"><use href="#icon-phone"/></svg>
               <div class="text">
-                <h4 data-i18n="contact.call">Call / WhatsApp</h4>
-                <p><a href="https://wa.me/254702555093" target="_blank" rel="noopener">+254 702 555093</a></p>
+                <h4>Call Us</h4>
+                <p><a href="tel:+254702555093" data-track="contact:call">+254 702 555093</a></p>
               </div>
             </div>
             <div class="item">
-              <i class="fas fa-envelope" aria-hidden="true"></i>
+              <svg class="icon" aria-hidden="true"><use href="#icon-whatsapp"/></svg>
+              <div class="text">
+                <h4>WhatsApp</h4>
+                <p><a href="https://wa.me/254702555093" target="_blank" rel="noopener" data-track="contact:whatsapp">Chat with a coach</a></p>
+              </div>
+            </div>
+            <div class="item">
+              <svg class="icon" aria-hidden="true"><use href="#icon-mail"/></svg>
               <div class="text">
                 <h4 data-i18n="contact.email">Email Enquiries</h4>
                 <p><a href="mailto:hello@fleshandbonesgym.com">hello@fleshandbonesgym.com</a></p>
               </div>
             </div>
             <div class="item">
-              <i class="fas fa-clock" aria-hidden="true"></i>
+              <svg class="icon" aria-hidden="true"><use href="#icon-clock"/></svg>
               <div class="text">
                 <h4 data-i18n="contact.hours">Operating Hours</h4>
                 <p>Monday – Friday: 5:00 AM – 11:00 PM<br />Saturday – Sunday: 7:00 AM – 9:00 PM</p>
@@ -657,11 +765,17 @@
             <div class="map-embed" id="mapEmbed" data-map-src="https://maps.google.com/maps?q=Imara%20Daima%20Business%20Park%20Nairobi&t=&z=15&ie=UTF8&iwloc=&output=embed">
               <button type="button" class="map-load-btn" id="mapLoadBtn" aria-label="Load interactive Google map">
                 <span class="map-placeholder">
-                  <i class="fas fa-map-marked-alt" aria-hidden="true"></i>
+                  <svg class="icon" aria-hidden="true"><use href="#icon-map"/></svg>
                   <span data-i18n="contact.loadMap">Click to load interactive map</span>
                   <small data-i18n="contact.loadMapNote">Opens Google Maps · third-party content</small>
                 </span>
               </button>
+              <noscript>
+                <a href="https://maps.google.com/?q=Imara+Daima+Business+Park+Nairobi" target="_blank" rel="noopener" class="btn btn-outline btn-full" style="margin: 0.5rem;">
+                  <svg class="icon" aria-hidden="true"><use href="#icon-map-pin"/></svg>
+                  <span>Open in Google Maps</span>
+                </a>
+              </noscript>
             </div>
           </div>
 
@@ -691,7 +805,7 @@
                 <span class="form-error" id="contactMessageError" role="alert"></span>
               </div>
               <button type="submit" class="btn btn-primary btn-full" data-track="contact:submit">
-                <i class="fab fa-whatsapp" aria-hidden="true"></i>
+                <svg class="icon" aria-hidden="true"><use href="#icon-whatsapp"/></svg>
                 <span data-i18n="cta.continueWhatsapp">Continue on WhatsApp</span>
               </button>
             </form>
@@ -701,10 +815,10 @@
     </section>
 
     <!-- INSTAGRAM STRIP -->
-    <section class="section section-alt" id="social" aria-labelledby="social-title">
+    <section class="section" id="social" aria-labelledby="social-title">
       <div class="container">
         <div class="section-header">
-          <span class="tag"><i class="fab fa-instagram" aria-hidden="true"></i> <span data-i18n="social.tag">Follow the Grind</span></span>
+          <span class="tag"><svg class="icon" aria-hidden="true"><use href="#icon-instagram"/></svg> <span data-i18n="social.tag">Follow the Grind</span></span>
           <h2 id="social-title"><span data-i18n="social.title1">Latest from</span> <span class="text-primary" data-i18n="social.title2">@fleshandbonesgym</span></h2>
         </div>
         <div class="insta-strip">
@@ -723,7 +837,7 @@
         </div>
         <p class="insta-cta">
           <a href="https://www.instagram.com/fleshandbonesgym" target="_blank" rel="noopener" class="btn btn-outline">
-            <i class="fab fa-instagram" aria-hidden="true"></i>
+            <svg class="icon" aria-hidden="true"><use href="#icon-instagram"/></svg>
             <span data-i18n="cta.followInsta">Follow @fleshandbonesgym</span>
           </a>
         </p>
@@ -731,17 +845,17 @@
     </section>
 
     <!-- FAQ -->
-    <section class="section" id="faq" aria-labelledby="faq-title">
+    <section class="section section-alt" id="faq" aria-labelledby="faq-title">
       <div class="container">
         <div class="section-header">
-          <span class="tag"><i class="fas fa-circle-question" aria-hidden="true"></i> <span data-i18n="faq.tag">Clear Answers</span></span>
+          <span class="tag"><svg class="icon" aria-hidden="true"><use href="#icon-help"/></svg> <span data-i18n="faq.tag">Clear Answers</span></span>
           <h2 id="faq-title"><span data-i18n="faq.title1">Frequently Asked</span> <span class="text-primary" data-i18n="faq.title2">Questions</span></h2>
         </div>
         <div class="faq-grid">
           <details class="faq-item" open>
             <summary class="faq-question">
               <span>Where exactly are you located in Imara?</span>
-              <i class="fas fa-chevron-down" aria-hidden="true"></i>
+              <svg class="icon" aria-hidden="true"><use href="#icon-chevron-down"/></svg>
             </summary>
             <div class="faq-answer">
               <p>We're on the ground floor of Imara Daima Business Park, just off Mombasa Road. Dedicated, well-lit, 24/7 guarded parking is available for all gym members.</p>
@@ -750,7 +864,7 @@
           <details class="faq-item">
             <summary class="faq-question">
               <span>How do payments work? Do you accept M-Pesa?</span>
-              <i class="fas fa-chevron-down" aria-hidden="true"></i>
+              <svg class="icon" aria-hidden="true"><use href="#icon-chevron-down"/></svg>
             </summary>
             <div class="faq-answer">
               <p>Yes — instant M-Pesa (Till/Paybill) at the front desk or via WhatsApp booking. Cash and major cards are also accepted.</p>
@@ -759,7 +873,7 @@
           <details class="faq-item">
             <summary class="faq-question">
               <span>I am a total beginner. Will I get support?</span>
-              <i class="fas fa-chevron-down" aria-hidden="true"></i>
+              <svg class="icon" aria-hidden="true"><use href="#icon-chevron-down"/></svg>
             </summary>
             <div class="faq-answer">
               <p>100%. Every new member gets an introductory session with a certified coach covering equipment, safety, and posture.</p>
@@ -768,7 +882,7 @@
           <details class="faq-item">
             <summary class="faq-question">
               <span>Is steam room and sauna access included?</span>
-              <i class="fas fa-chevron-down" aria-hidden="true"></i>
+              <svg class="icon" aria-hidden="true"><use href="#icon-chevron-down"/></svg>
             </summary>
             <div class="faq-answer">
               <p>Yes — all Monthly Beast and Quarterly Champion packages include steam room and detox sauna access.</p>
@@ -777,7 +891,7 @@
           <details class="faq-item">
             <summary class="faq-question">
               <span>Can I pause my membership?</span>
-              <i class="fas fa-chevron-down" aria-hidden="true"></i>
+              <svg class="icon" aria-hidden="true"><use href="#icon-chevron-down"/></svg>
             </summary>
             <div class="faq-answer">
               <p>Yes. Monthly memberships can be frozen for up to 14 days with prior WhatsApp notice.</p>
@@ -788,17 +902,17 @@
     </section>
 
     <!-- LEGAL -->
-    <section class="section section-alt" id="legal" aria-labelledby="legal-title">
+    <section class="section" id="legal" aria-labelledby="legal-title">
       <div class="container">
         <div class="section-header">
-          <span class="tag"><i class="fas fa-shield-halved" aria-hidden="true"></i> Gym Policy</span>
+          <span class="tag"><svg class="icon" aria-hidden="true"><use href="#icon-shield"/></svg> Gym Policy</span>
           <h2 id="legal-title">Terms &amp; <span class="text-primary">Gym Rules</span></h2>
         </div>
         <div class="legal-grid">
           <details class="legal-card" open>
             <summary class="legal-header">
               <span>Gym Etiquette &amp; Code of Conduct</span>
-              <i class="fas fa-chevron-down" aria-hidden="true"></i>
+              <svg class="icon" aria-hidden="true"><use href="#icon-chevron-down"/></svg>
             </summary>
             <div class="legal-body">
               <h4>1. Re-rack Your Weights</h4>
@@ -810,7 +924,7 @@
           <details class="legal-card">
             <summary class="legal-header">
               <span>Privacy &amp; Data Security</span>
-              <i class="fas fa-chevron-down" aria-hidden="true"></i>
+              <svg class="icon" aria-hidden="true"><use href="#icon-chevron-down"/></svg>
             </summary>
             <div class="legal-body">
               <h4>1. Contact Confidentiality</h4>
@@ -826,7 +940,7 @@
       <div class="container">
         <div class="footer-grid">
           <div class="footer-brand">
-            <h3><i class="fas fa-dumbbell" aria-hidden="true"></i> Flesh<span>&amp;Bones</span></h3>
+            <h3><svg class="icon" aria-hidden="true"><use href="#icon-dumbbell"/></svg> Flesh<span>&amp;Bones</span></h3>
             <p>Imara's premier fitness hub. Built on strength, community, and zero excuses.</p>
           </div>
           <div class="footer-col">
@@ -844,30 +958,31 @@
           <div class="footer-col">
             <h4 data-i18n="footer.contact">Direct Contact</h4>
             <ul role="list">
-              <li><a href="https://wa.me/254702555093" target="_blank" rel="noopener"><i class="fab fa-whatsapp" aria-hidden="true"></i> 0702555093</a></li>
-              <li><a href="mailto:hello@fleshandbonesgym.com"><i class="fas fa-envelope" aria-hidden="true"></i> Email Head Coach</a></li>
-              <li><a href="#contact"><i class="fas fa-location-dot" aria-hidden="true"></i> Imara Daima, Nairobi</a></li>
+              <li><a href="tel:+254702555093" data-track="footer:call"><svg class="icon" aria-hidden="true"><use href="#icon-phone"/></svg> 0702555093</a></li>
+              <li><a href="https://wa.me/254702555093" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#icon-whatsapp"/></svg> WhatsApp</a></li>
+              <li><a href="mailto:hello@fleshandbonesgym.com"><svg class="icon" aria-hidden="true"><use href="#icon-mail"/></svg> Email Head Coach</a></li>
+              <li><a href="https://maps.google.com/?q=Imara+Daima+Business+Park+Nairobi" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#icon-map-pin"/></svg> Imara Daima, Nairobi</a></li>
             </ul>
           </div>
           <div class="footer-col">
             <h4 data-i18n="footer.connect">Connect</h4>
             <div class="footer-socials">
-              <a href="https://www.instagram.com/fleshandbonesgym" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram" aria-hidden="true"></i></a>
-              <a href="https://www.facebook.com/fleshandbonesgym" target="_blank" rel="noopener" aria-label="Facebook"><i class="fab fa-facebook-f" aria-hidden="true"></i></a>
-              <a href="https://wa.me/254702555093" target="_blank" rel="noopener" aria-label="WhatsApp"><i class="fab fa-whatsapp" aria-hidden="true"></i></a>
+              <a href="https://www.instagram.com/fleshandbonesgym" target="_blank" rel="noopener" aria-label="Instagram"><svg class="icon" aria-hidden="true"><use href="#icon-instagram"/></svg></a>
+              <a href="https://www.facebook.com/fleshandbonesgym" target="_blank" rel="noopener" aria-label="Facebook"><svg class="icon" aria-hidden="true"><use href="#icon-facebook"/></svg></a>
+              <a href="https://wa.me/254702555093" target="_blank" rel="noopener" aria-label="WhatsApp"><svg class="icon" aria-hidden="true"><use href="#icon-whatsapp"/></svg></a>
             </div>
           </div>
         </div>
         <div class="footer-bottom">
           <span>© 2026 Flesh and Bones Gym. Portfolio demonstration site.</span>
-          <span>Built with energy in Nairobi <i class="fas fa-fire" aria-hidden="true" style="color: var(--primary);"></i></span>
+          <span>Built with energy in Nairobi <svg class="icon" aria-hidden="true" style="color: var(--primary);"><use href="#icon-fire"/></svg></span>
         </div>
       </div>
     </footer>
   </main>
 
   <button class="back-to-top" id="backToTop" aria-label="Back to top" type="button">
-    <i class="fas fa-chevron-up" aria-hidden="true"></i>
+    <svg class="icon" aria-hidden="true"><use href="#icon-chevron-up"/></svg>
   </button>
 
   <div class="toast" id="toast" role="alert" aria-live="polite">

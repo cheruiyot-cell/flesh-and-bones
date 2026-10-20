@@ -1,6 +1,7 @@
 /* ==========================================================
-   FLESH AND BONES GYM — PRODUCTION STYLESHEET
+   FLESH AND BONES GYM — PRODUCTION STYLESHEET (v2)
    Organised by concern. Mobile-first throughout.
+   v2 changes: icon system, a11y utilities, CLS fixes, new sections.
    ========================================================== */
 
 /* ----------------------------------------------------------
@@ -154,8 +155,36 @@ ul, ol { list-style: none; }
 }
 .skip-link:focus { top: 0; }
 
+.visually-hidden {
+  position: absolute !important;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
 /* ----------------------------------------------------------
-   4. LAYOUT
+   4. ICON SYSTEM (inline SVG sprite)
+   ---------------------------------------------------------- */
+.icon {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  vertical-align: -0.125em;
+  flex-shrink: 0;
+  pointer-events: none;
+}
+
+.icon-sm { width: 0.875em; height: 0.875em; }
+.icon-lg { width: 1.25em; height: 1.25em; }
+.icon-xl { width: 1.5em; height: 1.5em; }
+
+/* ----------------------------------------------------------
+   5. LAYOUT
    ---------------------------------------------------------- */
 .container {
   max-width: var(--container-max);
@@ -168,12 +197,12 @@ section[id] {
 }
 
 /* ----------------------------------------------------------
-   5. UTILITIES
+   6. UTILITIES
    ---------------------------------------------------------- */
 .text-primary { color: var(--primary); }
 
 /* ----------------------------------------------------------
-   6. SCROLLBAR
+   7. SCROLLBAR
    ---------------------------------------------------------- */
 ::-webkit-scrollbar { width: 10px; }
 ::-webkit-scrollbar-track { background: var(--bg); }
@@ -184,7 +213,7 @@ section[id] {
 ::-webkit-scrollbar-thumb:hover { background: var(--primary); }
 
 /* ----------------------------------------------------------
-   7. BUTTONS
+   8. BUTTONS
    ---------------------------------------------------------- */
 .btn {
   display: inline-flex;
@@ -201,6 +230,7 @@ section[id] {
   cursor: pointer;
   border: 2px solid transparent;
   min-height: 48px;
+  text-align: center;
 }
 
 .btn-primary {
@@ -238,7 +268,7 @@ section[id] {
 .btn-sm { padding: 0.5rem 1rem; font-size: var(--text-xs); }
 
 /* ----------------------------------------------------------
-   8. SCROLL PROGRESS
+   9. SCROLL PROGRESS
    ---------------------------------------------------------- */
 .scroll-progress {
   position: fixed;
@@ -255,7 +285,7 @@ section[id] {
 }
 
 /* ----------------------------------------------------------
-   9. NAVBAR
+   10. NAVBAR
    ---------------------------------------------------------- */
 .navbar {
   position: fixed;
@@ -286,7 +316,7 @@ section[id] {
   align-items: center;
   gap: 0.5rem;
 }
-.logo i,
+.logo .icon,
 .logo span { color: var(--primary); }
 
 .nav-links {
@@ -323,7 +353,8 @@ section[id] {
 
 .theme-toggle,
 .hamburger,
-.lang-toggle {
+.lang-toggle,
+.icon-btn {
   min-width: 44px;
   height: 44px;
   border-radius: var(--radius-full);
@@ -337,11 +368,17 @@ section[id] {
 }
 .theme-toggle:hover,
 .hamburger:hover,
-.lang-toggle:hover {
+.lang-toggle:hover,
+.icon-btn:hover {
   border-color: var(--primary);
   color: var(--primary);
 }
-.theme-toggle i { font-size: 1.1rem; }
+.theme-toggle .icon { font-size: 1.1rem; }
+
+/* Theme icon visibility (CSS-driven, no JS innerHTML swap) */
+.theme-toggle .theme-icon-dark { display: none; }
+[data-theme="dark"] .theme-toggle .theme-icon-light { display: none; }
+[data-theme="dark"] .theme-toggle .theme-icon-dark { display: inline-block; }
 
 .lang-toggle {
   padding: 0 0.75rem;
@@ -369,13 +406,13 @@ section[id] {
 .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
 
 /* ----------------------------------------------------------
-   10. HERO
+   11. HERO
    ---------------------------------------------------------- */
 .hero {
   padding-top: calc(var(--nav-height) + var(--space-12));
   padding-bottom: var(--space-16);
-  min-height: 100vh;
-  min-height: 100svh;
+  min-height: min(100vh, 720px);
+  min-height: min(100svh, 720px);
   display: flex;
   align-items: center;
   position: relative;
@@ -451,7 +488,7 @@ section[id] {
   align-items: center;
   gap: 0.4rem;
 }
-.trust-strip i { color: var(--primary); font-size: 0.9em; }
+.trust-strip .icon { color: var(--primary); font-size: 1em; }
 
 .hero-stats {
   display: flex;
@@ -477,12 +514,68 @@ section[id] {
 }
 
 /* ----------------------------------------------------------
-   11. SECTIONS & HEADERS
+   12. FEATURED QUOTE (trust moment below hero)
+   ---------------------------------------------------------- */
+.featured-quote-section {
+  padding: var(--space-10) 0;
+  background: var(--bg-alt);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+.featured-quote {
+  max-width: 720px;
+  margin: 0 auto;
+  text-align: center;
+}
+.featured-quote .stars {
+  color: var(--accent);
+  font-size: var(--text-lg);
+  margin-bottom: var(--space-4);
+  display: flex;
+  justify-content: center;
+  gap: 0.25rem;
+}
+.featured-quote blockquote {
+  font-family: var(--font-heading);
+  font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+  line-height: 1.5;
+  font-style: italic;
+  color: var(--text);
+  margin-bottom: var(--space-5);
+  text-wrap: balance;
+}
+.featured-quote figcaption {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-3);
+  font-size: var(--text-sm);
+  color: var(--text-muted);
+}
+.featured-quote .initials {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--primary);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  font-size: var(--text-sm);
+  flex-shrink: 0;
+}
+.featured-quote figcaption strong {
+  color: var(--text);
+  font-size: var(--text-sm);
+  font-weight: 700;
+}
+
+/* ----------------------------------------------------------
+   13. SECTIONS & HEADERS
    ---------------------------------------------------------- */
 .section {
   padding: clamp(4rem, 8vw, 8rem) 0;
-  content-visibility: auto;
-  contain-intrinsic-size: auto 500px;
 }
 .section-alt {
   background: var(--bg-alt);
@@ -504,6 +597,10 @@ section[id] {
   letter-spacing: 0.1em;
   margin-bottom: var(--space-3);
 }
+.section-header .tag .icon {
+  vertical-align: -0.15em;
+  margin-right: 0.25rem;
+}
 .section-header h2 {
   font-size: clamp(1.8rem, 4vw, 2.8rem);
   margin-bottom: var(--space-4);
@@ -515,7 +612,7 @@ section[id] {
 }
 
 /* ----------------------------------------------------------
-   12. AMENITIES
+   14. AMENITIES
    ---------------------------------------------------------- */
 .amenities-grid {
   display: grid;
@@ -535,7 +632,7 @@ section[id] {
   box-shadow: var(--shadow-md);
   border-color: var(--border-hover);
 }
-.amenity-card i {
+.amenity-card .icon {
   font-size: 1.5rem;
   color: var(--primary);
   margin-bottom: var(--space-4);
@@ -550,11 +647,11 @@ section[id] {
 }
 
 /* ----------------------------------------------------------
-   13. SAVINGS CALCULATOR
+   15. SAVINGS CALCULATOR
    ---------------------------------------------------------- */
 .savings-calc {
   max-width: 640px;
-  margin: 0 auto var(--space-10);
+  margin: var(--space-10) auto 0;
   padding: var(--space-6);
   background: var(--bg-card);
   border: 1px solid var(--border);
@@ -606,7 +703,7 @@ section[id] {
 }
 
 /* ----------------------------------------------------------
-   14. PLANS
+   16. PLANS
    ---------------------------------------------------------- */
 .plans-grid {
   display: grid;
@@ -647,8 +744,9 @@ section[id] {
   text-transform: uppercase;
   letter-spacing: 0.05em;
 }
-.plan-card .icon {
+.plan-card .plan-icon {
   font-size: 2.5rem;
+  color: var(--primary);
   margin-bottom: var(--space-4);
 }
 .plan-card h3 {
@@ -679,14 +777,14 @@ section[id] {
   font-size: var(--text-sm);
   color: var(--text-muted);
 }
-.plan-card ul li i {
+.plan-card ul li .icon {
   color: var(--primary);
   flex-shrink: 0;
 }
 .plan-card .btn { margin-top: auto; }
 
 /* ----------------------------------------------------------
-   15. TRAINERS
+   17. TRAINERS
    ---------------------------------------------------------- */
 .trainers-grid {
   display: grid;
@@ -754,7 +852,7 @@ section[id] {
 }
 
 /* ----------------------------------------------------------
-   16. TIMETABLE
+   18. TIMETABLE
    ---------------------------------------------------------- */
 .timetable {
   max-width: 900px;
@@ -777,6 +875,7 @@ section[id] {
   font-weight: 700;
   color: var(--text-muted);
   min-height: 44px;
+  min-width: 44px;
   transition: all var(--transition-fast);
 }
 .timetable-tabs [role="tab"]:hover {
@@ -862,7 +961,7 @@ section[id] {
 }
 
 /* ----------------------------------------------------------
-   17. GALLERY
+   19. GALLERY
    ---------------------------------------------------------- */
 .gallery-grid {
   display: grid;
@@ -904,7 +1003,7 @@ section[id] {
 }
 
 /* ----------------------------------------------------------
-   18. BEFORE / AFTER SLIDER
+   20. BEFORE / AFTER SLIDER
    ---------------------------------------------------------- */
 .ba-figure {
   position: relative;
@@ -996,7 +1095,7 @@ section[id] {
 }
 
 /* ----------------------------------------------------------
-   19. TESTIMONIALS
+   21. TESTIMONIALS
    ---------------------------------------------------------- */
 .testimonials-grid {
   display: grid;
@@ -1052,7 +1151,7 @@ section[id] {
 }
 
 /* ----------------------------------------------------------
-   20. FORMS
+   22. FORMS
    ---------------------------------------------------------- */
 .form-group {
   display: flex;
@@ -1102,7 +1201,7 @@ section[id] {
 }
 
 /* ----------------------------------------------------------
-   21. BOOKING WIDGET
+   23. BOOKING WIDGET
    ---------------------------------------------------------- */
 .booking-widget {
   display: grid;
@@ -1187,7 +1286,7 @@ section[id] {
 }
 
 /* ----------------------------------------------------------
-   22. CONTACT & BOOKING LAYOUTS
+   24. CONTACT & BOOKING LAYOUTS
    ---------------------------------------------------------- */
 .contact-wrapper,
 .booking-wrapper {
@@ -1207,15 +1306,13 @@ section[id] {
   align-items: center;
   gap: var(--space-5);
 }
-.contact-info .item i {
+.contact-info .item > .icon {
   width: 48px;
   height: 48px;
+  padding: 12px;
   background: rgba(209, 52, 44, 0.1);
   color: var(--primary);
   border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   font-size: var(--text-md);
   flex-shrink: 0;
 }
@@ -1227,6 +1324,7 @@ section[id] {
   color: var(--text-muted);
   font-size: var(--text-sm);
 }
+.contact-info .item p a:hover { color: var(--primary); }
 .booking-info h3 {
   font-size: var(--text-xl);
   margin-bottom: var(--space-4);
@@ -1242,7 +1340,7 @@ section[id] {
   color: var(--text-muted);
   font-size: var(--text-sm);
 }
-.booking-info ul li i {
+.booking-info ul li .icon {
   color: var(--primary);
   flex-shrink: 0;
 }
@@ -1287,7 +1385,7 @@ section[id] {
 }
 
 /* ----------------------------------------------------------
-   23. MAP EMBED
+   25. MAP EMBED
    ---------------------------------------------------------- */
 .map-embed {
   border-radius: var(--radius-md);
@@ -1327,7 +1425,7 @@ section[id] {
   color: var(--text-muted);
   padding: var(--space-4);
 }
-.map-placeholder i {
+.map-placeholder .icon {
   font-size: 2rem;
   color: var(--primary);
 }
@@ -1337,7 +1435,7 @@ section[id] {
 }
 
 /* ----------------------------------------------------------
-   24. INSTAGRAM STRIP
+   26. INSTAGRAM STRIP
    ---------------------------------------------------------- */
 .insta-strip {
   display: grid;
@@ -1366,7 +1464,7 @@ section[id] {
 }
 
 /* ----------------------------------------------------------
-   25. FAQ & LEGAL (native <details>)
+   27. FAQ & LEGAL (native <details>)
    ---------------------------------------------------------- */
 .faq-grid,
 .legal-grid {
@@ -1409,15 +1507,15 @@ section[id] {
 .legal-header::-webkit-details-marker { display: none; }
 .faq-question::marker,
 .legal-header::marker { content: ''; }
-.faq-question i,
-.legal-header i {
+.faq-question .icon,
+.legal-header .icon {
   font-size: var(--text-sm);
   color: var(--primary);
   transition: transform 0.3s ease;
   flex-shrink: 0;
 }
-.faq-item[open] .faq-question i,
-.legal-card[open] .legal-header i { transform: rotate(180deg); }
+.faq-item[open] .faq-question .icon,
+.legal-card[open] .legal-header .icon { transform: rotate(180deg); }
 .faq-answer,
 .legal-body {
   padding: 0 var(--space-6) var(--space-6);
@@ -1438,7 +1536,46 @@ section[id] {
 }
 
 /* ----------------------------------------------------------
-   26. FOOTER
+   28. YOUR FIRST VISIT (steps)
+   ---------------------------------------------------------- */
+.steps-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: var(--space-6);
+}
+.step-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: var(--space-6);
+  box-shadow: var(--shadow-sm);
+  position: relative;
+}
+.step-num {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--primary);
+  color: #fff;
+  font-weight: 800;
+  font-size: var(--text-md);
+  margin-bottom: var(--space-4);
+}
+.step-card h3 {
+  font-size: var(--text-lg);
+  margin-bottom: var(--space-2);
+}
+.step-card p {
+  color: var(--text-muted);
+  font-size: var(--text-sm);
+  line-height: 1.6;
+}
+
+/* ----------------------------------------------------------
+   29. FOOTER
    ---------------------------------------------------------- */
 .footer {
   background: var(--secondary);
@@ -1482,7 +1619,12 @@ section[id] {
   flex-direction: column;
   gap: var(--space-3);
 }
-.footer-col ul li a { font-size: var(--text-sm); }
+.footer-col ul li a {
+  font-size: var(--text-sm);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
 .footer-bottom {
   display: flex;
   justify-content: space-between;
@@ -1510,7 +1652,7 @@ section[id] {
 }
 
 /* ----------------------------------------------------------
-   27. FLOATING ELEMENTS
+   30. FLOATING ELEMENTS
    ---------------------------------------------------------- */
 .whatsapp-float {
   position: fixed;
@@ -1521,8 +1663,11 @@ section[id] {
   color: #fff;
   border-radius: var(--radius-full);
   padding: 0.75rem 1.25rem;
+  min-height: 44px;
+  min-width: 44px;
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 0.5rem;
   box-shadow: var(--shadow-lg);
   transition: all var(--transition-base);
@@ -1597,7 +1742,7 @@ section[id] {
 }
 
 /* ----------------------------------------------------------
-   28. REVEAL ANIMATIONS
+   31. REVEAL ANIMATIONS
    ---------------------------------------------------------- */
 .reveal-init {
   opacity: 0;
@@ -1611,7 +1756,7 @@ section[id] {
 }
 
 /* ----------------------------------------------------------
-   29. REDUCED MOTION & SAVE-DATA
+   32. REDUCED MOTION & SAVE-DATA
    ---------------------------------------------------------- */
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
@@ -1637,13 +1782,13 @@ section[id] {
 .save-data .scroll-progress-bar { transition: none; }
 
 /* ----------------------------------------------------------
-   30. NO-JS FALLBACKS
+   33. NO-JS FALLBACKS
    ---------------------------------------------------------- */
 .no-js .hamburger,
 .no-js .theme-toggle,
-.no-js .lang-toggle { display: none; }
+.no-js .lang-toggle,
+.no-js .icon-btn { display: none; }
 
-/* Navbar becomes sticky (in flow) so the wrapped nav has space */
 .no-js .navbar {
   position: sticky;
   height: auto;
@@ -1670,14 +1815,13 @@ section[id] {
 .no-js .nav-links li.nav-secondary { display: inline-block; }
 .no-js .hero { padding-top: var(--space-8); }
 
-/* Hide JS-only widgets */
 .no-js .booking-widget,
 .no-js .ba-slider,
 .no-js .ba-handle { display: none; }
 .no-js .ba-before-wrap { display: none; }
 
 /* ----------------------------------------------------------
-   31. RESPONSIVE
+   34. RESPONSIVE
    ---------------------------------------------------------- */
 @media (max-width: 1024px) {
   .hero .container {
@@ -1745,7 +1889,6 @@ section[id] {
 
   /* Mobile body text readability */
   .amenity-card p,
-  .program-card p,
   .plan-card ul li,
   .trainer-card .info p,
   .testimonial-card blockquote,
@@ -1753,9 +1896,21 @@ section[id] {
   .contact-info .item p,
   .faq-answer,
   .legal-body,
-  .tt-meta,
-  .map-placeholder {
+  .step-card p,
+  .map-placeholder,
+  .featured-quote figcaption {
     font-size: var(--text-base);
+  }
+
+  /* tt-meta: keep readable but drop ALL-CAPS at 16px */
+  .tt-meta {
+    font-size: var(--text-xs);
+    text-transform: none;
+    letter-spacing: 0.01em;
+  }
+  .tt-meta .tt-intensity {
+    text-transform: uppercase;
+    font-size: 0.85em;
   }
 
   .footer-grid { grid-template-columns: 1fr; }
@@ -1777,7 +1932,7 @@ section[id] {
   .whatsapp-float {
     bottom: var(--space-4);
     left: var(--space-4);
-    padding: 0.5rem 0.75rem;
+    padding: 0.6rem 0.9rem;
     font-size: var(--text-xs);
   }
 
@@ -1794,8 +1949,15 @@ section[id] {
 
 @media (max-width: 480px) {
   .container { padding-inline: var(--space-4); }
+
+  /* Timetable tabs: 4+3 wrap to prevent cramped 7-in-a-row */
+  .timetable-tabs {
+    grid-template-columns: repeat(4, 1fr);
+    border-radius: var(--radius-md);
+  }
   .timetable-tabs [role="tab"] {
+    border-radius: var(--radius-sm);
     font-size: var(--text-xs);
-    padding: 0.5rem 0.125rem;
+    padding: 0.5rem 0.25rem;
   }
 }
