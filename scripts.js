@@ -1,8 +1,10 @@
 /* ==========================================================
-   FLESH AND BONES GYM — INTERACTION ENGINE (v2)
+   FLESH AND BONES GYM — INTERACTION ENGINE (v3)
    Vanilla JS, IIFE-scoped, progressive enhancement throughout.
-   v2: SVG icon system, aria-live announcements, subscription-aware booking,
-       per-field form errors, local-date fix, tabpanel a11y.
+   v3: language fallback restored, toast uses SVG sprite,
+       nav inert toggle, hero stat-num selector, draft TTL,
+       bwDateLabel i18n key swap, tablist roving tabindex,
+       day-change announce via #langAnnounce.
    ========================================================== */
 
 (function () {
@@ -66,13 +68,16 @@
   });
 
   // ------------------------------------------------------------
-  // Toast
+  // Toast — icon is passed as an SVG sprite id (e.g. "check-circle")
   // ------------------------------------------------------------
   let toastTimer;
-  function showToast(icon, msg, sub = '') {
+  function showToast(iconName, msg, sub = '') {
     const toast = document.getElementById('toast');
     if (!toast) return;
-    document.getElementById('toastIcon').textContent = icon;
+    const iconEl = document.getElementById('toastIcon');
+    if (iconEl) {
+      iconEl.innerHTML = '<svg class="icon" aria-hidden="true"><use href="#icon-' + iconName + '"/></svg>';
+    }
     document.getElementById('toastMsg').textContent = msg;
     document.getElementById('toastSub').textContent = sub;
     toast.classList.add('show');
@@ -112,7 +117,13 @@
   // i18n — English ⇄ Kiswahili
   // ------------------------------------------------------------
   const TRANSLATIONS = {
-    en: {},
+    en: {
+      'booking.date': 'Preferred date',
+      'booking.startDate': 'Preferred start date',
+      'booking.pass.daily': 'Daily Pass (KES 300)',
+      'booking.pass.monthly': 'Monthly Beast (KES 3,500)',
+      'booking.pass.quarterly': 'Quarterly Champion (KES 9,000)'
+    },
     sw: {
       'nav.home': 'Nyumbani',
       'nav.facilities': 'Vifaa',
@@ -244,10 +255,14 @@
       'booking.passType': 'Aina ya pasi',
       'booking.pass.free': 'Pasi ya Siku ya Bure',
       'booking.date': 'Tarehe unayopendelea',
+      'booking.startDate': 'Tarehe ya kuanza',
       'booking.time': 'Muda unaopendelea',
       'booking.time.placeholder': 'Chagua muda',
       'booking.widgetNote': 'Utahamishwa na ujumbe uliojazwa mapema.',
       'booking.or': 'au',
+      'booking.pass.daily': 'Pasi ya Siku (KES 300)',
+      'booking.pass.monthly': 'Mwezi wa Beast (KES 3,500)',
+      'booking.pass.quarterly': 'Robo Mwaka Champion (KES 9,000)',
 
       'contact.tag': 'Tembelea Leo',
       'contact.title1': 'Tupo Katika',
@@ -283,6 +298,12 @@
 
   let currentLang = 'en';
 
+  // Snapshot original English text BEFORE any language toggle.
+  // Used as fallback when returning to EN so text is always restorable.
+  document.querySelectorAll('[data-i18n]').forEach((el) => {
+    el.dataset.i18nOriginal = el.innerHTML;
+  });
+
   function applyLanguage(lang) {
     if (!TRANSLATIONS[lang]) return;
     currentLang = lang;
@@ -293,6 +314,8 @@
       const translated = TRANSLATIONS[lang][key];
       if (translated !== undefined) {
         el.innerHTML = translated;
+      } else if (el.dataset.i18nOriginal !== undefined) {
+        el.innerHTML = el.dataset.i18nOriginal;
       }
     });
 
@@ -331,10 +354,11 @@
   if (preferredLang === 'sw') applyLanguage('sw');
 
   // ------------------------------------------------------------
-  // Mobile Navigation + Focus trap
+  // Mobile Navigation + Focus trap + inert toggle
   // ------------------------------------------------------------
   const hamburger = document.getElementById('hamburger');
   const navLinks = document.getElementById('navLinks');
+  const mobileMQ = window.matchMedia('(max-width: 768px)');
   let releaseTrap = null;
 
   function trapFocus(container) {
@@ -359,6 +383,21 @@
     return () => document.removeEventListener('keydown', onKey);
   }
 
+  // Only apply inert when the off-canvas menu is used (mobile).
+  // On desktop the nav is inline-flex and must stay interactive.
+  function syncNavInert() {
+    if (!navLinks) return;
+    if (mobileMQ.matches) {
+      if (navLinks.classList.contains('open')) {
+        navLinks.removeAttribute('inert');
+      } else {
+        navLinks.setAttribute('inert', '');
+      }
+    } else {
+      navLinks.removeAttribute('inert');
+    }
+  }
+
   function toggleNav(forceClose = false) {
     if (!hamburger || !navLinks) return;
     const isOpen = navLinks.classList.contains('open');
@@ -375,6 +414,7 @@
       releaseTrap();
       releaseTrap = null;
     }
+    syncNavInert();
   }
 
   if (hamburger) hamburger.addEventListener('click', () => toggleNav());
@@ -389,6 +429,17 @@
       if (hamburger) hamburger.focus();
     }
   });
+
+  // Reset state when viewport crosses back into desktop range
+  mobileMQ.addEventListener('change', () => {
+    if (!mobileMQ.matches && navLinks && navLinks.classList.contains('open')) {
+      toggleNav(true);
+    }
+    syncNavInert();
+  });
+
+  // Initial inert sync (mobile menu starts closed)
+  syncNavInert();
 
   // ------------------------------------------------------------
   // Scroll progress
@@ -476,7 +527,7 @@
   // ------------------------------------------------------------
   // Hero stat counter (respects reduced motion)
   // ------------------------------------------------------------
-  const stats = document.querySelectorAll('.hero-stats .stat h3');
+  const stats = document.querySelectorAll('.hero-stats .stat .stat-num');
   let statsAnimated = false;
   if (!prefersReducedMotion && 'IntersectionObserver' in window) {
     const statsObserver = new IntersectionObserver(
@@ -512,10 +563,11 @@
   }
 
   // ------------------------------------------------------------
-  // Contact form: per-field validation + draft persistence
+  // Contact form: per-field validation + draft persistence (24h TTL)
   // ------------------------------------------------------------
   const contactForm = document.getElementById('contactForm');
   const DRAFT_KEY = 'fb_contact_draft';
+  const DRAFT_TTL_MS = 24 * 60 * 60 * 1000;
 
   if (contactForm) {
     const fields = contactForm.querySelectorAll('input[required], textarea[required]');
@@ -553,7 +605,8 @@
         const data = {
           name: document.getElementById('contactName').value,
           phone: document.getElementById('contactPhone').value,
-          message: document.getElementById('contactMessage').value
+          message: document.getElementById('contactMessage').value,
+          savedAt: Date.now()
         };
         safeStorageSet(DRAFT_KEY, JSON.stringify(data));
       } catch (e) {}
@@ -564,6 +617,10 @@
         const raw = safeStorageGet(DRAFT_KEY);
         if (!raw) return;
         const data = JSON.parse(raw);
+        if (!data.savedAt || Date.now() - data.savedAt > DRAFT_TTL_MS) {
+          safeStorageRemove(DRAFT_KEY);
+          return;
+        }
         if (data.name) document.getElementById('contactName').value = data.name;
         if (data.phone) document.getElementById('contactPhone').value = data.phone;
         if (data.message) document.getElementById('contactMessage').value = data.message;
@@ -588,7 +645,7 @@
       });
       if (firstInvalid) {
         firstInvalid.focus();
-        showToast('!', 'Check the highlighted fields', 'Please correct the errors and try again.');
+        showToast('help', 'Check the highlighted fields', 'Please correct the errors and try again.');
         return;
       }
 
@@ -596,7 +653,7 @@
       const phone = document.getElementById('contactPhone').value.trim();
       const msg = document.getElementById('contactMessage').value.trim();
 
-      showToast('OK', 'Opening WhatsApp...', 'Redirecting with your message pre-filled.');
+      showToast('check-circle', 'Opening WhatsApp...', 'Redirecting with your message pre-filled.');
       trackEvent('contact:submit-success');
 
       const text = 'Hi Flesh & Bones Gym! My name is ' + name + ' (' + phone + ').\n\n' + msg;
@@ -626,14 +683,19 @@
     // min date from local time, not UTC
     if (dateInput) dateInput.min = localIsoDate(new Date());
 
-    // restore draft
+    // restore draft (24h TTL)
     try {
       const draftRaw = safeStorageGet('fb_booking_draft');
       if (draftRaw) {
         const draft = JSON.parse(draftRaw);
-        if (draft.pass && passInput) passInput.value = draft.pass;
-        if (draft.date && dateInput) dateInput.value = draft.date;
-        if (draft.time && timeInput) timeInput.value = draft.time;
+        const expired = !draft.savedAt || Date.now() - draft.savedAt > DRAFT_TTL_MS;
+        if (expired) {
+          safeStorageRemove('fb_booking_draft');
+        } else {
+          if (draft.pass && passInput) passInput.value = draft.pass;
+          if (draft.date && dateInput) dateInput.value = draft.date;
+          if (draft.time && timeInput) timeInput.value = draft.time;
+        }
       }
     } catch (e) {}
 
@@ -644,7 +706,12 @@
       if (timeInput) timeInput.required = !isSubscription;
       if (dateInput) dateInput.required = true;
       if (dateLabel) {
-        dateLabel.textContent = isSubscription ? 'Preferred start date' : 'Preferred date';
+        const newKey = isSubscription ? 'booking.startDate' : 'booking.date';
+        dateLabel.dataset.i18n = newKey;
+        dateLabel.textContent =
+          (TRANSLATIONS[currentLang] && TRANSLATIONS[currentLang][newKey]) ||
+          TRANSLATIONS.en[newKey] ||
+          (isSubscription ? 'Preferred start date' : 'Preferred date');
       }
       if (isSubscription && timeInput) timeInput.value = '';
       if (errorEl) errorEl.textContent = '';
@@ -684,11 +751,16 @@
         : 'Hi! I\'d like to book a ' + pass + ' for ' + formatted + ' at ' + time + '. Please confirm.';
 
       try {
-        safeStorageSet('fb_booking_draft', JSON.stringify({ pass, date, time: time || '' }));
+        safeStorageSet('fb_booking_draft', JSON.stringify({
+          pass,
+          date,
+          time: time || '',
+          savedAt: Date.now()
+        }));
       } catch (e) {}
 
       trackEvent('booking:widget-success');
-      showToast('OK', 'Opening WhatsApp...', 'Your booking details are ready to send.');
+      showToast('check-circle', 'Opening WhatsApp...', 'Your booking details are ready to send.');
       setTimeout(() => {
         window.open('https://wa.me/254702555093?text=' + encodeURIComponent(text), '_blank', 'noopener');
       }, 700);
@@ -813,14 +885,14 @@
 
         const bodyEl = document.createElement('div');
         bodyEl.className = 'tt-body';
-        const h4 = document.createElement('h4');
-        h4.textContent = cls.title;
+        const h3 = document.createElement('h3');
+        h3.textContent = cls.title;
         const meta = document.createElement('div');
         meta.className = 'tt-meta';
         meta.innerHTML =
           'Coach ' + cls.coach + ' &middot; ' + cls.duration + ' min &middot; ' +
           '<span class="tt-intensity">' + cls.intensity + '</span>';
-        bodyEl.appendChild(h4);
+        bodyEl.appendChild(h3);
         bodyEl.appendChild(meta);
 
         const addBtn = document.createElement('button');
@@ -840,7 +912,7 @@
           });
           downloadICS(ics, 'fleshandbones-' + dayKey + '-' + cls.time.replace(':', '') + '.ics');
           trackEvent('timetable:ics:' + dayKey + ':' + cls.time);
-          showToast('OK', 'Calendar file downloaded', 'Open it to add this class to your calendar.');
+          showToast('check-circle', 'Calendar file downloaded', 'Open it to add this class to your calendar.');
         });
 
         item.appendChild(timeEl);
@@ -851,19 +923,32 @@
       });
     }
 
-    function selectDay(dayKey) {
+    function selectDay(dayKey, announce = true) {
       tabs.forEach((tab) => {
         const isSel = tab.dataset.day === dayKey;
         tab.setAttribute('aria-selected', isSel ? 'true' : 'false');
+        tab.tabIndex = isSel ? 0 : -1; // roving tabindex
       });
-      // Update tabpanel aria-labelledby to active tab
       if (list) list.setAttribute('aria-labelledby', 'tab-' + dayKey);
       renderDay(dayKey);
+
+      if (announce) {
+        const announceEl = document.getElementById('langAnnounce');
+        if (announceEl) {
+          const dayLabel = dayKey.charAt(0).toUpperCase() + dayKey.slice(1);
+          announceEl.textContent = 'Showing ' + dayLabel + ' schedule';
+        }
+      }
     }
+
+    // Initial roving tabindex — only the active tab is focusable
+    tabs.forEach((tab) => { tab.tabIndex = -1; });
 
     const dayKeys = ['sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat'];
     const todayKey = dayKeys[new Date().getDay()];
-    selectDay(TIMETABLE[todayKey] ? todayKey : 'mon');
+
+    // Boot: select today without announcing (avoids noisy SR on page load)
+    selectDay(TIMETABLE[todayKey] ? todayKey : 'mon', false);
 
     tabs.forEach((tab) => {
       tab.addEventListener('click', () => selectDay(tab.dataset.day));

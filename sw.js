@@ -1,11 +1,7 @@
 /* Minimal service worker (v2).
    - HTML navigations: network-first, cache for offline fallback.
-   - Same-origin static assets: stale-while-revalidate (fixes stale CSS/JS bug).
-   - Cross-origin (fonts, images): network only.
-
-   The previous cache-first strategy on same-origin assets meant returning
-   visitors could see old CSS/JS after a deploy unless the manual cache key
-   was bumped. SWR removes that footgun. */
+   - Same-origin static assets: stale-while-revalidate.
+   - Cross-origin (fonts, images): network only. */
 
 const CACHE = 'fleshandbones-v2';
 const ASSETS = [
@@ -34,7 +30,6 @@ self.addEventListener('fetch', (event) => {
   const req = event.request;
   if (req.method !== 'GET') return;
 
-  // Navigations: network-first, cache successful navigations, fall back to shell
   if (req.mode === 'navigate') {
     event.respondWith((async () => {
       try {
@@ -53,7 +48,6 @@ self.addEventListener('fetch', (event) => {
     return;
   }
 
-  // Same-origin static: stale-while-revalidate
   const url = new URL(req.url);
   if (url.origin === self.location.origin) {
     event.respondWith((async () => {
@@ -66,7 +60,6 @@ self.addEventListener('fetch', (event) => {
       }).catch(() => null);
 
       if (cached) {
-        // Return cached instantly; refresh in background.
         return cached;
       }
       const netRes = await networkPromise;
@@ -75,6 +68,4 @@ self.addEventListener('fetch', (event) => {
     })());
     return;
   }
-
-  // Cross-origin: network only
 });

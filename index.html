@@ -30,14 +30,34 @@
   <!-- Progressive enhancement: swap no-js → js before CSS paints -->
   <script>document.documentElement.classList.remove('no-js');document.documentElement.classList.add('js');</script>
 
+  <!-- Apply saved theme + language BEFORE first paint (prevents FOUC) -->
+  <script>
+    try {
+      var fbTheme = localStorage.getItem('fb_theme');
+      if (fbTheme === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
+      var fbLang = localStorage.getItem('fb_lang');
+      if (fbLang === 'sw') document.documentElement.setAttribute('lang', 'sw');
+    } catch (e) {}
+  </script>
+
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="preconnect" href="https://images.unsplash.com" />
 
+  <!-- Hero card image — desktop only (card hidden on mobile to protect LCP) -->
   <link rel="preload" as="image"
-    imagesrcset="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=400&q=80 400w, https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=800&q=80 800w, https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=1200&q=80 1200w"
-    imagesizes="(max-width: 768px) 100vw, 50vw"
-    fetchpriority="high" />
+        media="(min-width: 769px)"
+        imagesrcset="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=400&q=80 400w, https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=800&q=80 800w, https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=1200&q=80 1200w"
+        imagesizes="(max-width: 1024px) 100vw, 45vw"
+        fetchpriority="high" />
+
+  <!-- Hero background — responsive preload (desktop landscape / mobile portrait) -->
+  <link rel="preload" as="image"
+        href="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=1600&h=900&q=75"
+        media="(min-width: 769px)" fetchpriority="high" />
+  <link rel="preload" as="image"
+        href="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=900&h=1200&q=70"
+        media="(max-width: 768px)" fetchpriority="high" />
 
   <script type="application/ld+json">
     {
@@ -232,9 +252,9 @@
             <li><svg class="icon" aria-hidden="true"><use href="#icon-map-pin"/></svg><span data-i18n="trust.location">Imara Daima, Nairobi</span></li>
           </ul>
           <div class="hero-stats">
-            <div class="stat"><h3>500+</h3><p data-i18n="stat.members">Active Members</p></div>
-            <div class="stat"><h3>4</h3><p data-i18n="stat.coaches">Certified Coaches</p></div>
-            <div class="stat"><h3>5:00 AM</h3><p data-i18n="stat.opening">Weekday Opening</p></div>
+            <div class="stat"><strong class="stat-num">500+</strong><p data-i18n="stat.members">Active Members</p></div>
+            <div class="stat"><strong class="stat-num">4</strong><p data-i18n="stat.coaches">Certified Coaches</p></div>
+            <div class="stat"><strong class="stat-num">5:00 AM</strong><p data-i18n="stat.opening">Weekday Opening</p></div>
           </div>
         </div>
         <div class="hero-image">
@@ -242,7 +262,7 @@
             srcset="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=400&q=80 400w,
                     https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=800&q=80 800w,
                     https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=1200&q=80 1200w"
-            sizes="(max-width: 768px) 100vw, 50vw" width="520" height="390" fetchpriority="high"
+            sizes="(max-width: 1024px) 100vw, 45vw" width="520" height="390"
             alt="Members training in the Flesh and Bones Gym weight room in Imara, Nairobi"
             onerror="this.onerror=null; this.src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4MDAiIGhlaWdodD0iNjAwIiB2aWV3Qm94PSIwIDAgODAwIDYwMCI+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0iI2UyZTRlYSIvPjx0ZXh0IHg9IjUwJSIgeT0iNTAlIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMjQiIGZpbGw9IiM5Y2EzYWYiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGR5PSIuMzVlbSI+Rmxlc2ggJiBCb25lcyBHeW08L3RleHQ+PC9zdmc+'" />
         </div>
@@ -254,7 +274,7 @@
       <div class="container">
         <h2 id="featured-quote-heading" class="visually-hidden">Member testimonial</h2>
         <figure class="featured-quote">
-          <div class="stars" aria-label="Rated 5 out of 5 stars">
+          <div class="stars" role="img" aria-label="Rated 5 out of 5 stars">
             <svg class="icon" aria-hidden="true"><use href="#icon-star"/></svg>
             <svg class="icon" aria-hidden="true"><use href="#icon-star"/></svg>
             <svg class="icon" aria-hidden="true"><use href="#icon-star"/></svg>
@@ -313,7 +333,7 @@
       </div>
     </section>
 
-    <!-- MEMBERSHIP PLANS — plans first, calculator BELOW (audit fix) -->
+    <!-- MEMBERSHIP PLANS -->
     <section class="section section-alt" id="plans" aria-labelledby="plans-title">
       <div class="container">
         <div class="section-header">
@@ -375,7 +395,7 @@
           </div>
         </div>
 
-        <!-- Savings calculator now BELOW the plans (audit fix) -->
+        <!-- Savings calculator -->
         <div class="savings-calc" aria-label="Membership savings calculator">
           <div class="savings-calc-head">
             <label for="visitsRange">
@@ -419,7 +439,7 @@
           <div class="trainer-card">
             <img src="https://images.unsplash.com/photo-1567013127542-490d757e51fc?auto=format&fit=crop&w=500&h=500&q=80" alt="Coach Kevin Mark, Head Coach" loading="lazy" width="260" height="260" />
             <div class="info">
-              <h4>Kevin Mark</h4>
+              <h3>Kevin Mark</h3>
               <div class="role">Head Coach &amp; Founder</div>
               <p>10+ years driving transformations in Nairobi. Specializes in powerlifting mechanics, body recomposition, and strength programming.</p>
               <div class="badges"><span>Strength</span><span>Powerlifting</span><span>Fat Loss</span></div>
@@ -433,7 +453,7 @@
           <div class="trainer-card">
             <img src="https://images.unsplash.com/photo-1541534741688-6078c6bfb5c5?auto=format&fit=crop&w=500&h=500&q=80" alt="Coach Sarah Mwangi, HIIT specialist" loading="lazy" width="260" height="260" />
             <div class="info">
-              <h4>Sarah Mwangi</h4>
+              <h3>Sarah Mwangi</h3>
               <div class="role">HIIT &amp; Conditioning Specialist</div>
               <p>High-energy cardio coach who ensures you burn max calories while building cardiovascular endurance and agility.</p>
               <div class="badges"><span>HIIT</span><span>Endurance</span><span>Group Fitness</span></div>
@@ -447,7 +467,7 @@
           <div class="trainer-card">
             <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=500&h=500&q=80" alt="Coach Lady Boss, hypertrophy specialist" loading="lazy" width="260" height="260" />
             <div class="info">
-              <h4>Lady Boss</h4>
+              <h3>Lady Boss</h3>
               <div class="role">Hypertrophy &amp; Bodybuilding</div>
               <p>Focused on scientific muscle growth, safe execution of compound movements, and personalized macro nutrition planning.</p>
               <div class="badges"><span>Hypertrophy</span><span>Macros</span><span>Prep</span></div>
@@ -461,7 +481,7 @@
           <div class="trainer-card">
             <img src="https://images.unsplash.com/photo-1517838277536-f5f99be501cd?auto=format&fit=crop&w=500&h=500&q=80" alt="Coach Mercy Wanjiru, mobility specialist" loading="lazy" width="260" height="260" />
             <div class="info">
-              <h4>Mercy Wanjiru</h4>
+              <h3>Mercy Wanjiru</h3>
               <div class="role">Mobility &amp; Posture Rehab</div>
               <p>Helps office workers undo desk-posture slump, restore joint integrity, and prevent lower back discomfort.</p>
               <div class="badges"><span>Mobility</span><span>Rehab</span><span>Flexibility</span></div>
@@ -495,7 +515,7 @@
             <button type="button" role="tab" data-day="sat" id="tab-sat" aria-selected="false" aria-controls="timetableList">Sat</button>
             <button type="button" role="tab" data-day="sun" id="tab-sun" aria-selected="false" aria-controls="timetableList">Sun</button>
           </div>
-          <div class="timetable-list" id="timetableList" role="tabpanel" aria-live="polite" aria-labelledby="tab-mon"></div>
+          <div class="timetable-list" id="timetableList" role="tabpanel" aria-labelledby="tab-mon"></div>
 
           <noscript>
             <div class="timetable-static">
@@ -516,7 +536,7 @@
         </div>
         <div class="testimonials-grid">
           <div class="testimonial-card">
-            <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
+            <div class="stars" role="img" aria-label="Rated 5 out of 5 stars">★★★★★</div>
             <blockquote>“I used to spend 2 hours in Mombasa Road traffic thinking about working out. Now I drop into Flesh &amp; Bones at 5:30 AM. Down 12kg in 4 months. The steam room after a leg session is legendary!”</blockquote>
             <div class="author">
               <div class="initials" aria-hidden="true">BK</div>
@@ -524,7 +544,7 @@
             </div>
           </div>
           <div class="testimonial-card">
-            <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
+            <div class="stars" role="img" aria-label="Rated 5 out of 5 stars">★★★★★</div>
             <blockquote>“Coach Kevin doesn't let you slack! The trainers fix your form so you don't hurt your back. Plus, paying via M-Pesa at the counter is super smooth.”</blockquote>
             <div class="author">
               <div class="initials" aria-hidden="true">EN</div>
@@ -532,7 +552,7 @@
             </div>
           </div>
           <div class="testimonial-card">
-            <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
+            <div class="stars" role="img" aria-label="Rated 5 out of 5 stars">★★★★★</div>
             <blockquote>“Best gym in Imara hands down. Real iron, clean showers, zero waiting for machines, and genuine brotherhood in the weight room.”</blockquote>
             <div class="author">
               <div class="initials" aria-hidden="true">LA</div>
@@ -571,7 +591,7 @@
       </div>
     </section>
 
-    <!-- GALLERY (moved after testimonials, before first-visit) -->
+    <!-- GALLERY -->
     <section class="section" id="gallery" aria-labelledby="gallery-title">
       <div class="container">
         <div class="section-header">
@@ -600,7 +620,7 @@
       </div>
     </section>
 
-    <!-- YOUR FIRST VISIT (new section) -->
+    <!-- YOUR FIRST VISIT -->
     <section class="section section-alt" id="first-visit" aria-labelledby="first-visit-title">
       <div class="container">
         <div class="section-header">
@@ -666,9 +686,9 @@
                 <label for="bwPass" data-i18n="booking.passType">Pass type</label>
                 <select id="bwPass" name="bwPass" required>
                   <option value="Free Day Pass" data-i18n="booking.pass.free">Free Day Pass</option>
-                  <option value="Daily Pass (KES 300)">Daily Pass (KES 300)</option>
-                  <option value="Monthly Beast (KES 3,500)">Monthly Beast (KES 3,500)</option>
-                  <option value="Quarterly Champion (KES 9,000)">Quarterly Champion (KES 9,000)</option>
+                  <option value="Daily Pass (KES 300)" data-i18n="booking.pass.daily">Daily Pass (KES 300)</option>
+                  <option value="Monthly Beast (KES 3,500)" data-i18n="booking.pass.monthly">Monthly Beast (KES 3,500)</option>
+                  <option value="Quarterly Champion (KES 9,000)" data-i18n="booking.pass.quarterly">Quarterly Champion (KES 9,000)</option>
                 </select>
               </div>
               <div class="bw-row">
@@ -729,35 +749,35 @@
             <div class="item">
               <svg class="icon" aria-hidden="true"><use href="#icon-map-pin"/></svg>
               <div class="text">
-                <h4 data-i18n="contact.address">Physical Address</h4>
+                <h3 data-i18n="contact.address">Physical Address</h3>
                 <p><a href="https://maps.google.com/?q=Imara+Daima+Business+Park+Nairobi" target="_blank" rel="noopener">Imara Daima Business Park, Ground Floor, Off Mombasa Road, Nairobi</a></p>
               </div>
             </div>
             <div class="item">
               <svg class="icon" aria-hidden="true"><use href="#icon-phone"/></svg>
               <div class="text">
-                <h4>Call Us</h4>
+                <h3>Call Us</h3>
                 <p><a href="tel:+254702555093" data-track="contact:call">+254 702 555093</a></p>
               </div>
             </div>
             <div class="item">
               <svg class="icon" aria-hidden="true"><use href="#icon-whatsapp"/></svg>
               <div class="text">
-                <h4>WhatsApp</h4>
+                <h3>WhatsApp</h3>
                 <p><a href="https://wa.me/254702555093" target="_blank" rel="noopener" data-track="contact:whatsapp">Chat with a coach</a></p>
               </div>
             </div>
             <div class="item">
               <svg class="icon" aria-hidden="true"><use href="#icon-mail"/></svg>
               <div class="text">
-                <h4 data-i18n="contact.email">Email Enquiries</h4>
+                <h3 data-i18n="contact.email">Email Enquiries</h3>
                 <p><a href="mailto:hello@fleshandbonesgym.com">hello@fleshandbonesgym.com</a></p>
               </div>
             </div>
             <div class="item">
               <svg class="icon" aria-hidden="true"><use href="#icon-clock"/></svg>
               <div class="text">
-                <h4 data-i18n="contact.hours">Operating Hours</h4>
+                <h3 data-i18n="contact.hours">Operating Hours</h3>
                 <p>Monday – Friday: 5:00 AM – 11:00 PM<br />Saturday – Sunday: 7:00 AM – 9:00 PM</p>
               </div>
             </div>
@@ -771,6 +791,7 @@
                 </span>
               </button>
               <noscript>
+                <style>#mapLoadBtn { display: none !important; }</style>
                 <a href="https://maps.google.com/?q=Imara+Daima+Business+Park+Nairobi" target="_blank" rel="noopener" class="btn btn-outline btn-full" style="margin: 0.5rem;">
                   <svg class="icon" aria-hidden="true"><use href="#icon-map-pin"/></svg>
                   <span>Open in Google Maps</span>
