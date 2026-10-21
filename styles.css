@@ -1,9 +1,8 @@
 /* ==========================================================
-   FLESH AND BONES GYM — PRODUCTION STYLESHEET (v3)
+   FLESH AND BONES GYM — PRODUCTION STYLESHEET (v3.1)
    Organised by concern. Mobile-first throughout.
-   v3 changes: hero background + scrim, light-text hero,
-   stat-num strong, heading-level fixes, gallery labels visible,
-   nav inert fallback, toast offset.
+   v3.1 changes: Fixed mobile navbar overflow (cut-off menu button).
+   Reclaimed horizontal space in nav-actions on small screens.
    ========================================================== */
 
 /* ----------------------------------------------------------
@@ -1893,6 +1892,21 @@ section[id] {
 @media (max-width: 768px) {
   :root { --nav-height: 72px; }
 
+  /* FIX: Reduce container padding slightly to give the header more breathing room */
+  .container {
+    padding-inline: var(--space-4);
+  }
+
+  /* FIX: Tighten the gap between action buttons */
+  .nav-actions {
+    gap: 0.25rem; 
+  }
+
+  /* FIX: Ensure the language toggle doesn't take up too much width */
+  .lang-toggle {
+    padding: 0 0.5rem;
+  }
+
   /* Portrait background crop for phones + hide redundant hero card */
   .hero {
     padding-top: calc(var(--nav-height) + var(--space-8));
@@ -2002,7 +2016,15 @@ section[id] {
 }
 
 @media (max-width: 480px) {
-  .container { padding-inline: var(--space-4); }
+  /* FIX: Hide the standalone phone icon to save critical space */
+  .nav-actions .icon-btn {
+    display: none;
+  }
+
+  /* FIX: Slightly reduce logo size so it doesn't crowd the actions */
+  .logo {
+    font-size: var(--text-base);
+  }
 
   /* Timetable tabs: 4+3 wrap to prevent cramped 7-in-a-row */
   .timetable-tabs {
